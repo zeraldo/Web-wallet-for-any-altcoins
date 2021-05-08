@@ -1,0 +1,386 @@
+<script>    		
+   // Obtém os dados da localStorage
+   $("#bbswi").html('0.00');
+   var adrswi = localStorage.getItem('adrswi');
+   if (typeof adrswi !== 'undefined') {  	 
+   //Verifcar se a variavel está definida
+   jQuery.ajax({
+   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
+       headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       type: "GET", /* or type:"GET" or type:"PUT" */
+       dataType: "json",
+       data: {
+       },
+       success: function (result) { 
+   	     var balance=0;
+            var utxos=[];
+            var sum = 0;
+            utxos = result; 
+   	     for(i in utxos) {
+             sum += Number(utxos[i].value/ 1);
+             bbswi = sum;
+   		  localStorage.setItem("bbswi", bbswi);
+            } 
+   		$("#bbswi").html(bbswi);
+         },
+      
+   });	
+   }
+</script>
+<script>
+   $.ajax({
+   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
+       headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       type: "GET", /* or type:"GET" or type:"PUT" */
+       dataType: "json",
+       data: {
+       },
+       success: function (result) { 
+   		var pricusd = Number(result.swiftcash.usd);
+   		 $("#vusdd").val(pricusd);
+     
+   		 var usdpr = 10/pricusd; 
+   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+            
+   		 $("#usdpr").val(usdpr);
+       },
+      /* error: function () {
+          alert("Erro total");
+       }
+   	*/
+   });	
+         function switousd(text){
+   	   
+           var vcoin = document.getElementById("amount").value;
+   		var vcoin = vcoin.replace(",", ".");
+   		
+           var vusd = document.getElementById("vusd").value;
+   		var vusd = vusd.replace(",", ".");
+   		
+   		var vusdd = document.getElementById("vusdd").value;
+   		var vusdd = vusdd.replace(",", ".");
+   		 
+           vusd = vcoin * vusdd;
+   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+   		var vusd = vusd.replace(",", ".");
+   		$("#vusd").val(vusd);
+       
+           }
+        
+        function usdtoswi(text){
+   	    
+   		var vusdd = document.getElementById("vusdd").value;
+   		var vusdd = vusdd.replace(",", ".");
+   		 
+           var vusd = document.getElementById("vusd").value;
+   		var vusd = vusd.replace(",", ".");
+   	 
+   		var usdpr = vusd/vusdd; 
+   		
+   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+   		var vcoin = vcoin.replace(",", ".");
+   		$("#amount").val(vcoin);
+       
+           }
+</script>
+<script>
+   window.onload = function () {	
+   setInterval(function() {
+   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
+   var ubalance = Math.round(ubalance * 100);
+   var ubalance = Math.ceil(ubalance)/100;
+   // alert(ubalance);
+   document.getElementById('ubalance').innerHTML = ubalance;
+    }, 5000);
+   }  
+</script>
+<span class="mainweb">
+<section class="main_content dashboard_part">
+   <div class="main_content_iner ">
+   <div class="container-fluid plr_30 body_white_bg pt_30">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        <div style="    font-size: 22px;
+                           font-weight: 80;
+                           background-color: #F7FAFF;
+                           padding: 23px 30px;
+                           border-bottom: 0px solid transparent;
+                           align-items: center;">
+                           <center>
+                              <h5 class="modal-title"> <span id="bbswi">0.00</span> SWIFT</h5>
+							  
+							 <!-- <a class="modal-title" href="javascript:togglePrice();" id="addr-balance" style="color: #000;">Balance: 0.00000000 SWIFT</a> -->
+							   
+                           </center>
+                        </div>
+                        <div class="modal-body">
+					 
+						
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <script src="../js/js2/jquery-3.5.0.min.js"></script>
+  
+    <script src="../js/js2/js/bootstrap.min.js"></script>
+   
+    <script type="text/javascript" src="../js/js2/instascan.min.js"></script>
+    <script src="../js/js2/cc.js"></script>
+    <script src="../js/js2/clipboard.min.js"></script>
+    <script src="../js/js2/cookie.js"></script>
+	<script src="../js/js2/script.js"></script> 
+
+<script>
+login();
+</script>   
+
+						<!-- <form method="post" action="javascript:spendf();" role="spend"> -->
+                            
+                              
+                          <input autocomplete="off" type="text" id="address" name="address" onkeyup="usdtoswi(this.value)" value="" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required readonly>
+								 
+								   <table>
+                                 <tr>
+                                    <td>
+                                       <input type="number" style="border-radius: 3px !important;
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" value="" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required readonly>
+                                    </td>
+                                    <td> <input type="text" id="vusd" onkeyup="usdtoswi(this.value)" value="" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" required readonly></td>
+                                    <input type="hidden" id='vusdd'>
+                                 </tr>
+                              </table>
+								  
+							  <script>
+ 
+  
+   
+   (function(){
+    // do some stuff
+	 //alert('functionv');
+   spendf();
+    setTimeout(arguments.callee, 10000);
+})();
+</script>
+
+							   <div id="sendprogress" style="display: none;">
+                              <img src="images/loading.gif" style="width: 100%; height: 25px; margin-bottom: 0px;" />
+                               </div>
+							  
+							  <!-- </form> -->
+                              <div class="border_style">
+                                 <span>OU</span>
+                              </div>
+                                
+								  <div class="menudesktop form-group col-md-12 text-center">
+								  <a onclick="carregar2('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
+                              </div>
+							  
+								 <div class="menudesktop form-group col-md-12 text-center">
+								 <a onclick="carregar2('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
+                              </div>
+                             						
+                              <div class="menumobile form-group col-md-12 text-center">
+                                 <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
+								 </div>
+								 
+								  
+                              <div class="menumobile form-group col-md-12 text-center">
+                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
+								</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+<script>
+var address = localStorage.getItem('address');
+var vusd = localStorage.getItem('vusd');
+var amount = localStorage.getItem('amount');
+
+    $("#vusd").val(vusd);
+	$("#amount").val(amount);
+	$("#address").val(address);
+</script>
+
+
+<!-- Barra de progresso -->
+ <style>
+ body,
+html,
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  background: #e7f0f7;
+}
+.progressbar {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 30px;
+}
+.progressbar::before,
+.progressbar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-image: linear-gradient(
+90deg
+, #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
+  background-repeat: repeat-x;
+  -webkit-animation: movebar 5s linear infinite;
+          animation: movebar 5s linear infinite;
+}
+.progressbar::before {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
+}
+.progressbar::after {
+  z-index: 9;
+  top: 6px;
+  filter: blur(16px);
+  opacity: 0.7;
+}
+.stylization {
+  position: absolute;
+  z-index: 999;
+  height: 4px;
+  width: 90%;
+  left: 5%;
+  top: 6px;
+  opacity: 0.3;
+}
+.stylization::before,
+.stylization::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 4px;
+  top: 0;
+  border-radius: 2px;
+}
+.stylization::before {
+  background: #fff;
+  left: 0;
+  right: 10px;
+}
+.stylization::after {
+  width: 6px;
+  background: #000;
+  right: 0;
+}
+@-webkit-keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+@keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+ 
+<span class="progressbara">
+<section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+  
+</div>
+      
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+					   <div class="wrapper">
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+</div>     
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+
+<!-- Barra de progresso	final -->
+
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('#sendprogress').hide();
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        
+        });
+		</script>
