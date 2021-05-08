@@ -1,0 +1,292 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Criar conta | Vexpay</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="css/fontawesome-all.min.css">
+	<!-- Flaticon CSS -->
+	<link rel="stylesheet" href="font/flaticon.css">
+	<!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+	
+	<script src="js/jquery-3.5.0.min.js"></script>
+	
+	<script>
+	  
+if (!localStorage.getItem("user")) {
+    localStorage.setItem("null", "");
+} else {
+	$(location).attr('href', '../dashboard/dashboard.html');
+}
+	</script>
+<style>
+.Separator {
+    border-top: 1px solid #a1a1a1;
+    margin: 25px 0 10px;
+    text-align: center;
+} 
+.Separator .textInSeparator {
+    background-color: #000000;
+    padding: 0 .5em;
+    position: relative;
+    color: #a1a1a1;
+    top: -.7em;
+}
+</style>
+
+</head>
+
+<body>
+	<!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+	<section class="fxt-template-animation fxt-template-layout9" style="background-color: #000; padding-top: 40px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    margin-left: 0px;">
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				 
+				<div class="col-lg-6">
+					<div class="fxt-content">
+					<center>  
+		     <a href="enter.php" class="fxt-logo"><img src="img/login.png" alt="Logo" style="max-width:170px;
+    max-height:140px;
+    width: auto;
+    height: auto;" style="padding-top: 50px"></a> </center>
+
+	<br>                            
+                                  <div class="notpassword">   	
+	                               <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:notfoundSenha();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;=">Senha incorreta</h1>
+									    <br> 
+										</div>  	
+									  
+									   <div class="notemail">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:notfoundEmail();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Email não existe</h1>
+									  <br> 
+									</div>    
+									
+									 <div class="otherro">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:otherro();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
+									  <br> 
+									</div>
+
+                                   
+									 <div class="logout">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:logouth();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: orange;">Sessão terminado</h1>
+									  <br> 
+									</div>    									
+									   
+						<div class="fxt-form">
+						 
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-1">
+										<input type="email" id="email" name="email" class="form-control email" placeholder="Email ou telefone" required="required">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-2">
+										<input id="password" type="password" name="password"  class="form-control password" placeholder="********" style="box-shadow: 0 12px 30px -15px rgb(56 5 91 / 48%);" onkeyup="hidd()" required="required">
+										<i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
+									</div>
+								</div>
+								
+								<input type="hidden" id="login" value="login">
+								
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button onClick="enteraccount()" class="fxt-btn-fill">ENTRAR</button>
+									</div>
+								</div>
+								 
+                                  <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-3">  
+                                     <center> 
+<div class="Separator"><span class="textInSeparator" aria-label="or">ou</span></div>                                    
+
+									</center>
+                                    </div>
+                                </div>
+								
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+									<center><a href="register.html" class="fxt-btn-fill">CRIAR CONTA</a></center>
+									</div>
+								</div>
+	 
+						</div>
+						<div class="fxt-footer">
+							<div class="fxt-transformY-50 fxt-transition-delay-9">
+								<!-- <p>Não tens conta?<a href="register.html" class="switcher-text2 inline-text">Criar uma</a></p> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- jquery-->
+	<script src="js/jquery-3.5.0.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Imagesloaded js -->
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<!-- Validator js -->
+	<script src="js/validator.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/main.js"></script>
+    
+    		
+<script>
+
+ $('.email').click(function(){
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+});
+
+ $('.password').click(function(){
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+});
+ //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+
+ });
+
+//Exibir  caixa de aviso se com logout
+		
+ //Ocultar saidas
+ function logouth()
+{
+ $('.logout').hide();
+  }
+function notfoundEmail()
+{
+ $('.notemail').hide();
+  }
+  
+  function notfoundSenha()
+{
+ $('.notpassword').hide();
+  }
+  
+   
+  function otherro()
+{
+ $('.otherro').hide();
+  }
+  
+ $(document).ready(function(){            
+ 
+if (!localStorage.getItem("logout")) {
+    localStorage.removeItem('');
+} else {
+      localStorage.removeItem('logout');
+     $('.logout').show();
+}
+
+ }); 
+ 
+//Atualizar senha
+function enteraccount()
+{
+
+    //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+    var dadosajax = {
+ 'email' : $("#email").val(),
+ 'password' : $("#password").val(), 
+ 'login' : $("#login").val()
+ };
+    pageurl = '../servervexpay/enter/enter.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show(); 
+	 
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inscrito com sucesso
+            if($.trim(result) == '100')
+            {
+			var user = document.getElementById("email").value;
+            localStorage.setItem("user", user); 
+            $(location).attr('href', 'recover.html');
+            //exibir sucesso no envio
+			 
+            }
+            //Se não foi inscrito com sucesso
+            else
+            { 
+             if($.trim(result) == '909')
+			 { 
+             $('.notemail').show(); 
+            //aqui houve um erro
+			}
+		 else
+            {
+			if($.trim(result) == '109')
+			 { 
+             $('.notpassword').show(); 
+            //aqui houve um erro
+			}
+			else
+            {
+			$('.otherro').show(); 
+            //aqui houve um erro
+			}	
+              }			
+            }
+
+        }
+    });
+}         
+    </script>
+	
+</body>
+
+</html>
