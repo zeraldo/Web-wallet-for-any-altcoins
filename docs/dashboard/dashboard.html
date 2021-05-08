@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Carteira web | VexPay</title>
+
+    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- themefy CSS -->
+    <link rel="stylesheet" href="vendors/themefy_icon/themify-icons.css" />
+    <!-- swiper slider CSS -->
+    <link rel="stylesheet" href="vendors/swiper_slider/css/swiper.min.css" />
+    <!-- select2 CSS -->
+    <link rel="stylesheet" href="vendors/select2/css/select2.min.css" />
+    <!-- select2 CSS -->
+    <link rel="stylesheet" href="vendors/niceselect/css/nice-select.css" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="vendors/owl_carousel/css/owl.carousel.css" />
+    <!-- gijgo css -->
+    <link rel="stylesheet" href="vendors/gijgo/gijgo.min.css" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="vendors/font_awesome/css/all.min.css" />
+    <link rel="stylesheet" href="vendors/tagsinput/tagsinput.css" />
+    <!-- datatable CSS -->
+    <link rel="stylesheet" href="vendors/datatable/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="vendors/datatable/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="vendors/datatable/css/buttons.dataTables.min.css" />
+    <!-- text editor css -->
+    <link rel="stylesheet" href="vendors/text_editor/summernote-bs4.css" />
+    <!-- morris css -->
+    <link rel="stylesheet" href="vendors/morris/morris.css">
+    <!-- metarial icon css -->
+    <link rel="stylesheet" href="vendors/material_icon/material-icons.css" />
+
+    <!-- menu css  -->
+    <link rel="stylesheet" href="css/metisMenu.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/colors/default.css" id="colorSkinCSS">
+	
+	<script> -->
+<!-- //Aqui o usuario não está logado no sistema	   -->
+ if (!localStorage.getItem("user")) {  
+  window.location.href = "../enter/enter.html";	
+  }   
+    </script>
+	
+ 
+  <style> 
+.menumobile {
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+
+.menudesktop{
+    opacity: 1;  
+    height: auto;
+}
+@media only screen and (max-width: 991px) {
+    .menumobile{
+    opacity: 1;  
+    height: auto;
+	display: block;
+	
+   }
+   .menudesktop{
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+
+h5 {
+    font-size: 16px;
+}
+.tablero {
+    font-size: 12px;
+}
+}	
+</style> 
+
+</head>
+<body class="crm_body_bg">
+    
+<!-- main content part here -->
+ 
+ <!-- sidebar  -->
+ <!-- sidebar part here -->
+
+<!-- Inicio menu --> 
+ 
+<nav class="sidebar" id="menu_div">
+    <div class="logo d-flex justify-content-between">
+        <a href="index.html"><img src="img/logo.png" alt=""></a>
+        <div class="sidebar_close_icon d-lg-none">
+             <i class="ti-close" onclick="reocultar()"></i>
+        </div>
+    </div>
+	 <hr style="color:#fff">
+    <ul id="sidebar_menu">
+	
+        <li class="mm-active menudesktop">
+          <a class="menumobile" onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
+		   <a onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+          <img src="img/menu-icon/homepage.svg" alt="">
+            <span>INÍCIO</span>
+          </a> 
+        </li>
+        
+		
+        <li class="mm-active menumobile">
+          <a class="menumobile" onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
+		   <a onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+          <img src="img/menu-icon/homepage.svg" alt="">
+            <span>INÍCIO</span>
+          </a> 
+        </li>
+		
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+            <img src="img/menu-icon/coin.svg" alt="">
+            <span>MOEDAS</span>
+          </a>
+          <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
+          </ul>
+        </li>
+
+        <!-- 
+        <li class="">
+          <a   class="has-arrow" href="#" aria-expanded="false">
+            <img src="img/menu-icon/3.svg" alt="">
+            <span>IDIOMAS</span>
+          </a>
+          <ul>
+            <li><a href="#" style="color:#fff">PORTUGUES</a></li>
+          </ul>
+        </li> -->
+		<!-- 
+		 <li class="mm-active">
+          <a href="#"  aria-expanded="false">
+           <i class="fas fa-th"></i>
+         
+            <span>SUPORTE</span>
+          </a>
+        </li>
+		   -->
+		 <li class="mm-active">
+          <a href="logout.html"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+          <img src="img/menu-icon/exit.svg" alt="">
+            <span>SAIR</span>
+          </a>
+          
+        </li>
+     
+      </ul>
+    
+</nav>
+
+<!-- Final menu -->    
+
+      <div class="container-fluid no-gutters menumobile">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div class="header_iner d-flex justify-content-between align-items-center">
+                    <div class="sidebar_icon d-lg-none">
+                        <i class="ti-menu menumobile" onclick="resibir()"></i>
+						 <i class="ti-menu menudesktop"></i>
+                    </div>
+                    <div class="serach_field-area">
+                            <div class="search_inner">
+                                <form action="#">
+                                    <div class="search_field">
+                                        <input type="text" placeholder="Search here..." >
+                                    </div>
+                                    <button type="submit"> <img src="img/icon/icon_search.svg" alt=""> </button>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="header_right d-flex justify-content-between align-items-center">
+                        
+                        <div class="profile_info">
+                            <img src="img/icon/user_profile.svg" alt="#">
+                            <div class="profile_info_iner">
+                                <p>Welcome!</p>
+                                <!-- <h5>Travor James</h5> -->
+                                <div class="profile_info_details">
+                                   
+                                    <a href="#">Sair<i class="ti-shift-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+<!-- sidebar part end -->
+ <!--/ sidebar  -->
+<!-- Div da pagina-->
+ <div id="conteudo"></div>
+<!--/ Div da pagina-->
+
+<!-- main content part end -->
+
+<!-- footer  -->
+<!-- jquery slim -->
+<script src="js/jquery-3.5.0.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstarp js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- sidebar menu  -->
+<script src="js/metisMenu.js"></script>
+<!-- waypoints js -->
+<script src="vendors/count_up/jquery.waypoints.min.js"></script>
+<!-- waypoints js -->
+<script src="vendors/chartlist/Chart.min.js"></script>
+<!-- counterup js -->
+<script src="vendors/count_up/jquery.counterup.min.js"></script>
+<!-- swiper slider js -->
+<script src="vendors/swiper_slider/js/swiper.min.js"></script>
+<!-- nice select -->
+<script src="vendors/niceselect/js/jquery.nice-select.min.js"></script>
+<!-- owl carousel -->
+<script src="vendors/owl_carousel/js/owl.carousel.min.js"></script>
+<!-- gijgo css -->
+<script src="vendors/gijgo/gijgo.min.js"></script>
+<!-- responsive table -->
+<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatable/js/dataTables.responsive.min.js"></script>
+<script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="vendors/datatable/js/buttons.flash.min.js"></script>
+<script src="vendors/datatable/js/jszip.min.js"></script>
+<script src="vendors/datatable/js/pdfmake.min.js"></script>
+<script src="vendors/datatable/js/vfs_fonts.js"></script>
+<script src="vendors/datatable/js/buttons.html5.min.js"></script>
+<script src="vendors/datatable/js/buttons.print.min.js"></script>
+
+<script src="js/chart.min.js"></script>
+<!-- progressbar js -->
+<script src="vendors/progressbar/jquery.barfiller.js"></script>
+<!-- tag input -->
+<script src="vendors/tagsinput/tagsinput.js"></script>
+<!-- text editor js -->
+<script src="vendors/text_editor/summernote-bs4.js"></script>
+
+<script src="vendors/apex_chart/apexcharts.js"></script>
+
+<!-- custom js -->
+<script src="js/custom.js"></script>
+
+<!-- active_chart js -->
+<script src="js/active_chart.js"></script>
+<script src="vendors/apex_chart/radial_active.js"></script>
+<script src="vendors/apex_chart/stackbar.js"></script>
+<script src="vendors/apex_chart/area_chart.js"></script>
+<!-- <script src="vendors/apex_chart/pie.js"></script> -->
+<script src="vendors/apex_chart/bar_active_1.js"></script>
+<script src="vendors/chartjs/chartjs_active.js"></script>
+
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        $("#conteudo").load('dashboard1.html');
+        });
+ //Versão mobile
+        //Alterar a pagina
+        function carregar(pagina){
+        $('.mainweb').hide();
+		$('.progressbara').show();
+        $("#conteudo").load(pagina);
+		var div = document.getElementById('menu_div');
+		div.style.left = '-290px';
+		div.style.transition = '1.3s';
+		div.style.top = '0';
+		div.style.overflow = 'hidden';
+        div.style.width = '270px';
+        div.style.display = 'block';
+		}
+
+        //Reseta para exibir de volta o menu
+        function resibir(){
+		var div = document.getElementById('menu_div');
+		div.style.left = '44px';
+		}
+		
+		 function reocultar(){
+		var div = document.getElementById('menu_div');
+		div.style.left = '-280px';
+		}
+//Versão desktop
+       
+        //Alterar a pagina
+        function carregar2(pagina){
+         $('.mainweb').hide();
+		 $('.progressbara').show();
+         $("#conteudo").load(pagina);
+		}
+    </script>
+	
+</body>
+</html>
