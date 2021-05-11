@@ -240,6 +240,8 @@ function enteraccount()
         type: 'POST',
         //cache
         cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
         //se ocorrer um erro na chamada ajax, retorna este alerta
         //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
         error: function(){
