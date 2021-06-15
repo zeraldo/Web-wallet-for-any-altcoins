@@ -1,103 +1,4 @@
-<script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
-</script>
-<script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   }  
-</script>
+
 
 <span class="mainweb">
 <section class="main_content dashboard_part">
@@ -110,19 +11,7 @@
                   <div class="col-lg-6">
                      <!-- sign_in  -->
                      <div class="modal-content cs_modal">
-                        <div style="    font-size: 22px;
-                           font-weight: 80;
-                           background-color: #F7FAFF;
-                           padding: 23px 30px;
-                           border-bottom: 0px solid transparent;
-                           align-items: center;">
-                           <center>
-                              <h5 class="modal-title"> <span id="bbswi">0.00</span> SWIFT</h5>
-							  
-							 <!-- <a class="modal-title" href="javascript:togglePrice();" id="addr-balance" style="color: #000;">Balance: 0.00000000 SWIFT</a> -->
-							   
-                           </center>
-                        </div>
+                      
                         <div class="modal-body">
 					 
 						
@@ -141,40 +30,24 @@
 
 <script>
 login();
-</script>   
-
-						<!-- <form method="post" action="javascript:spendf();" role="spend"> -->
-                            
-                              
-                          <input autocomplete="off" type="text" id="address" name="address" onkeyup="usdtoswi(this.value)" value="" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required readonly>
-								 
-								   <table>
-                                 <tr>
-                                    <td>
-                                       <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" value="" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required readonly>
-                                    </td>
-                                    <td> <input type="text" id="vusd" onkeyup="usdtoswi(this.value)" value="" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" required readonly></td>
-                                    <input type="hidden" id='vusdd'>
-                                 </tr>
-                              </table>
-								  
+</script> 
+                               <center>   
+							   <p style="font-size: 15px !important;"> 
+							   "This operation will copy your private key to clipboard. Your private key is very important and anyone who has it will be able to spend from your account. You should never share your private key with anyone.\n\nType 'Yes' with capital 'Y' to continue:", "Yes"</p>
+							   </center> 
+							  <br/>
+							  <input autocomplete="off" type="text" id="privatkey" value="Clique em copiar" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" readonly>
 							  
- 
-  
- <script>  
-   (function(){
-    // do some stuff
-	 //alert('functionv');
-   spendf();
-    setTimeout(arguments.callee, 10000);
-})();
-</script>
-
-							   <div id="sendprogress" style="display: none;">
-                              <img src="images/loading.gif" style="width: 100%; height: 25px; margin-bottom: 0px;" />
-                               </div>
+                              <div class="form-row social_login_btn">
+                                 <button type="submit" class="exibkey form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;" onClick="copyPrivateKey()">COPIAR CHAVE</button>	
+                              </div>
+							  
+							  
+                              <div class="form-row social_login_btn">
+                                 <button type="submit" class="sucopy form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #e0e0e0; border: 1px solid #ffffff;color: #000;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;" onClick="copyPrivateKey()">CHAVE COPIADO</button>	
+                              </div>
 							  
 							  <!-- </form> -->
                               <div class="border_style">
@@ -186,7 +59,7 @@ login();
                               </div>
 							  
 								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
+								 <a onclick="carregar2('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
                               </div>
                              						
                               <div class="menumobile form-group col-md-12 text-center">
@@ -195,7 +68,7 @@ login();
 								 
 								  
                               <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
+                                 <a onclick="carregar('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
 								</div>
                         </div>
                      </div>
@@ -380,6 +253,14 @@ html,
 		$('#sendprogress').hide();
 		$('.progressbara').hide();
         $('.mainweb').show();
-        
+        $('.sucopy').hide();
+        $('.exibkey').shwo();
         });
 		</script>
+		
+	 <script type = "text/javascript">	
+ $('.exibkey').click(function(){
+ $('.sucopy').show();
+ $('.exibkey').hide();
+});
+        </script>
