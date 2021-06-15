@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Carteira web | VexPay</title>
+
+    <!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- themefy CSS -->
+    <link rel="stylesheet" href="vendors/themefy_icon/themify-icons.css" />
+    <!-- swiper slider CSS -->
+    <link rel="stylesheet" href="vendors/swiper_slider/css/swiper.min.css" />
+    <!-- select2 CSS -->
+    <link rel="stylesheet" href="vendors/select2/css/select2.min.css" />
+    <!-- select2 CSS -->
+    <link rel="stylesheet" href="vendors/niceselect/css/nice-select.css" />
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="vendors/owl_carousel/css/owl.carousel.css" />
+    <!-- gijgo css -->
+    <link rel="stylesheet" href="vendors/gijgo/gijgo.min.css" />
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="vendors/font_awesome/css/all.min.css" />
+    <link rel="stylesheet" href="vendors/tagsinput/tagsinput.css" />
+    <!-- datatable CSS -->
+    <link rel="stylesheet" href="vendors/datatable/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="vendors/datatable/css/responsive.dataTables.min.css" />
+    <link rel="stylesheet" href="vendors/datatable/css/buttons.dataTables.min.css" />
+    <!-- text editor css -->
+    <link rel="stylesheet" href="vendors/text_editor/summernote-bs4.css" />
+    <!-- morris css -->
+    <link rel="stylesheet" href="vendors/morris/morris.css">
+    <!-- metarial icon css -->
+    <link rel="stylesheet" href="vendors/material_icon/material-icons.css" />
+
+    <!-- menu css  -->
+    <link rel="stylesheet" href="css/metisMenu.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/colors/default.css" id="colorSkinCSS">
+	
+	
+	
+ 
+  <style> 
+.menumobile {
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+
+.menudesktop{
+    opacity: 1;  
+    height: auto;
+}
+@media only screen and (max-width: 991px) {
+    .menumobile{
+    opacity: 1;  
+    height: auto;
+	display: block;
+	
+   }
+   .menudesktop{
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+
+h5 {
+    font-size: 16px;
+}
+.tablero {
+    font-size: 12px;
+}
+}	
+</style> 
+
+</head>
+<body class="crm_body_bg">
+    
+<!-- main content part here -->
+ 
+ <!-- sidebar  -->
+ <!-- sidebar part here -->
+
+<!-- Inicio menu --> 
+ 
+<nav class="sidebar" id="menu_div">
+    <div class="logo d-flex justify-content-between">
+        <a href="index.html"><img src="img/logo.png" alt=""></a>
+        <div class="sidebar_close_icon d-lg-none">
+             <i class="ti-close" onclick="reocultar()"></i>
+        </div>
+    </div>
+	 <hr style="color:#fff">
+    <ul id="sidebar_menu">
+	
+        <li class="mm-active menudesktop">
+          <a class="menumobile" onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
+		   <a onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+        <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
+            <span>INÍCIO</span>
+          </a> 
+        </li>
+        
+		
+        <li class="mm-active menumobile">
+          <a class="menumobile" onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
+		   <a onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+        <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
+            <span>INÍCIO</span>
+          </a> 
+        </li>
+		
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+       <!--     <img src="img/menu-icon/coin.svg" alt=""> -->
+            <span>MOEDAS</span>
+          </a>
+          <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
+          </ul>
+        </li>
+
+        <!-- 
+        <li class="">
+          <a   class="has-arrow" href="#" aria-expanded="false">
+            <img src="img/menu-icon/3.svg" alt="">
+            <span>IDIOMAS</span>
+          </a>
+          <ul>
+            <li><a href="#" style="color:#fff">PORTUGUES</a></li>
+          </ul>
+        </li> -->
+		<!-- 
+		 <li class="mm-active">
+          <a href="#"  aria-expanded="false">
+           <i class="fas fa-th"></i>
+         
+            <span>SUPORTE</span>
+          </a>
+        </li>
+		   -->
+         
+		 <li class="mm-active menumobile">
+          <a  onclick="carregar('buy.html')" href="#" aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+      <!--    <img src="img/menu-icon/exit.svg" alt=""> -->
+            <span>COMPRAR</span>
+          </a>
+          
+        </li>
+        
+         
+		 <li class="mm-active menudesktop">
+          <a  onclick="carregar2('buy.html')" href="#" aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+      <!--    <img src="img/menu-icon/exit.svg" alt=""> -->
+            <span>COMPRAR</span>
+          </a>
+          
+        </li>
+        
+		 <li class="mm-active">
+          <a href="logout.html"  aria-expanded="false">
+          <!-- <i class="fas fa-th"></i> -->
+       <!--   <img src="img/menu-icon/exit.svg" alt="">-->
+            <span>SAIR</span>
+          </a>
+          
+        </li>
+          
+          
+     
+      </ul>
+    
+</nav>
+
+<!-- Final menu -->    
+
+      <div class="container-fluid no-gutters menumobile">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div class="header_iner d-flex justify-content-between align-items-center">
+                    <div class="sidebar_icon d-lg-none">
+                        <i class="ti-menu menumobile" onclick="resibir()"></i>
+						 <i class="ti-menu menudesktop"></i>
+                    </div>
+                    <div class="serach_field-area">
+                            <div style="font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;"> 
+                            </div>
+                        </div>
+                    <div class="header_right d-flex justify-content-between align-items-center">
+                        
+                        <div class="profile_info">
+                            <img src="img/icon/user_profile.svg" alt="#">
+                            <div class="profile_info_iner">
+                                <p>Bem vindo!</p>
+                                <!-- <h5>Travor James</h5> -->
+                                <div class="profile_info_details">
+                                   
+                                    <a href="#">Sair<i class="ti-shift-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+<!-- sidebar part end -->
+ <!--/ sidebar  -->
+<!-- Div da pagina-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+<script src="../js/js2/jquery-3.5.0.min.js"></script>
+<script src="../js/js2/js/bootstrap.min.js"></script>
+
+<span class="mainweb">	
+<section class="main_content dashboard_part">
+   <div class="main_content_iner ">
+   <div class="container-fluid plr_30 body_white_bg pt_30">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        <div style="    font-size: 22px;
+                           font-weight: 80;
+                           background-color: #F7FAFF;
+                           padding: 23px 30px;
+                           border-bottom: 0px solid transparent;
+                           align-items: center;">
+                           <center>
+                              <h5 class="modal-title"> Comprar moeda virtual</h5>
+							  
+							 <!-- <a class="modal-title" href="javascript:togglePrice();" id="addr-balance" style="color: #000;">Balance: 0.00000000 SWIFT</a> -->
+							   
+                           </center>
+                        </div>
+
+
+	                                 <div class="addresserro">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:existemailh();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Endereço invalido</h1>
+									  <br> 
+									</div>    
+									
+									 <div class="otherro">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
+									  <br> 
+									</div>  
+									 
+									 <div class="funderro">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 10px 10px 1px 10px;color: red;">Fundos insuficiente</h1>
+									  <br> 
+									</div>  
+		
+		
+                        <div class="modal-body">
+					   
+						  <select id="moeda" style="
+	height: 50px;
+    background-color: #fff;
+    color: #7e7172;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
+						  <option selected="selected" value="">Escolha a moeda</option>
+                          <option value="">Bitcoin</option>
+						  <option value="">Ethereum</option>
+						  <option value="">Litecoin</option>
+						  <option value="">Dogecoin</option>
+						  <option value="">Bitcoincash</option>
+						  <option value="">Dogecoin</option>
+						  <option value="">SwiftCash</option>
+						  </select>  		 
+							
+                          <input autocomplete="off" type="text" id="address" name="address" onkeyup="usdtoswi(this.value)" placeholder="Endereço da moeda" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+								 	 
+								   <table>
+                                 <tr>
+                                    <td>
+                                       <input type="number" style="border-radius: 3px !important;
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" autocomplete="off" min="0.001" step="0.00000001" id="kwanza" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                    </td>
+                                    <td> <input type="text" id="vusd" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
+                                    <input type="hidden" id='vusdd'>
+                                 </tr>
+                              </table>
+								 
+                              <div class="border_style">
+                                 <span>SEU CONTATO</span>
+                              </div>
+  
+                          <input autocomplete="off" type="text" id="address" name="address" onkeyup="usdtoswi(this.value)" placeholder="Telefone" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+
+                          <input autocomplete="off" type="text" id="address" name="address" onkeyup="usdtoswi(this.value)" placeholder="Telefone alternativo" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+								  
+                              <div class="menumobile  form-row social_login_btn">
+							  
+									<a onclick="compra('coin/swiftcash/histor.html')" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+									
+                              </div>
+							  
+							   
+                              <div class="menudesktop form-row social_login_btn">
+							  
+									 <a onclick="compra2('coin/swiftcash/histor.html')" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+									
+                              </div>
+							  
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+
+<!-- Barra de progresso -->
+ <style>
+ body,
+html,
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  background: #e7f0f7;
+}
+.progressbar {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 30px;
+}
+.progressbar::before,
+.progressbar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-image: linear-gradient(
+90deg
+, #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
+  background-repeat: repeat-x;
+  -webkit-animation: movebar 5s linear infinite;
+          animation: movebar 5s linear infinite;
+}
+.progressbar::before {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
+}
+.progressbar::after {
+  z-index: 9;
+  top: 6px;
+  filter: blur(16px);
+  opacity: 0.7;
+}
+.stylization {
+  position: absolute;
+  z-index: 999;
+  height: 4px;
+  width: 90%;
+  left: 5%;
+  top: 6px;
+  opacity: 0.3;
+}
+.stylization::before,
+.stylization::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 4px;
+  top: 0;
+  border-radius: 2px;
+}
+.stylization::before {
+  background: #fff;
+  left: 0;
+  right: 10px;
+}
+.stylization::after {
+  width: 6px;
+  background: #000;
+  right: 0;
+}
+@-webkit-keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+@keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+ 
+<span class="progressbara">
+<section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+  
+</div>
+      
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+					   <div class="wrapper">
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+</div>     
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+  		
+ <script>
+  //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.existemail').hide();
+ $('.otherro').hide();
+ $('.addresserro').hide();
+ $('.funderro').hide();
+ });
+  </script>
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        });
+		
+		//Começar o processo de compra
+function compra()
+{
+    //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+    var dadosajax = {
+
+ 'moeda' : $("#moeda").val(),
+ 'endereco' : $("#endereco").val(),
+ 'kwanza' : $("#kwanza").val(),
+ 'dolar' : $("#dolar").val(),
+ 'telefone' : $("#telefone").val(),
+ 'telefone_alternativo' : $("#register").val()
+ };
+    pageurl = 'https://dogkoin.online/enter/register.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //cache
+        cache: false,
+	
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show();
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inserido com sucesso
+            if($.trim(result) == '100')
+            {
+			
+            var user = document.getElementById("email").value;
+            localStorage.setItem("user", user); 
+             $(location).attr('href', 'phrase.html');
+            //exibir sucesso no envio
+
+            }
+            //Se não foi inserido com sucesso
+            else
+            { 
+             if($.trim(result) == '111')
+			 { 
+            $('.existemail').show(); 
+            //aqui houve um erro
+			}
+			 
+			else
+            {
+			 $('.otherro').show();
+             }			 
+			 
+            }
+
+        }
+    });
+}		
+    </script>
+<!--/ Div da pagina-->
+
+<!-- main content part end -->
+
+<!-- footer  -->
+<!-- jquery slim -->
+<script src="js/jquery-3.5.0.min.js"></script>
+<!-- popper js -->
+<script src="js/popper.min.js"></script>
+<!-- bootstarp js -->
+<script src="js/bootstrap.min.js"></script>
+<!-- sidebar menu  -->
+<script src="js/metisMenu.js"></script>
+<!-- waypoints js -->
+<script src="vendors/count_up/jquery.waypoints.min.js"></script>
+<!-- waypoints js -->
+<script src="vendors/chartlist/Chart.min.js"></script>
+<!-- counterup js -->
+<script src="vendors/count_up/jquery.counterup.min.js"></script>
+<!-- swiper slider js -->
+<script src="vendors/swiper_slider/js/swiper.min.js"></script>
+<!-- nice select -->
+<script src="vendors/niceselect/js/jquery.nice-select.min.js"></script>
+<!-- owl carousel -->
+<script src="vendors/owl_carousel/js/owl.carousel.min.js"></script>
+<!-- gijgo css -->
+<script src="vendors/gijgo/gijgo.min.js"></script>
+<!-- responsive table -->
+<script src="vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="vendors/datatable/js/dataTables.responsive.min.js"></script>
+<script src="vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="vendors/datatable/js/buttons.flash.min.js"></script>
+<script src="vendors/datatable/js/jszip.min.js"></script>
+<script src="vendors/datatable/js/pdfmake.min.js"></script>
+<script src="vendors/datatable/js/vfs_fonts.js"></script>
+<script src="vendors/datatable/js/buttons.html5.min.js"></script>
+<script src="vendors/datatable/js/buttons.print.min.js"></script>
+
+<script src="js/chart.min.js"></script>
+<!-- progressbar js -->
+<script src="vendors/progressbar/jquery.barfiller.js"></script>
+<!-- tag input -->
+<script src="vendors/tagsinput/tagsinput.js"></script>
+<!-- text editor js -->
+<script src="vendors/text_editor/summernote-bs4.js"></script>
+
+<script src="vendors/apex_chart/apexcharts.js"></script>
+
+<!-- custom js -->
+<script src="js/custom.js"></script>
+
+<!-- active_chart js -->
+<script src="js/active_chart.js"></script>
+<script src="vendors/apex_chart/radial_active.js"></script>
+<script src="vendors/apex_chart/stackbar.js"></script>
+<script src="vendors/apex_chart/area_chart.js"></script>
+<!-- <script src="vendors/apex_chart/pie.js"></script> -->
+<script src="vendors/apex_chart/bar_active_1.js"></script>
+<script src="vendors/chartjs/chartjs_active.js"></script>
+
+<script type = "text/javascript">
+		
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        $("#conteudo").load('dashboard1.html');
+        });
+//Versão mobile
+        //Alterar a pagina
+        function carregar(pagina){
+        $('.mainweb').hide();
+		$('.progressbara').show();
+        $("#conteudo").load(pagina);
+		var div = document.getElementById('menu_div');
+		div.style.left = '-290px';
+		div.style.transition = '1.3s';
+		div.style.top = '0';
+		div.style.overflow = 'hidden';
+        div.style.width = '270px';
+        div.style.display = 'block';
+		}
+
+        //Reseta para exibir de volta o menu
+        function resibir(){
+		var div = document.getElementById('menu_div');
+		div.style.left = '44px';
+		}
+		
+		 function reocultar(){
+		var div = document.getElementById('menu_div');
+		div.style.left = '-280px';
+		}
+//Versão desktop
+        //Alterar a pagina
+        function carregar2(pagina){
+         $('.mainweb').hide();
+		 $('.progressbara').show();
+         $("#conteudo").load(pagina);
+		}
+    </script>
+	
+</body>
+</html>

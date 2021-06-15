@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <!-- Required meta tags -->
@@ -42,8 +42,8 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/colors/default.css" id="colorSkinCSS">
 	
-	<script> -->
-<!-- //Aqui o usuario não está logado no sistema	   -->
+	<script> 
+<!-- //Aqui o usuario não está logado no sistema-->
  if (!localStorage.getItem("user")) {  
   window.location.href = "../enter/enter.html";	
   }   
@@ -104,8 +104,8 @@ h5 {
     <ul id="sidebar_menu">
 	
         <li class="mm-active menudesktop">
-          <a class="menumobile" onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
-		   <a onclick="carregar2('dashboard1.html')" href="#"  aria-expanded="false">
+          <a class="menumobile" onclick="carregar2('dashboard1.html')" href="#" aria-expanded="false">
+		   <a onclick="carregar2('dashboard1.html')" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
         <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
             <span>INÍCIO</span>
@@ -114,8 +114,8 @@ h5 {
         
 		
         <li class="mm-active menumobile">
-          <a class="menumobile" onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
-		   <a onclick="carregar('dashboard1.html')" href="#"  aria-expanded="false">
+          <a class="menumobile" onclick="carregar('dashboard1.html')" href="#" aria-expanded="false">
+		   <a onclick="carregar('dashboard1.html')" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
         <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
             <span>INÍCIO</span>
@@ -167,7 +167,7 @@ h5 {
           <a  onclick="carregar2('buy.html')" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
       <!--    <img src="img/menu-icon/exit.svg" alt=""> -->
-            <span>COMPARAR</span>
+            <span>COMPRAR</span>
           </a>
           
         </li>
@@ -180,11 +180,8 @@ h5 {
           </a>
           
         </li>
-          
-          
-     
+        
       </ul>
-    
 </nav>
 
 <!-- Final menu -->    
@@ -198,13 +195,10 @@ h5 {
 						 <i class="ti-menu menudesktop"></i>
                     </div>
                     <div class="serach_field-area">
-                            <div class="search_inner">
-                                <form action="#">
-                                    <div class="search_field">
-                                        <input type="text" placeholder="Search here..." >
-                                    </div>
-                                    <button type="submit"> <img src="img/icon/icon_search.svg" alt=""> </button>
-                                </form>
+                            <div style="font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;"> 
                             </div>
                         </div>
                     <div class="header_right d-flex justify-content-between align-items-center">
@@ -212,7 +206,7 @@ h5 {
                         <div class="profile_info">
                             <img src="img/icon/user_profile.svg" alt="#">
                             <div class="profile_info_iner">
-                                <p>Welcome!</p>
+                                <p>Bem vindo!</p>
                                 <!-- <h5>Travor James</h5> -->
                                 <div class="profile_info_details">
                                    
@@ -290,13 +284,28 @@ h5 {
 <script src="vendors/apex_chart/bar_active_1.js"></script>
 <script src="vendors/chartjs/chartjs_active.js"></script>
 
-	 <script type = "text/javascript">
-        jQuery(document).ready(function() {
-		$('.progressbara').hide();
-        $('.mainweb').show();
-        $("#conteudo").load('dashboard1.html');
-        });
- //Versão mobile
+<script type = "text/javascript">
+<!-- //Aqui o usuario não está logado no sistema-->
+jQuery(document).ready(function() { 
+
+ if (!localStorage.getItem("erros")) {  
+  //Aqui nao existe notificaçao de erros 
+  $('.progressbara').hide();
+  $('.mainweb').show();
+  $("#conteudo").load('dashboard1.html');
+  }  
+else  
+  {  
+  //Aqui existe notificaçao de erros 
+  $('.progressbara').hide();
+  $('.mainweb').show();
+  $("#conteudo").load('alert.html');
+  }  
+  });
+        
+		
+      
+//Versão mobile
         //Alterar a pagina
         function carregar(pagina){
         $('.mainweb').hide();
