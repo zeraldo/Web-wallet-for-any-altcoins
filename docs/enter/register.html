@@ -103,34 +103,11 @@ if (!localStorage.getItem("user")) {
 								
 								<input type="hidden" id="register" value="register">
 								 
-								<div class="btnregister form-group">
+								<div class="form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
 										<button onClick="registeruser()" class="fxt-btn-fill">CRIAR CONTA</button>
 									</div>
 								</div>
-								
-								<div class="process form-group">
-									<div class="fxt-transformY-50 fxt-transition-delay-4">
-										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 17px;
-    font-weight: 500;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    outline: none;
-    border: 0;
-    color: #111111a8;
-    border-radius: 3px;
-    background-color: #a4a4a4;
-    padding: 10px 36px;
-    margin-bottom: 10px;
-    width: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;">AGUARDE...</button>
-									</div>
-								</div> 
 								
 								
                                   <div class="form-group">
@@ -174,7 +151,6 @@ if (!localStorage.getItem("user")) {
 $(document).ready(function(){            
  $('.existemail').hide();
  $('.otherro').hide();
- $('.process').hide();
  });
  
  $('.email').click(function(){
@@ -206,19 +182,16 @@ function existemailh()
   
 function registeruser()
 {
-  //Exibir botao processando
-  $('.process').show(); 
-  $('.btnregister').hide();
+    //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+    var dadosajax = {
 
-  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
-  var dadosajax = {
  'name' : $("#name").val(),
  'email' : $("#email").val(),
  'password' : $("#password").val(),
  'register' : $("#register").val()
  };
-   // pageurl = 'https://dogkoin.online/enter/register.php';
-   pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
+   pageurl = 'https://dogkoin.online/enter/register.php';
+   //pageurl = 'http://localhost/dogkoin.online/enter/register.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -239,8 +212,6 @@ function registeruser()
         error: function(){
            //Exbir erro critico
             $('.otherro').show();
-			$('.process').hide(); 
-            $('.btnregister').show(); 
         },
         //retorna o resultado da pagina para onde enviamos os dados
         success: function(result)
@@ -261,16 +232,12 @@ function registeruser()
              if($.trim(result) == '111')
 			 { 
             $('.existemail').show(); 
-			$('.process').hide(); 
-            $('.btnregister').show(); 
             //aqui houve um erro
 			}
 			 
 			else
             {
 			 $('.otherro').show();
-			 $('.process').hide(); 
-             $('.btnregister').show(); 
              }			 
 			 
             }

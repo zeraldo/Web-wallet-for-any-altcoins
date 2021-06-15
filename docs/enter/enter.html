@@ -85,7 +85,7 @@ if (!localStorage.getItem("user")) {
 									 <div class="otherro">  
 									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
 								   <span aria-hidden="true" onclick="javascript:otherro();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro1</h1>
 									  <br> 
 									</div>
 
@@ -110,36 +110,15 @@ if (!localStorage.getItem("user")) {
 										<i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
 									</div>
 								</div>
-								 
-								<div class="btnenter form-group">
+								
+								<input type="hidden" id="login" value="login">
+								
+								<div class="form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
 										<button onClick="enteraccount()" class="fxt-btn-fill">ENTRAR</button>
 									</div>
 								</div>
-								  
-								<div class="process form-group">
-									<div class="fxt-transformY-50 fxt-transition-delay-4">
-										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 17px;
-    font-weight: 500;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    outline: none;
-    border: 0;
-    color: #111111a8;
-    border-radius: 3px;
-    background-color: #a4a4a4;
-    padding: 10px 36px;
-    margin-bottom: 10px;
-    width: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;">AGUARDE...</button>
-									</div>
-								</div> 
-
+								 
                                   <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-3">  
                                      <center> 
@@ -196,8 +175,7 @@ if (!localStorage.getItem("user")) {
  $('.logout').hide();
 });
  //Condicionar a saida do botao salvar
-$(document).ready(function(){ 
- $('.process').hide();           
+$(document).ready(function(){            
  $('.notemail').hide();
  $('.notpassword').hide();
  $('.otherro').hide();
@@ -242,16 +220,14 @@ if (!localStorage.getItem("logout")) {
 //Atualizar senha
 function enteraccount()
 {
-  //Exibir botao processando
-  $('.process').show(); 
-  $('.btnenter').hide(); 
-  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
-  var dadosajax = {
+
+    //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+    var dadosajax = {
  'email' : $("#email").val(),
  'password' : $("#password").val(), 
  'login' : $("#login").val()
  };
-     pageurl = 'https://dogkoin.online/enter/enter.php';
+      pageurl = 'https://dogkoin.online/enter/enter.php';
 	// pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
@@ -292,24 +268,18 @@ function enteraccount()
              if($.trim(result) == '909')
 			 { 
              $('.notemail').show(); 
-			 $('.process').hide(); 
-             $('.btnenter').show(); 
             //aqui houve um erro
 			}
 		 else
             {
 			if($.trim(result) == '109')
 			 { 
-             $('.notpassword').show();
-			 $('.process').hide(); 
-             $('.btnenter').show(); 			 
+             $('.notpassword').show(); 
             //aqui houve um erro
 			}
 			else
             {
 			$('.otherro').show(); 
-			$('.process').hide(); 
-            $('.btnenter').show(); 
             //aqui houve um erro
 			}	
               }			
