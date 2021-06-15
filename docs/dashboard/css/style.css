@@ -1759,8 +1759,8 @@ td:focus, th:focus {
 .cs_modal .modal-body p {
   font-size: 16px;
   font-weight: 500;
-  margin-top: 25px;
-  color: #541d1d;
+  margin-top: 2px;
+  color: #000000;
   text-align: center;
 }
 
@@ -2549,7 +2549,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child::befor
 .header_iner {
   background-color: #fff;
   position: fixed;
-  top: 0;
+  top: 3.6px;
   z-index: 99;
   padding: 30px;
   position: relative;
@@ -3088,6 +3088,9 @@ table.dataTable {
   border-spacing: 0;
 }
 
+table{
+  width: 100%;
+}
 /* line 415, H:/admin_project/finance/scss/_header.scss */
 .table td, .table th {
   padding: .75rem;
