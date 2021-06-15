@@ -1,3 +1,7 @@
+function ffspan(){		
+var span = 1;
+}
+
 var CURRENT_COIN = 'SWIFT';
 var PARAMS = {
 	'SWIFT': {
@@ -437,18 +441,14 @@ function togglePrice() {
 }
 
 function copyPrivateKey() {
-  var result = prompt("This operation will copy your private key to clipboard. Your private key is very important and anyone who has it will be able to spend from your account. You should never share your private key with anyone.\n\nType 'Yes' with capital 'Y' to continue:", "No");
-  if(result == 'Yes') {
-    try {
+    
       Clipboard.copy(keyPair.toWIF());
       setTimeout(_setTooltip, 200, "Copied!", ".privkey");
       setTimeout(_hideTooltip, 200, ".privkey");
-   } catch(e) {
-      setTimeout(_setTooltip, 200, "Failed!", ".privkey");
-      setTimeout(_hideTooltip, 200, ".privkey");
-   }
+	  $("#privatkey").val(keyPair.toWIF());	
+	  
+      
   }
-}
 
 function rsvs(radio) {
   isHODLing = false;
@@ -514,17 +514,17 @@ function amountChanged(amount) {
 var tx; // global variable for the transaction
 
 function spendf() {
-  var amount = Number($("#amount").val());
+  var amount = Number(localStorage.getItem('amount'));
   const FEE = PARAMS[CURRENT_COIN].txFee + donation;
   //if(balance < FEE || SWIFT(amount+FEE) > balance) { alert("Insufficient funds! Minimum network fee is " + FEE + " " + CURRENT_COIN + "."); return; }
   if(11111 < FEE || SWIFT(amount+FEE) > 11111) { return; }
 
   // Validate the address
-  var address = $("#address").val();
+  var address = localStorage.getItem('address');
   if (address != "Lottery" && !address.startsWith("HODL")) {
       try {
-        PARAMS[CURRENT_COIN].coinjs.address.toOutputScript($("#address").val(), PARAMS[CURRENT_COIN].network);
-      } catch(e) { alert("Please enter a valid address!"); return; }
+        PARAMS[CURRENT_COIN].coinjs.address.toOutputScript(localStorage.getItem('address'), PARAMS[CURRENT_COIN].network);
+      } catch(e) { localStorage.setItem("erros", "Endereço invalido"); window.location.href = 'dashboard.html';}
   } else if (CURRENT_COIN != "SWIFT") {
       alert("Lottery and/or HODL transactions only work for SWIFT!"); return;
   }
@@ -625,7 +625,8 @@ function spendf() {
            setTimeout( function() {
 	      window.open(PARAMS[CURRENT_COIN].explorer + "tx/" + txid);
            }, 1000);
-           alert("Transaction was broadcasted successfully!");
+           //alert("Transaction was broadcasted successfully!");
+		   localStorage.setItem("erros", "Transferencia enviado!");  window.location.href = 'dashboard.html';
 	} else {
 	   console.log(result);
 	   alert("Broadcast failed! Check debug console for details!");
@@ -643,13 +644,14 @@ function spendf() {
         $('#amount').prop("disabled", false).val("");
         $('#submit').prop("disabled", false).html("SEND");
         $('#sendprogress').hide();
-	alert("Broadcast failed! Check console for the details!");
+	alert("Houve um erro, tentando novamente");
         console.log(error);
     }
   });
   },
    error: function () {
-    alert("Failed to connect to the server!");
+    localStorage.setItem("erros", "Sem conexao com a rede");
+	window.location.href = 'dashboard.html';
   }
  });
 }
