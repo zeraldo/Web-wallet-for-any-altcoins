@@ -11,7 +11,7 @@
 </div>
 <script>   		
 jQuery.ajax({
-	url: 'https://dogkoin.online/diversos/ver_perfil.php',
+	url: 'https://dogkoin.online/diversos/ver_perfil.php?email=' + iduser,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -135,7 +135,7 @@ jQuery.ajax({
                               
                           <input type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" readonly>
 						 
-                                       <input type="number" style="border-radius: 3px !important;
+                                       <input type="text" style="border-radius: 3px !important;
                                           margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" id="telefone" placeholder="Telefone">
                                     
 					   
@@ -242,6 +242,7 @@ function compra2()
  'data' : $("#data").val(),
  'sexo' : $("#sexo").val(),
  'endereco' : $("#endereco").val(),
+ 'email' : $("#email").val(),
  'telefone' : $("#telefone").val(),
  'pais' : $("#pais").val(),
  'provincia' : $("#provincia").val(),
@@ -320,6 +321,7 @@ function compra()
  'data' : $("#data").val(),
  'sexo' : $("#sexo").val(),
  'endereco' : $("#endereco").val(),
+ 'email' : $("#email").val(),
  'telefone' : $("#telefone").val(),
  'pais' : $("#pais").val(),
  'provincia' : $("#provincia").val(),
