@@ -107,7 +107,7 @@ h5 {
           <a class="menumobile" onclick="carregar2('dashboard1.html')" href="#" aria-expanded="false">
 		   <a onclick="carregar2('dashboard1.html')" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
-        <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
+          <img src="img/menu-icon/homepage.svg" alt=""> 
             <span>INÍCIO</span>
           </a> 
         </li>
@@ -117,22 +117,98 @@ h5 {
           <a class="menumobile" onclick="carregar('dashboard1.html')" href="#" aria-expanded="false">
 		   <a onclick="carregar('dashboard1.html')" href="#" aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
-        <!--  <img src="img/menu-icon/homepage.svg" alt="">-->
+          <img src="img/menu-icon/homepage.svg" alt=""> 
             <span>INÍCIO</span>
           </a> 
         </li>
-		
+		 
+		 
+		  <li class="mm-active menudesktop">
+          <a onclick="carregar2('buy.html')" href="#" aria-expanded="false">
+         <img src="img/menu-icon/traders.svg" alt=""> 
+            <span>NEGOCIAR</span>
+          </a>
+		   </li>
+		  
+		  
+		  <li class="mm-active menumobile">
+          <a onclick="carregar('buy.html')" href="#" aria-expanded="false">
+         <img src="img/menu-icon/traders.svg" alt=""> 
+            <span>NEGOCIAR</span>
+          </a>
+		   </li>
+		  
         <li class="">
           <a class="has-arrow" href="#" aria-expanded="false">
-       <!--     <img src="img/menu-icon/coin.svg" alt=""> -->
+          <img src="img/menu-icon/coin.svg" alt=""> 
             <span>MOEDAS</span>
           </a>
+		  
+		  <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/bitcoin/send.html')" href="#" style="color:#fff">BITCOIN</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/bitcoin/send.html')" href="#" style="color:#fff">BITCOIN</a></li>
+          </ul>
+		  
+		  <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/swiftcash/send.html')" href="#" style="color:#fff">LITECOIN</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/swiftcash/send.html')" href="#" style="color:#fff">LITECOIN</a></li>
+          </ul>
+		  
+		  <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/dogecoin/send.html')" href="#" style="color:#fff">DOGECOIN</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/dogecoin/send.html')" href="#" style="color:#fff">DOGECOIN</a></li>
+          </ul>
+		  
           <ul>
             <li class="menudesktop"><a onclick="carregar2('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
 			  <li class="menumobile"><a onclick="carregar('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
           </ul>
+		  
         </li>
-
+        
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+          <img src="img/menu-icon/donation.svg" alt=""> 
+            <span>CARIDADE</span>
+          </a>
+          <ul>
+            <li class="menudesktop"><a onclick="carregar2('other/fazer.html')" href="#" style="color:#fff">FAZER DOAÇÃO</a></li>
+			  <li class="menumobile"><a onclick="carregar('other/fazer.html')" href="#" style="color:#fff">FAZER DOAÇÃO</a></li>
+          </ul>
+		  
+		   <ul>
+            <li class="menudesktop"><a onclick="carregar2('other/receber.html')" href="#" style="color:#fff">OBTER DOAÇÕES</a></li>
+			  <li class="menumobile"><a onclick="carregar('other/receber.html')" href="#" style="color:#fff">OBTER DOAÇÕES</a></li>
+          </ul>
+		  
+        </li>
+		
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+          <img src="img/menu-icon/user.svg" alt="">
+            <span>USUARIO</span>
+          </a>
+          <ul>
+            <li class="menudesktop"><a onclick="carregar2('profile.html')" href="#" style="color:#fff">PERFIL</a></li>
+			  <li class="menumobile"><a onclick="carregar('profile.html')" href="#" style="color:#fff">PERFIL</a></li>
+          </ul>
+		  
+		   <ul>
+            <li class="menudesktop"><a onclick="carregar2('refer.html')" href="#" style="color:#fff">REFERIDOS</a></li>
+			  <li class="menumobile"><a onclick="carregar('refer.html')" href="#" style="color:#fff">REFERIDOS</a></li>
+          </ul>
+		  
+		   <ul>
+            <li class="menudesktop"><a onclick="carregar2('histor.html')" href="#" style="color:#fff">HISTORICO FINANC.</a></li>
+			  <li class="menumobile"><a onclick="carregar('histor.html')" href="#" style="color:#fff">HISTORICO FINANC.</a></li>
+          </ul> 
+		  
+		   <ul>
+            <li class="menudesktop"><a onclick="carregar2('withdraw.html')" href="#" style="color:#fff">RETIRAR DINHEIRO</a></li>
+			  <li class="menumobile"><a onclick="carregar('withdraw.html')" href="#" style="color:#fff">RETIRAR DINHEIRO</a></li>
+          </ul>
+		  
+        </li>
         <!-- 
         <li class="">
           <a   class="has-arrow" href="#" aria-expanded="false">
@@ -152,30 +228,11 @@ h5 {
           </a>
         </li>
 		   -->
-         
-		 <li class="mm-active menumobile">
-          <a  onclick="carregar('buy.html')" href="#" aria-expanded="false">
-          <!-- <i class="fas fa-th"></i> -->
-      <!--    <img src="img/menu-icon/exit.svg" alt=""> -->
-            <span>COMPRAR</span>
-          </a>
-          
-        </li>
-        
-         
-		 <li class="mm-active menudesktop">
-          <a  onclick="carregar2('buy.html')" href="#" aria-expanded="false">
-          <!-- <i class="fas fa-th"></i> -->
-      <!--    <img src="img/menu-icon/exit.svg" alt=""> -->
-            <span>COMPRAR</span>
-          </a>
-          
-        </li>
         
 		 <li class="mm-active">
           <a href="logout.html"  aria-expanded="false">
           <!-- <i class="fas fa-th"></i> -->
-       <!--   <img src="img/menu-icon/exit.svg" alt="">-->
+          <img src="img/menu-icon/exit.svg" alt="">
             <span>SAIR</span>
           </a>
           
@@ -210,7 +267,7 @@ h5 {
                                 <!-- <h5>Travor James</h5> -->
                                 <div class="profile_info_details">
                                    
-                                    <a href="#">Sair<i class="ti-shift-left"></i></a>
+                                    <a href="logout.html">Sair<i class="ti-shift-left"></i></a>
                                 </div>
                             </div>
                         </div>

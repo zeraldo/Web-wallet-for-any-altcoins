@@ -1,94 +1,46 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
-   
-<span class="mainweb">	
+<span class="mainweb">
 <section class="main_content dashboard_part">
-   <div class="main_content_iner ">
-   <div class="container-fluid plr_30 body_white_bg pt_30">
-      <div class="row justify-content-center">
-         <div class="col-lg-12">
-            <div class="white_box mb_30">
-               <div class="row justify-content-center">
-                  <div class="col-lg-6">
-                     <!-- sign_in  -->
-                     <div class="modal-content cs_modal">
-                      
-						
-									   <div class="erros">  
-									   
-                                   <center>  <p style="font-size: 19px;margin: 0 0 2px 0;color: red; padding-top: 10px;"> <span id="erros">Erros ocorridos</span> </p> </center>
-									  <br> 
-									</div>   
-									
-                        <div class="modal-body">
-                          	  
-                              <div class="form-row social_login_btn">
-							  
-                                 <button type="submit" class="form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;" onClick="restart()">ENVIAR NOVAMENTE</button>
-									
-                              </div>
-							    
-                              <div class="border_style">
-                                 <span>OU</span>
-                              </div>
-                                
-								  <div class="menudesktop form-group col-md-12 text-center">
-								  <a onclick="carregar2('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
-                              </div>
-							  
-								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
-                              </div>
-                             						
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
-								 </div>
-								 
-								  
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
-								</div>
+<script>
+var callpage = localStorage.getItem("urlback");
+</script>     
+    <div class="main_content_iner ">
+        <div class="container-fluid plr_30 body_white_bg pt_30">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+							
+                                <!-- sign_in  -->
+                                <div class="modal-content cs_modal">
+								
+                                    <div style="font-size: 17px;
+    font-weight: 100;
+    background-color: #f7faff;
+    padding: 5px 5px;
+    border-bottom: 0px solid transparent;
+    align-items: normal;">
+	 <div style="font-size: 17px;font-weight: 100;background-color: #f7faff;padding: 5px 5px;border-bottom: 0px solid transparent;align-items: normal;">
+	
+	   <a class="menumobile" onclick="carregar(callpage)" href="#" style="color:#000">voltar</a>
+	   <a class="menudesktop" onclick="carregar2(callpage)" href="#" style="color:#000">voltar</a>
+	   </div>
+								 <hr>
+                                       <center> <p class="modal-title" style="color:#00a225">PROCESSADO COM SUCESSO.</p> </center>
+                                    </div>
+									 
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
+                        
+                    </div>
+                </div>
+        </div>
+    </div>
+
 </section>
-</span>
-
-<script>
-   localStorage.setItem("urlback", "alert.html"); 
-</script>
-<script>
-   //Receber valores
-function restart(){
-$("#conteudo").load('coin/swiftcash/send.html');
-$('.mainweb').hide();
-$('.progressbara').show();
-}
-
-</script>
-
-<script> 
-<!-- //Verificar se existe erros-->
- if (!localStorage.getItem("erros")) {  
-   $('.erros').hide();
-  } 
-  else
-  {  
-   $('.erros').show();
-   //Exibir o erro
-   document.getElementById('erros').innerHTML = localStorage.getItem("erros");
-   localStorage.removeItem("erros");
-  } 
-</script>
-
+ </p>
+ 
 <!-- Barra de progresso -->
  <style>
  body,

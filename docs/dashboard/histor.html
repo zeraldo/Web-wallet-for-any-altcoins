@@ -1,0 +1,151 @@
+<script>
+var callpage = localStorage.getItem("urlback");
+  		
+// Obtém os dados da localStorage
+var adrswi = localStorage.getItem('adrswi');
+if (typeof adrswi !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	     var balance=0;
+         var utxos=[];
+         var sum = 0;
+         utxos = result; 
+	     for(i in utxos) {
+          sum += Number(utxos[i].value/ 1);
+          bbswi = sum;
+		  localStorage.setItem("bbswi", bbswi);
+         } 
+		$("#bbswi").html(bbswi);
+      },
+   
+});	
+}
+</script>
+<script> 
+function usdSwi() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.swiftcash.usd);
+		var bbswi = localStorage.getItem('bbswi');
+        sswi = bbswi * pricusd;
+		localStorage.setItem("blcsswi", sswi); 
+		pricusdswi = pricusd;
+		document.getElementById('pricusdswi').innerHTML = pricusdswi;
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdSwi, 30000);
+            },
+  /*  error: function () {
+       alert("Erro total litecoin");
+    }
+	*/
+});	
+}
+usdSwi();
+</script>
+<section class="main_content dashboard_part">
+    
+    <div class="main_content_iner ">
+        <div class="container-fluid plr_30 body_white_bg pt_30">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="white_box mb_30">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+							 <center>
+				  <img src="img/icon/history.svg" width="100.334" height="100.334" alt=""> 
+				   </center>
+                                <!-- sign_in  -->
+                                <div class="modal-content cs_modal">
+								 
+									 <div style="overflow: auto;">
+                                    <div class="modal-body" style="padding-top: 10px !important;
+    padding-right: 1px !important;
+    padding-bottom: 15px !important;
+    padding-left: 11px !important;">
+<table class="table table-hover table-dark tablero" id="tbl">
+ <thead>
+<tr>
+<th class="text-left">Valor</th>
+<th class="text-left">Data</th>
+<th class="text-left">Hash</th>
+</tr>
+</thead>
+ <tbody class="table-hover">
+ </tbody>
+<thead>
+<tr>
+<th class="text-left">Valor</th>
+<th class="text-left">Data</th>
+<th class="text-left">Hash</th>
+</tr>
+</thead>
+
+</table>  
+</div>
+									  </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</section>
+<script>   		
+
+jQuery.ajax({
+	url: 'https://explorer.swiftcash.cc/api/address/' + adrswi + '/100/1',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    <!-- var zzz = result.txCount; -->
+		<!-- alert(zzz); -->
+		 $.each(result.transactions, function (i, element) {
+		 
+         var date = new Date(element.timestamp*1000);
+         date = (+date.getDate()+
+          "/"+(date.getMonth()+1)+
+          "/"+date.getFullYear()+
+          " "+date.getHours()+
+          ":"+date.getMinutes()+
+          ":"+date.getSeconds());
+		 		 //var element.txid = meu.add(element.txid);
+					
+                            $('#tbl').append(
+					        '<tr>' + 
+							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + element.value + '</a></td>' +
+							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + date + '</td>' +
+							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + element.txid + '</td>' +
+                            '</tr>'
+                        );
+                    }); 
+    },
+	 
+});	
+</script>

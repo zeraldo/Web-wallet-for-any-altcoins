@@ -35,6 +35,7 @@ jQuery.ajax({
 
 </script>
 <script> 
+//Exibir o preço do swiftcash
 function usdSwi() {
 jQuery.ajax({
 	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
@@ -58,15 +59,43 @@ jQuery.ajax({
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
-				setTimeout(usdSwi, 30000);
+				setTimeout(usdSwi, 60000);
             },
-  /*  error: function () {
-       alert("Erro total litecoin");
-    }
-	*/
+ 
 });	
 }
 usdSwi();
+
+//Exibir o preço do bitcoin
+function usdBtc() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.bitcoin.usd);
+		var bbbtc = localStorage.getItem('bbbtc');
+        sswi = bbbtc * pricusd;
+		localStorage.setItem("blcsbtc", sbtc); 
+		pricusdbtc = pricusd;
+		document.getElementById('pricusdbtc').innerHTML = pricusdbtc;
+		var btcbalance = Math.round(localStorage.getItem("blcsbtc") * 100);
+        var btcbalance = Math.ceil(btcbalance)/100;
+		document.getElementById('btcbalance').innerHTML = btcbalance; 
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdBtc, 120000);
+            },
+ 
+});	
+}
+usdBtc();
 </script>
 <script>
    window.onload = function () {	
@@ -75,7 +104,15 @@ usdSwi();
    var ubalance = Math.round(ubalance * 100);
    var ubalance = Math.ceil(ubalance)/100;
    document.getElementById('ubalance').innerHTML = ubalance;							
-    }, 30000);
+    }, 120000);
+	
+	setInterval(function() {
+   var ubalance = parseFloat(localStorage.getItem("blcsbtc"));
+   var ubalance = Math.round(ubalance * 100);
+   var ubalance = Math.ceil(ubalance)/100;
+   document.getElementById('ubalance').innerHTML = ubalance;							
+    }, 120000);
+	
    }  
 </script>
 <span class="mainweb">	
@@ -162,6 +199,61 @@ usdSwi();
 
 	 <tr>
          <td>
+		 <a class="menumobile"onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbtc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbtc">0.00</span></a>
+		 </td>
+    </tr>
+	 
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">LITECOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">LITECOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbltc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbltc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdltc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdltc">0.00</span></a>
+		 </td>
+    </tr>
+	 
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">DOGECOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">DOGECOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgcbalance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusddgc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusddgc">0.00</span></a>
+		 </td>
+    </tr>
+     	
+    
+	 <tr>
+         <td>
 		 <a class="menumobile"onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">SWIFT CASH</a>
 		 <a class="menudesktop"onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">SWIFT CASH</a>
 		 </td>
@@ -177,7 +269,7 @@ usdSwi();
 		 <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdswi">0.00</span></a>
 		 </td>
     </tr>
-     	
+	
   </tbody>
 </table>  
  
@@ -188,7 +280,7 @@ usdSwi();
         <div class="row">
             <div class="col-lg-12">
                 <div class="footer_iner text-center">
-                   <h5 class="menudesktop" style="font-size: 18px;"> <center style="color:#fff">NIF: 5000556807  | <a class="" href="https://github.com/zeraldo/web-wallet-for-any-altcoins" href="#" style="color:#fff">GITHUB</center> </h5> 
+                   <h5 class="menudesktop" style="font-size: 18px;"> <center style="color:#fff">Feito com <strong style="color:red">&#x2764;	<strong> </center> </h5> 
                 </div>
             </div>
         </div>

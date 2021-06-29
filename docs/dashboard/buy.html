@@ -104,7 +104,6 @@
    }  
 </script>
 
-
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -114,23 +113,14 @@
             <div class="white_box mb_30">
                <div class="row justify-content-center">
                   <div class="col-lg-6">
+				  
+				  <center>
+				  <img src="img/icon/traders.svg" width="100.334" height="100.334" alt=""> 
+				   </center>
+				   
                      <!-- sign_in  -->
                      <div class="modal-content cs_modal">
-                        <div style="    font-size: 22px;
-                           font-weight: 80;
-                           background-color: #F7FAFF;
-                           padding: 23px 30px;
-                           border-bottom: 0px solid transparent;
-                           align-items: center;">
-                           <center>
-                              <h5 class="modal-title"> Comprar moeda virtual</h5>
-							  
-							 <!-- <a class="modal-title" href="javascript:togglePrice();" id="addr-balance" style="color: #000;">Balance: 0.00000000 SWIFT</a> -->
-							   
-                           </center>
-                        </div>
-
-
+                      
 	                               <!--   <div class="addresserro">  
 									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
 								   <span aria-hidden="true" onclick="javascript:existemailh();">×</span></div>
@@ -181,7 +171,7 @@
                                  <tr>
                                     <td>
                                        <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" autocomplete="off" min="0.001" step="0.00000001" id="kwanza" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" id="kwanza">
                                     </td>
                                     <td> <input type="number" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
@@ -189,42 +179,37 @@
                                  </tr>
                               </table>
 								 
-								
-							   
                               <div class="border_style">
-                                 <span>SEU PERFIL</span>
+                                 <span>SEUS DADOS</span>
                               </div>
-  
-                          <input autocomplete="off" type="tel" id="nome_cli" placeholder="Seu nome" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
-
-                              <div class="border_style">
-                                 <span>SEU CONTATO</span>
-                              </div>
-  
+							  
+							   <input autocomplete="off" type="text" id="nome_cli" placeholder="Seu nome" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+                               
+                               
+                          <input autocomplete="off" type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+															   
                           
 								   <table>
                                  <tr>
                                     <td>
                                        <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" autocomplete="off" min="0.001" step="0.00000001" id="telefone" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" id="telefone">
                                     </td>
-                                    <td> <input type="number" id="telefone_b" onkeyup="usdtoswi(this.value)" placeholder="Telefone opcional" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
+                                    <td> <input type="number" id="telefone_b" placeholder="Telefone opcional" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
                                     <input type="hidden" id='vusdd'>
                                  </tr>
                               </table>
-
-                          <input autocomplete="off" type="tel" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
-								  
+  
                               <div class="menumobile  form-row social_login_btn">
-									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
 									
                               </div>
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
-									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
 									
                               </div>
