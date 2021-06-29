@@ -1779,8 +1779,8 @@ td:focus, th:focus {
 /* line 1300, H:/admin_project/finance/scss/_reset.scss */
 .cs_modal .modal-body .social_login_btn .btn_1 {
   color: #fff;
-  background-color: #3b76ef;
-  border: 1px solid #3b76ef;
+  background-color: #28a745;
+  border: 1px solid #3b76ef00;
   margin-top: 0;
 }
 
@@ -1796,8 +1796,8 @@ td:focus, th:focus {
 
 /* line 1314, H:/admin_project/finance/scss/_reset.scss */
 .cs_modal .modal-body .social_login_btn .form-group:last-child .btn_1 {
-  background-color: #3b76ef;
-  border: 0px solid #3b76ef;
+  background-color: #e0e0e0;
+  border: 0px solid #e0e0e0;
 }
 
 /* line 1321, H:/admin_project/finance/scss/_reset.scss */
@@ -1919,8 +1919,8 @@ p a:hover {
 /******** base color css ********/
 /* line 2, H:/admin_project/finance/scss/_button.scss */
 .btn_1 {
-  background-color: #3B76EF;
-  border: 1px solid #3B76EF;
+  background-color: #57b1bb;
+  border: 1px solid #28a74500;
   color: #fff;
   display: inline-block;
   padding: 11px 23px;
