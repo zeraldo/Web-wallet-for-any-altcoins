@@ -113,68 +113,80 @@
             <div class="white_box mb_30">
                <div class="row justify-content-center">
                   <div class="col-lg-6">
+				  
+				  <center>
+				  <img src="img/icon/sendmoney.svg" width="100.334" height="100.334" alt=""> 
+				   </center>
+				   
                      <!-- sign_in  -->
                      <div class="modal-content cs_modal">
-                        <div style="font-size: 22px;
-                           font-weight: 80;
-                           background-color: #F7FAFF;
-                           padding: 23px 30px;
-                           border-bottom: 0px solid transparent;
-                           align-items: center;">
-                           <center>
-                              <h5 class="modal-title"> <span id="bbswi">0.00</span> SWIFT </h5>
+	                  
+						  <div class="border_style" style="background-color: #fff;">
+                              <h4> <span id="bbbswi">0.0000000 SWIFT</span></h4>
+                              </div>
 							  
-							 <!-- <a class="modal-title" href="javascript:togglePrice();" id="addr-balance" style="color: #000;">Balance: 0.00000000 SWIFT</a> -->
-							   
-                           </center>
-                        </div>
-						
                         <div class="modal-body">
-                          <input autocomplete="off" type="text" id="address1" name="address" onkeyup="usdtoswi(this.value)" placeholder="SXPKYzdxm97MhVZ8goyGmEB74q2jZiVcj4" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+                          <input autocomplete="off" type="text" id="address1" name="address" onkeyup="usdtoswi(this.value)" placeholder="SXPKYzdxm97MhVZ8goyGmEB74q2jZiVcj4" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" required>
 								 
 								   <table>
                                  <tr>
                                     <td>
                                        <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="SWIFTCASH" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" placeholder="SWIFTCASH" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
                                     </td>
                                     <td> <input type="text" id="vusd" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" required></td>
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required></td>
                                     <input type="hidden" id='vusdd'>
                                  </tr>
                               </table>
 								 
                               <div class="form-row social_login_btn">
 							  
-                                 <button type="submit" class="form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                 <button type="submit" class="form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;" onClick="saveinfo()">ENVIAR</button>
 									
                               </div>
-							    
-                              <div class="border_style">
+							     
+                              <div class="border_style" style="background-color: #fff;">
                                  <span>OU</span>
                               </div>
-                                
+							   </div>
+							   <div style="background-color: #fff;">		
+							   
+								   <table>
+                                 <tr>
+                                    <td>
+                                    
 								  <div class="menudesktop form-group col-md-12 text-center">
 								  <a onclick="carregar2('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
                               </div>
 							  
+							  <div class="menumobile form-group col-md-12 text-center">
+                                 <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
+								 </div>
+							  
+                              
+                                    </td>
+                                    <td> 
 								 <div class="menudesktop form-group col-md-12 text-center">
 								 <a onclick="carregar2('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
                               </div>
-                              
+							  
+							    
+                              <div class="menumobile form-group col-md-12 text-center">
+                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
+								</div>
+								
+                                 </tr>
+                              </table>
+							   				  
 								 <div class="menudesktop form-group col-md-12 text-center">
 								 <a onclick="carregar2('coin/swiftcash/key.html')" href="#" class="btn_1 full_width">CHAVES</a>
                               </div>
 							  
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
-								 </div>
+                              
 								 
-								  
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
-								</div>
+								
 								
 								 <div class="menumobile form-group col-md-12 text-center">
                                  <a onclick="carregar('coin/swiftcash/key.html')" href="#" class="btn_1 full_width">CHAVES</a>

@@ -26,7 +26,7 @@
     <script src="../js/js2/cc.js"></script>
     <script src="../js/js2/clipboard.min.js"></script>
     <script src="../js/js2/cookie.js"></script>
-	<script src="../js/js2/script.js"></script> 
+	<script src="../js/js2/script_swiftcash.js"></script> 
 
 <script>
 login();
@@ -36,16 +36,16 @@ login();
 							   "This operation will copy your private key to clipboard. Your private key is very important and anyone who has it will be able to spend from your account. You should never share your private key with anyone.\n\nType 'Yes' with capital 'Y' to continue:", "Yes"</p>
 							   </center> 
 							  <br/>
-							  <input autocomplete="off" type="text" id="privatkey" value="Clique em copiar" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" readonly>
+							  <input autocomplete="off" type="text" id="privatkey" value="Clique em copiar" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" readonly>
 							  
                               <div class="form-row social_login_btn">
-                                 <button type="submit" class="exibkey form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                 <button type="submit" class="exibkey form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #ff0000;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;" onClick="copyPrivateKey()">COPIAR CHAVE</button>	
                               </div>
 							  
 							  
                               <div class="form-row social_login_btn">
-                                 <button type="submit" class="sucopy form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #e0e0e0; border: 1px solid #ffffff;color: #000;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 25px;white-space: nowrap;
+                                 <button type="submit" class="sucopy form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #e0e0e0; border: 1px solid #ffffff;color: #000;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;" onClick="copyPrivateKey()">CHAVE COPIADO</button>	
                               </div>
 							  
@@ -53,23 +53,35 @@ login();
                               <div class="border_style">
                                  <span>OU</span>
                               </div>
-                                
+                                </div>
+                              <div style="background-color: #fff;">	
+							  
+							   <table>
+                                 <tr>
+                                    <td>
+                                    
 								  <div class="menudesktop form-group col-md-12 text-center">
+								  <a onclick="carregar2('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
+                              </div>
+							  
+							  <div class="menumobile form-group col-md-12 text-center">
+                                 <a onclick="carregar('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
+								 </div>
+							  
+                              
+                                    </td>
+                                    <td> 
+								 <div class="menudesktop form-group col-md-12 text-center">
 								  <a onclick="carregar2('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
                               </div>
 							  
-								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
-                              </div>
-                             						
-                              <div class="menumobile form-group col-md-12 text-center">
+							  <div class="menumobile form-group col-md-12 text-center">
                                  <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
 								 </div>
-								 
-								  
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/send.html')" href="#" class="btn_1 full_width">ENVIAR</a>
-								</div>
+								
+                                 </tr>
+                              </table>
+							   
                         </div>
                      </div>
                   </div>
