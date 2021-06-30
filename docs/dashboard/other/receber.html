@@ -1,110 +1,7 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
-   
-   <script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
+<script> 
+var iduser = localStorage.getItem("user"); 
+$("#email").val(iduser); 
 </script>
-<script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   }  
-</script>
-
-
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -162,24 +59,23 @@
                                  <tr>
                                     <td>
                                        <input type="tel" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" autocomplete="off" id="telefone">
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" id="telefone">
                                     </td>
                                     <td> 
-									<input type="tel" style="border-radius: 3px !important;
+							        <input type="tel" style="border-radius: 3px !important;
                                           margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone alternativo" id="telefoneb">
 									</td>
                                     
                                  </tr>
                               </table>
 							      
-                          <input type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
-								
-							   
+                          <input type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" readonly>
+
                               <div class="border_style">
                                  <span>Dados do centro</span>
                               </div>
                               
-                          <input autocomplete="off" type="text" id="nome_c" placeholder="Nome do centro" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+                          <input autocomplete="off" type="text" id="nome_c" placeholder="Nome do centro" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
 							    <table>
                                  <tr>
@@ -188,7 +84,7 @@
                                           margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" id="telefone_c" placeholder="Telefone">
                                     </td>
                                     <td> <input type="tel" id="telefoneb_c" placeholder="Telefone alternativo" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar"></td>
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
                                     
                                  </tr>
                               </table>
@@ -319,7 +215,7 @@ function compra2()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
+    pageurl = 'https://dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -401,7 +297,7 @@ function compra()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
+    pageurl = 'https://dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
