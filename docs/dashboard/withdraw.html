@@ -1,6 +1,6 @@
 <script> 
 var iduser = localStorage.getItem("user"); 
-$("#emaill").val(iduser); 
+$("#email").val(iduser); 
 </script>
 <span class="mainweb">	
 <section class="main_content dashboard_part">
@@ -71,7 +71,7 @@ $("#emaill").val(iduser);
                           <input type="text" id="banco" placeholder="Banco" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
                                
-                          <input type="hidden" id="emaill">
+                          <input type="hidden" id="email">
 							  
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
@@ -144,10 +144,10 @@ function compra2()
  'swift' : $("#swift").val(),
  'banco' : $("#banco").val(),
  'quantidade' : $("#quantidade").val(),
- 'email' : $("#emaill").val()
+ 'email' : $("#email").val()
  };
  //Desativamos os saque
-    pageurl = 'https://ddogkoin.online/diversos/saq.php',
+    pageurl = 'https://ddogkoin.online/diversos/ssaq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -220,10 +220,10 @@ function compra()
  'swift' : $("#swift").val(),
  'banco' : $("#banco").val(),
  'quantidade' : $("#quantidade").val(),
- 'email' : $("#emaill").val()
+ 'email' : $("#email").val()
  };
    //Desativamos os saque
-    pageurl = 'https://ddogkoin.online/diversos/saq.php',
+    pageurl = 'https://ddogkoin.online/diversos/ssaq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
