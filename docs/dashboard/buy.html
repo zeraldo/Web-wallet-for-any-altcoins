@@ -54,7 +54,7 @@ $("#email").val(iduser);
     font-family: inherit;
     font-size: 15px;
     line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
-						  <option selected="selected" value="">Escolha a moeda</option>
+						  <option selected="selected" value="">Moeda</option>
                           <option value="Bitcoin">Bitcoin</option>
 						  <option value="Ethereum">Ethereum</option>
 						  <option value="Litecoin">Litecoin</option>
@@ -63,7 +63,7 @@ $("#email").val(iduser);
 						  <option value="SwiftCash">SwiftCash</option>
 						  </select>  		 
 							
-                          <input autocomplete="off" type="text" id="endereco" name="address" onkeyup="usdtoswi(this.value)" placeholder="Endereço da moeda" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+                          <input autocomplete="off" type="text" id="endereco" name="address" onkeyup="usdtoswi(this.value)" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
 								 	 
 								   <table>
                                  <tr>
@@ -73,7 +73,7 @@ $("#email").val(iduser);
                                     </td>
                                     <td> <input type="text" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
-                                    <input type="hidden" id='vusdd'>
+                                    
                                  </tr>
                               </table>
 								 
@@ -145,13 +145,10 @@ function compra2()
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
- 'nome' : $("#nome_cli").val(),
  'moeda' : $("#moeda").val(),
  'endereco' : $("#endereco").val(),
  'kwanza' : $("#kwanza").val(),
- 'dolar' : $("#dolar").val(),
- 'telefone' : $("#telefone").val(),
- 'telefone_b' : $("#telefone_b").val()
+ 'dolar' : $("#dolar").val()
  };
     pageurl = 'https://dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
@@ -221,13 +218,10 @@ function compra()
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
- 'nome' : $("#nome_cli").val(),
  'moeda' : $("#moeda").val(),
  'endereco' : $("#endereco").val(),
  'kwanza' : $("#kwanza").val(),
- 'dolar' : $("#dolar").val(),
- 'telefone' : $("#telefone").val(),
- 'telefone_b' : $("#telefone_b").val()
+ 'dolar' : $("#dolar").val()
  };
     pageurl = 'https://dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
