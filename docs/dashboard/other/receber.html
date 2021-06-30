@@ -49,7 +49,7 @@ $("#email").val(iduser);
                         <div class="modal-body">
                         
                               <div class="border_style">
-                                 <span>Dados centro</span>
+                                 <span>Dados do centro</span>
                               </div>
                           <input autocomplete="off" type="text" id="nome_c" placeholder="Nome do centro" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
@@ -191,7 +191,7 @@ function compra2()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
+    pageurl = 'https://dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -258,6 +258,7 @@ function compra()
 
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
+ 'email' : $("#email").val(),
  'nome_c' : $("#nome_c").val(),
  'telefone_c' : $("#telefone_c").val(),
  'telefoneb_c' : $("#telefoneb_c").val(), 
@@ -269,7 +270,7 @@ function compra()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
+    pageurl = 'https://dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
