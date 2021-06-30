@@ -1,7 +1,4 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -70,7 +67,8 @@
 							  
                           <input type="text" id="banco" placeholder="Banco" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
-                                
+                              <input type="hidden" id='emaill'>
+							  
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>
@@ -141,9 +139,10 @@ function compra2()
  'nconta' : $("#nconta").val(),
  'swift' : $("#swift").val(),
  'banco' : $("#banco").val(),
- 'quantidade' : $("#quantidade").val()
+ 'quantidade' : $("#quantidade").val(),
+ 'email' : $("#emaill").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/saq.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/saq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -215,9 +214,10 @@ function compra()
  'nconta' : $("#nconta").val(),
  'swift' : $("#swift").val(),
  'banco' : $("#banco").val(),
- 'quantidade' : $("#quantidade").val()
+ 'quantidade' : $("#quantidade").val(),
+ 'email' : $("#emaill").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/saq.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/saq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
