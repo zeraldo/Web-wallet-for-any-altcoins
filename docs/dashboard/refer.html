@@ -1,7 +1,7 @@
 <script>   		
-
+//Area ainda sendo desenvolvido, exibir todos os usuarios convidados do cliente
 jQuery.ajax({
-	url: 'https://dogkoin.online/diversos/ver_refer.php',
+	url: 'https://dogkoin.online/diversos/ver_refer.php?email=' + iduser,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -38,7 +38,7 @@ jQuery.ajax({
 
 <script>   		
 jQuery.ajax({
-	url: 'https://dogkoin.online/diversos/ver_perfil.php',
+	url: 'http://localhost/dogkoin.online/diversos/referurl.php?email=' + iduser,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -97,7 +97,7 @@ jQuery.ajax({
                                     <tr>
                                     <td>
                                     <input type="text" style="border-radius: 2px !important;
-                                          margin-bottom: 07px !important; padding: 10px 15px !important; border: 1px solid #28a74500!important; height: 53px; font-size: 12px;" value="555555" autocomplete="off" min="0.001" id="referurl" onkeyup="switousd(this.value)" readonly>
+                                          margin-bottom: 07px !important; padding: 10px 15px !important; border: 1px solid #28a74500!important; height: 53px; font-size: 12px;" value="555555" id="referurl" readonly>
 										   </td>
                                     <td>
 						             
