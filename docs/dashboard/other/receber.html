@@ -43,38 +43,14 @@ $("#email").val(iduser);
 		                <br/>
 						
 						<center style="">
-					     <p style="color: #0bb327">Estamos de maos abertas para ajudar centros de caridade a obter doaçoes por meio do nosso sistema. Po favor, preencha o formulario com as informaçoes corretas para que possamos ajudar da melhor maneira possiivel.</p>
+					     <p style="color: #0bb327">Estamos de maos abertas para ajudar centros de caridade a obter doaçoes por meio do nosso sistema. Po favor, preencha o formulario com as informaçoes corretas para que possamos ajudar da melhor maneira possiivel. <br/></p>
 	                    </center>
 						 
                         <div class="modal-body">
-                         
+                        
                               <div class="border_style">
-                                 <span>Seus dados</span>
+                                 <span>Dados centro</span>
                               </div>
-                                
-                          <input type="text" id="nome" placeholder="Nome" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-								
-						 
-								   <table>
-                                 <tr>
-                                    <td>
-                                       <input type="tel" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" id="telefone">
-                                    </td>
-                                    <td> 
-							        <input type="tel" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone alternativo" id="telefoneb">
-									</td>
-                                    
-                                 </tr>
-                              </table>
-							      
-                          <input type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" readonly>
-
-                              <div class="border_style">
-                                 <span>Dados do centro</span>
-                              </div>
-                              
                           <input autocomplete="off" type="text" id="nome_c" placeholder="Nome do centro" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
 							    <table>
@@ -134,6 +110,9 @@ $("#email").val(iduser);
 							  
 							  
                           <input autocomplete="off" type="tel" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+						  
+                        <input type="hidden" id="email">
+ 
 							
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
@@ -200,9 +179,6 @@ function compra2()
 
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
- 'nome' : $("#nome").val(), 
- 'telefone' : $("#telefone").val(),
- 'telefoneb' : $("#telefoneb").val(),
  'email' : $("#email").val(),
  'nome_c' : $("#nome_c").val(),
  'telefone_c' : $("#telefone_c").val(),
@@ -215,7 +191,7 @@ function compra2()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'https://dogkoin.online/diversos/recebe.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -282,10 +258,6 @@ function compra()
 
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
- 'nome' : $("#nome").val(), 
- 'telefone' : $("#telefone").val(),
- 'telefoneb' : $("#telefoneb").val(),
- 'email' : $("#email").val(),
  'nome_c' : $("#nome_c").val(),
  'telefone_c' : $("#telefone_c").val(),
  'telefoneb_c' : $("#telefoneb_c").val(), 
@@ -297,7 +269,7 @@ function compra()
  'bairro' : $("#bairro").val(),
  'endereco' : $("#endereco").val()
  };
-    pageurl = 'https://dogkoin.online/diversos/recebe.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/recebe.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
