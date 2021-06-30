@@ -1,109 +1,7 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
-   
-   <script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
+<script> 
+var iduser = localStorage.getItem("user"); 
+$("#email").val(iduser); 
 </script>
-<script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   }  
-</script>
-
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -170,37 +68,17 @@
 								   <table>
                                  <tr>
                                     <td>
-                                       <input type="number" style="border-radius: 3px !important;
+                                       <input type="text" style="border-radius: 3px !important;
                                           margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" id="kwanza">
                                     </td>
-                                    <td> <input type="number" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                    <td> <input type="text" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
                                     <input type="hidden" id='vusdd'>
                                  </tr>
                               </table>
 								 
-                              <div class="border_style">
-                                 <span>SEUS DADOS</span>
-                              </div>
-							  
-							   <input autocomplete="off" type="text" id="nome_cli" placeholder="Seu nome" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-                               
-                               
-                          <input autocomplete="off" type="email" id="email" placeholder="Email" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-															   
-                          
-								   <table>
-                                 <tr>
-                                    <td>
-                                       <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Telefone" id="telefone">
-                                    </td>
-                                    <td> <input type="number" id="telefone_b" placeholder="Telefone opcional" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
-                                    <input type="hidden" id='vusdd'>
-                                 </tr>
-                              </table>
-  
+                               <input type="hidden" id="email">
+ 
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
@@ -275,7 +153,7 @@ function compra2()
  'telefone' : $("#telefone").val(),
  'telefone_b' : $("#telefone_b").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/compra.php';
+    pageurl = 'https://dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -351,7 +229,7 @@ function compra()
  'telefone' : $("#telefone").val(),
  'telefone_b' : $("#telefone_b").val()
  };
-    pageurl = 'http://localhost/dogkoin.online/diversos/compra.php';
+    pageurl = 'https://dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
