@@ -36,6 +36,36 @@ jQuery.ajax({
 }
 
 </script>
+
+<script>    		
+//Exibir saldo litecoin
+// Obtém os dados da localStorage
+var adrltc = localStorage.getItem('adrltc');
+if (typeof adrltc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	     var balance=0.00;
+         var bbltc = Number(result.balance);
+		 localStorage.setItem("bbltc", bbltc);
+         
+		$("#bbltc").html(bbltc);
+		$("#bbltc1").html(bbltc1);
+		//alert(bbswi1);
+      },
+   
+});	
+}
+</script>
+
 <script>
 //Exibir o preço do litecoin
 function usdLtc() {
