@@ -29,8 +29,8 @@ jQuery.ajax({
          } 
          alert(bbswi);
          //Se o balanço esta zerado, formatar corretamente
-
-		 if (bbswi == 0) {  	 
+//var bbswi = bbswi.replace(, " 0.00");
+		 if (bbswi == "[object HTMLSpanElement]") {  	 
   $('#bbswi1').html('0.00');
   $('#bbswi').html('0.00');
   }   
