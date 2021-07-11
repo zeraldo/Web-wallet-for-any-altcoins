@@ -1,104 +1,3 @@
-<script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
-</script>
-<script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   }  
-</script>
-
 <span class="mainweb">
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -124,20 +23,14 @@
                            </center>
                         </div>
                         <div class="modal-body">
-					 
-						
- 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-    <script src="../js/js2/jquery-3.5.0.min.js"></script>
-  
+					  
     <script src="../js/js2/js/bootstrap.min.js"></script>
    
     <script type="text/javascript" src="../js/js2/instascan.min.js"></script>
     <script src="../js/js2/cc.js"></script>
     <script src="../js/js2/clipboard.min.js"></script>
     <script src="../js/js2/cookie.js"></script>
-	<script src="../js/js2/script_swiftcash.js"></script> 
+	<script src="../js/js2/coin_swi.js"></script> 
 
 <script>
 login();
@@ -177,26 +70,7 @@ login();
                                </div>
 							  
 							  <!-- </form> -->
-                              <div class="border_style">
-                                 <span>OU</span>
-                              </div>
-                                
-								  <div class="menudesktop form-group col-md-12 text-center">
-								  <a onclick="carregar2('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
-                              </div>
-							  
-								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
-                              </div>
-                             						
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
-								 </div>
-								 
-								  
-                              <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/swiftcash/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
-								</div>
+                              
                         </div>
                      </div>
                   </div>
