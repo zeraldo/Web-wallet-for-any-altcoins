@@ -591,6 +591,542 @@ html,
         });
 		</script>
 
+	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+         var bbltc = result.balance / 100000000;
+          
+		 localStorage.setItem("bbltc", bbltc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbltc == 0) {  	 
+  
+  $('#bbltc1').html('0.00');
+  $('#bbltc').html('0.00');
+  }   
+  else
+  {
+  	$('#bbltc1').html(bbltc);
+		$('#bbltc').html(bbltc);
+		
+  	}
+		//alert(bbswi1);
+      },
+   
+});	
+}
+</script>
+
+<script>
+//Exibir o preço do litecoin
+function usdLtc() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.litecoin.usd);
+		var bbltc = localStorage.getItem('bbltc');
+        sltc = bbltc * pricusd;
+		localStorage.setItem("blcsltc", sltc); 
+		pricusdltc = pricusd;
+	    //Formatar a saida do preço para dolar
+        var pricusltc = pricusdltc.toLocaleString('pt-br', {minimumFractionDigits: 0});
+ 
+		document.getElementById('pricusdltc').innerHTML = pricusdltc;
+		document.getElementById('pricusdltc1').innerHTML = pricusdltc;
+		
+		var ltcbalance = Math.round(localStorage.getItem("blcsltc") * 100);
+        var ltcbalance = Math.ceil(ltcbalance)/100;
+		document.getElementById('ltcbalance').innerHTML = ltcbalance; 
+		document.getElementById('ltcbalance1').innerHTML = ltcbalance; 
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdLtc, 120000);
+            },
+ 
+});	
+}
+usdLtc();
+
+</script>
+
+
+<script>
+//Exibir o preço do dogecoin
+function usdDgc() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.dogecoin.usd);
+		var pricusddgc = pricusd;
+	    //Formatar a saida do preço para dolar
+        var pricusdgc = pricusddgc.toLocaleString('pt-br', {minimumFractionDigits: 2});
+ 
+		document.getElementById('pricusddgc').innerHTML = pricusddgc;
+		document.getElementById('pricusddgc1').innerHTML = pricusddgc;
+		  
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdDgc, 120000);
+            },
+ 
+});	
+}
+usdDgc();
+
+</script>
+
+
+<script>
+//Exibir o preço do bitcoin
+function usdBtc() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.bitcoin.usd);
+		var bbbtc = localStorage.getItem('bbbtc');
+        sbtc = bbbtc * pricusd;
+		localStorage.setItem("blcsbtc", sbtc); 
+		pricusdbtc = pricusd;
+		//Formatar a saida do preço para dolar
+        var pricusdbtc = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
+ 
+		document.getElementById('pricusdbtc').innerHTML = pricusdbtc;
+		document.getElementById('pricusdbtc1').innerHTML = pricusdbtc;
+		/* Aqui verificamos a quantidade do saldo
+		var btcbalance = Math.round(localStorage.getItem("blcsbtc") * 100);
+        var btcbalance = Math.ceil(btcbalance)/100;
+		document.getElementById('btcbalance').innerHTML = btcbalance; */
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdBtc, 120000);
+            },
+ 
+});	
+}
+usdBtc();
+</script>
+<script> 
+//Exibir o preço do swiftcash
+function usdSwi() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.swiftcash.usd);
+		var bbswi = localStorage.getItem('bbswi');
+        sswi = bbswi * pricusd;
+		localStorage.setItem("blcsswi", sswi); 
+		pricusdswi = pricusd;
+	    //Formatar a saida do preço para dolar
+        var pricusswi = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
+ 
+		document.getElementById('pricusdswi').innerHTML = pricusdswi;
+		document.getElementById('pricusdswi1').innerHTML = pricusdswi;
+		
+		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
+        var swibalance = Math.ceil(swibalance)/100;
+		document.getElementById('swibalance').innerHTML = swibalance; 
+		document.getElementById('swibalance1').innerHTML = swibalance; 
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdSwi, 120000);
+            },
+ 
+});	
+}
+usdSwi();
+</script>
+<script>
+   window.onload = function () {	
+   setInterval(function() {
+   var ubalance = parseFloat(localStorage.getItem("blcsswi"));
+   var ubalance = Math.round(ubalance * 100);
+   var ubalance = Math.ceil(ubalance)/100;
+   document.getElementById('ubalance').innerHTML = ubalance;	
+   
+   var ubalance = parseFloat(localStorage.getItem("blcbtc"));
+   var ubalance = Math.round(ubalance * 100);
+   var ubalance = Math.ceil(ubalance)/100;
+   document.getElementById('ubalancebtc').innerHTML = ubalance;	
+   
+    }, 120000);
+	 
+   }  
+</script>
+<span class="mainweb">	
+<section class="main_content dashboard_part">
+     
+    <div class="main_content_iner">
+        <div class="container-fluid plr_30 body_white_bg pt_30">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="single_element">
+                        <div class="quick_activity">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="quick_activity_wrap">
+									
+                                        <div class="single_quick_activity">
+                                            <h4>Saldo</h4>
+                                            <h3>B <span class="counter">0.00</span> </h3>
+                                             
+                                        </div>
+										
+                                        <div class="single_quick_activity">
+                                            <h4>Saldo</h4>
+                                            <h3>$ <span id="uubalance" class="counter">0,00</span></h3>
+                                           
+        
+    <!-- <div class="container-fluid no-gutters">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div class="header_iner d-flex justify-content-between align-items-center">
+                    <div class="sidebar_icon d-lg-none">
+                        <i class="ti-menu"></i>
+                    </div>
+                    <div class="serach_field-area">
+                            <div class="search_inner">
+                                <form action="#">
+                                    <div class="search_field">
+                                        <input type="text" placeholder="Search here..." >
+                                    </div>
+                                    <button type="submit"> <img src="img/icon/icon_search.svg" alt=""> </button>
+                                </form>
+                            </div>
+                        </div>
+                    <div class="header_right d-flex justify-content-between align-items-center">
+                        
+                        <div class="profile_info">
+                            <img src="img/client_img.png" alt="#">
+                            <div class="profile_info_iner">
+                                <p>Welcome Admin!</p>
+                                <h5>Travor James</h5>
+                                <div class="profile_info_details">
+                                    <a href="#">My Profile <i class="ti-user"></i></a>
+                                    <a href="#">Settings <i class="ti-settings"></i></a>
+                                    <a href="#">Log Out <i class="ti-shift-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+                                  </div>
+                                 </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+			 
+				<table class="table table-hover table-dark tablero">
+  <thead>
+  
+    <tr>
+      <th scope="col">MOEDA</th>
+	   <th scope="col">DISPONIVEL</th>
+	  <th scope="col">SALDO</th>
+      <th scope="col">PREÇO</th>
+    </tr>
+
+  </thead>
+  <tbody>
+
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbtc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbtc1">0.00</span></a>
+		 </td>
+    </tr>
+	 
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">LITECOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">LITECOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbltc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbltc1" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance1">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdltc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdltc1">0.00</span></a>
+		 </td>
+    </tr>
+	 
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">DOGECOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">DOGECOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgcbalance1">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusddgc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusddgc1">0.00</span></a>
+		 </td>
+    </tr>
+     	
+    
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">SWIFT CASH</a>
+		 <a class="menudesktop"onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">SWIFT CASH</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/swiftcash/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbswi" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbswi1" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="swibalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="swibalance1">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdswi">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdswi1">0.00</span></a>
+		 </td>
+    </tr>
+	
+  </tbody>
+</table>  
+ 
+  </div>
+<!-- footer part -->
+<div class="footer_part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer_iner text-center">
+                   <h5 class="menudesktop" style="font-size: 18px;"> <center style="color:#fff">Feito com <strong style="color:red">&#x2764;	<strong> </center> </h5> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+</span>
+<!-- Barra de progresso -->
+ <style>
+ body,
+html,
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  background: #e7f0f7;
+}
+.progressbar {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 30px;
+}
+.progressbar::before,
+.progressbar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-image: linear-gradient(
+90deg
+, #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
+  background-repeat: repeat-x;
+  -webkit-animation: movebar 5s linear infinite;
+          animation: movebar 5s linear infinite;
+}
+.progressbar::before {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
+}
+.progressbar::after {
+  z-index: 9;
+  top: 6px;
+  filter: blur(16px);
+  opacity: 0.7;
+}
+.stylization {
+  position: absolute;
+  z-index: 999;
+  height: 4px;
+  width: 90%;
+  left: 5%;
+  top: 6px;
+  opacity: 0.3;
+}
+.stylization::before,
+.stylization::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 4px;
+  top: 0;
+  border-radius: 2px;
+}
+.stylization::before {
+  background: #fff;
+  left: 0;
+  right: 10px;
+}
+.stylization::after {
+  width: 6px;
+  background: #000;
+  right: 0;
+}
+@-webkit-keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+@keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+ 
+<span class="progressbara">
+<section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+  
+</div>
+      
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+					   <div class="wrapper">
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+</div>     
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show(); 
+        });
+		</script>
+
     dataType: "json",
     data: {
     },
