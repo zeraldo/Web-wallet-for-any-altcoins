@@ -24,9 +24,10 @@ jQuery.ajax({
          utxos = result; 
 	     for(i in utxos) {
           sum += Number(utxos[i].value/ 1);
-          bbswi = 0.00 + sum;
+          bbswi = sum;
 		  localStorage.setItem("bbswi", bbswi);
          } 
+         alert('bbswi');
          //Se o balanço esta zerado, formatar corretamente
 
 		 if (bbswi == 0) {  	 
