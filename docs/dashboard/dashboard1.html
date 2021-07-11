@@ -54,11 +54,11 @@ jQuery.ajax({
     },
     success: function (result) { 
 	    // var balance=0.00;
-         var bbltc = Number(result.balance);
+         var bbltc = result.balance;
 		 localStorage.setItem("bbltc", bbltc);
-         
-		$("#bbltc").html(bbltc);
-		$("#bbltc1").html(bbltc1);
+ 
+		$('#bbltc1').html('0.00 ' + bbltc);
+		$('#bbltc').html('0.00 ' + bbltc);
 		//alert(bbswi1);
       },
    
