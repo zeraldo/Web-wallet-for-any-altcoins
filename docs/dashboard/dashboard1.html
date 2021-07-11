@@ -116,8 +116,8 @@ jQuery.ajax({
 		//Se o balanço esta zerado, formatar corretamente
  if (ltcbalance == 0) {  	 
  
-		document.getElementById('ltcbalance').innerHTML = 0.00; 
-		document.getElementById('ltcbalance1').innerHTML = 0.00; 
+		document.getElementById('ltcbalance').innerHTML = "0.00"; 
+		document.getElementById('ltcbalance1').innerHTML = "0.00"; 
   }   
   else
   {
@@ -237,8 +237,8 @@ jQuery.ajax({
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
 		 if (swibalance == 0) {  	 
-		document.getElementById('swibalance').innerHTML = 0.00; 
-		document.getElementById('swibalance1').innerHTML = 0.00; 
+		document.getElementById('swibalance').innerHTML = "0.00"; 
+		document.getElementById('swibalance1').innerHTML = "0.00"; 
   }   
   else
   {
