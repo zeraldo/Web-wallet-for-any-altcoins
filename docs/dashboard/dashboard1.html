@@ -54,7 +54,7 @@ jQuery.ajax({
     },
     success: function (result) { 
 	    // var balance=0.00;
-         var bbltc = result.balance / 1000000000;
+         var bbltc = result.balance / 100000000;
           
 		 localStorage.setItem("bbltc", bbltc);
  
