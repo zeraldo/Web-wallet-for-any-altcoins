@@ -27,8 +27,18 @@ jQuery.ajax({
           bbswi = 0.00 + sum;
 		  localStorage.setItem("bbswi", bbswi);
          } 
-		$("#bbswi").html(bbswi);
-		$("#bbswi1").html(bbswi);
+         //Se o balanço esta zerado, formatar corretamente
+
+		 if (bbswi == 0) {  	 
+  $('#bbswi1').html('0.00');
+  $('#bbswi').html('0.00');
+  }   
+  else
+  {
+  $("#bbswi").html(bbswi);
+  $("#bbswi1").html(bbswi);
+		
+  	}
 		//alert(bbswi1);
       },
    
@@ -57,9 +67,19 @@ jQuery.ajax({
          var bbltc = result.balance / 100000000;
           
 		 localStorage.setItem("bbltc", bbltc);
- 
-		$('#bbltc1').html(bbltc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbltc == 0) {  	 
+  
+  $('#bbltc1').html('0.00');
+  $('#bbltc').html('0.00');
+  }   
+  else
+  {
+  	$('#bbltc1').html(bbltc);
 		$('#bbltc').html(bbltc);
+		
+  	}
 		//alert(bbswi1);
       },
    
