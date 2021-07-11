@@ -26,13 +26,11 @@ jQuery.ajax({
          //Se o balanço esta zerado, formatar corretamente
 //var bbswi = bbswi.replace(, " 0.00");
 		 if (bbswi == "[object HTMLSpanElement]") {  	 
-  $('#bbswi1').html('0.00');
-  $('#bbswi').html('0.00');
+  $('#bbswi').html('0.0000000');
   }   
   else
   {
   $("#bbswi").html(bbswi);
-  $("#bbswi1").html(bbswi);
 		
   	}
 		//alert(bbswi1);
@@ -130,7 +128,7 @@ jQuery.ajax({
                      <div class="modal-content cs_modal">
 	                  
 						  <div class="border_style" style="background-color: #fff;">
-                              <h4> <span id="bbbswi">0.00</span> SWIFT</h4>
+                              <h4> <span id="bbswi">0.0000000</span> SWIFT</h4>
                               </div>
 							  
                         <div class="modal-body">
