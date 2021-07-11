@@ -1,6 +1,6 @@
 var CURRENT_COIN = 'SWIFT';
 var PARAMS = {
- 	'SWIFT': {
+	'SWIFT': {
 		coingecko: 'swiftcash',
 		coinjs: cc.bitcoin,
 		network: cc.bitcoin.networks.swiftcash,
@@ -19,8 +19,18 @@ var PARAMS = {
 		unspentValue: 'value',
 		unspentDivision: 1
 	}
-		 
 };
+
+$(function() {
+    $.ajax({
+          url: 'https://explorer.swiftcash.cc/api/info',
+          cache: false
+    }).done(function(result) {
+          hodlBestRate = result.hodlbestrate;
+          $("#jackpot").text(result.lotteryjackpot.toLocaleString("en", { minimumFractionDigits: 0, maximumFractionDigits: 0, }));
+          $("#hodl12").text((Number(result.hodlbestrate)*100).toFixed(2) + '%');
+    });
+});
 
 function intToByteArray(int) {
     var byteArray = [0];
@@ -36,6 +46,52 @@ function intToByteArray(int) {
 
     return byteArray;
 }
+
+window.Clipboard = (function(window, document, navigator) {
+    var textArea,
+        copy;
+
+    function isOS() {
+        return navigator.userAgent.match(/ipad|iphone/i);
+    }
+
+    function createTextArea(text) {
+        textArea = document.createElement('textArea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+    }
+
+    function selectText() {
+        var range,
+            selection;
+
+        if (isOS()) {
+            range = document.createRange();
+            range.selectNodeContents(textArea);
+            selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            textArea.setSelectionRange(0, 999999);
+        } else {
+            textArea.select();
+        }
+    }
+
+    function copyToClipboard() {
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
+
+    copy = function(text) {
+        createTextArea(text);
+        selectText();
+        copyToClipboard();
+    };
+
+    return {
+        copy: copy
+    };
+})(window, document, navigator);
 
 var donation=0;
 var scanner;
@@ -99,7 +155,45 @@ function switchCoin(whichCoin) {
   setTimeout(switchCoinNow, 100, whichCoin);
 }
 
-function wallet() {
+function switchCoinNow(whichCoin) {
+  CURRENT_COIN = whichCoin;
+
+  var cLogos = document.getElementsByClassName("currency-logo");
+  for(i=0; i<cLogos.length; i++) {
+     var title = cLogos[i].title;
+
+     if(title != whichCoin) {
+        cLogos[i].style.filter = "none";
+     } else {
+	cLogos[i].style.filter = "drop-shadow(1px 1px 2px #4b4b4c)";
+     }
+  }
+
+  if(whichCoin != loginPrivkey) {
+     var d = new cc.bigi.fromBuffer(hashedPass);
+     keyPair = new PARAMS[CURRENT_COIN].coinjs.ECPair(d, null, { network: PARAMS[CURRENT_COIN].network });
+  } else {
+     keyPair = PARAMS[CURRENT_COIN].coinjs.ECPair.fromWIF(hashedPass, PARAMS[CURRENT_COIN].network);
+  }
+
+  if(whichCoin == "SWIFT") {
+     $("#address").attr("placeholder", "SWIFT address, Lottery or HODLx");
+     $("#mainL").removeAttr("disabled");
+     $("#mainH").removeAttr("disabled");
+  } else {
+     $("#address").attr("placeholder", whichCoin + " address");
+     $("#mainL").attr("disabled", "disabled");
+     $("#mainH").attr("disabled", "disabled");
+  }
+
+  $("#amount").attr("placeholder", "Amount of " + whichCoin + " to send");
+  $("#address").val("");
+  $("#amount").val("");
+  $("#mainR").click();
+  loadAddress();
+}
+
+function login() {
  
   // Login with email + password
   //var passphrase = localStorage.getItem('recoverphrase');
@@ -116,28 +210,23 @@ function wallet() {
     var d = new cc.bigi.fromBuffer(hashed);
     keyPair = new PARAMS[CURRENT_COIN].coinjs.ECPair(d, null, { network: PARAMS[CURRENT_COIN].network });
     loadAddress();
-	loadAddress2();
   });
 }
 
-function refresh2() {
-  $.ajax({
-    url: PARAMS[CURRENT_COIN].unspentApi + keyPair.getAddress() + '?unspentOnly=true',
-    type: "GET",
-    dataType: "json",
-    data: {
-    },
-    success: function (result) {
-        loadAddressTxes(result);
-	$("#addr-balance-refresh").prop("disabled", false);
-	$("#addr-balance2").css("color", "");
-	togglePrice2()
-    },
-    error: function () {
-        console.log("error");
-	$("#addr-balance-refresh").prop("disabled", false);
-    }
-  });
+function loadAddress() {
+  $("#addr-balance-refresh").prop("disabled", true);
+  $('#addr-balance').html('Balance: 0.00000000 ' + CURRENT_COIN);
+  $("#addr-balance").css("color", "#74bed8");
+  $("#pwd-container").hide();
+  $("#addr-container").show();
+  $("#addr-qr").attr("src", "https://qr-generator.qrcode.studio/qr/custom?download=false&file=png&data=" + keyPair.getAddress() + "&size=400&config=%7B%22body%22%3A%22rounded-pointed%22%2C%22eye%22%3A%22frame6%22%2C%22eyeBall%22%3A%22ball6%22%2C%22erf1%22%3A%5B%22fv%22%5D%2C%22gradientColor1%22%3A%22%23" + PARAMS[CURRENT_COIN].qrColor + "%22%2C%22gradientColor2%22%3A%22%23" + PARAMS[CURRENT_COIN].qrColor + "%22%2C%22gradientType%22%3A%22radial%22%2C%22gradientOnEyes%22%3A%22true%22%2C%22logo%22%3A%22%22%7D");
+  $("#addr-qr").attr("alt", keyPair.getAddress());
+  $("#addr-id-clipboard").attr("data-clipboard-text", keyPair.getAddress());
+  $("#addr-id").attr("href", PARAMS[CURRENT_COIN].explorer + "address/" + keyPair.getAddress());
+  $("#addr-id").html(keyPair.getAddress());
+  changeAddress = keyPair.getAddress();
+  donation = 0;
+  refresh();
 }
 
 function refresh() {
@@ -150,7 +239,7 @@ function refresh() {
     success: function (result) {
         loadAddressTxes(result);
 	$("#addr-balance-refresh").prop("disabled", false);
-	$("#addr-balance").css("color", "fff");
+	$("#addr-balance").css("color", "");
     },
     error: function () {
         console.log("error");
@@ -184,9 +273,9 @@ function loadAddressTxes(result) {
 
   USD = false;
   usdBalance = false;
-  $('#addr-balance').html('' + balance.toFixed(8) + ' ' + CURRENT_COIN);
+  $('#addr-balance').html('Balance: ' + balance.toFixed(8) + ' ' + CURRENT_COIN);
 }
- 
+
 function _setTooltip(message, classId) {
   $(classId)
     .attr('data-original-title', message)
@@ -209,9 +298,6 @@ function modifyTheChangeAddress() {
   }
 }
 
-/* trocar a quantidade do sald*/
-
-
 function donate() {
   var result = prompt('Enter an amount to donate:', donation);
   if(!isNaN(result)) { donation = Number(result); }
@@ -233,11 +319,6 @@ function changeTheFee() {
 }
 
 function togglePrice() {
-     USD = false;
-     $("#addr-balance").html("" + balance.toFixed(8) + " " + CURRENT_COIN);
-  }
- 
-function togglePrice2() {
   if(balance > 0 && !USD && !usdBalance) {
     $.ajax({
         url: 'https://api.coingecko.com/api/v3/simple/price?ids=' + PARAMS[CURRENT_COIN].coingecko + '&vs_currencies=usd',
@@ -249,15 +330,34 @@ function togglePrice2() {
         USD = true;
 	var usdPrice = Number(result[PARAMS[CURRENT_COIN].coingecko].usd);
         usdBalance = balance * usdPrice;
-        $("#addr-balance2").html("$" + usdBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "");
+        $("#addr-balance").html("Balance: $" + usdBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " US");
       },
       error: function () {
         console.log("error");
         $("#addr-balance-refresh").prop("disabled", false);
       }
     });
-  } 
+  } else if(!USD && usdBalance) {
+     USD = true;
+     $("#addr-balance").html("Balance: $" + usdBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " US");
+  } else if(!USD && !usdBalance) {
+     USD = true;
+     $("#addr-balance").html("Balance: $0.00 US");
+  } else if(USD) {
+     USD = false;
+     $("#addr-balance").html("Balance: " + balance.toFixed(8) + " " + CURRENT_COIN);
+  }
 }
+
+function copyPrivateKey() {
+    
+      Clipboard.copy(keyPair.toWIF());
+      setTimeout(_setTooltip, 200, "Copied!", ".privkey");
+      setTimeout(_hideTooltip, 200, ".privkey");
+	  $("#privatkey").val(keyPair.toWIF());	
+	  
+      
+  }
 
 function rsvs(radio) {
   isHODLing = false;
@@ -272,6 +372,13 @@ function rsvs(radio) {
         $("#addr-receive").hide();
         $("#address").val("");
         $("#address").removeAttr("disabled");
+        break;
+    case 'L':
+        $("#submit").html("PLAY");
+        $("#addr-spend").show();
+        $("#addr-receive").hide();
+        $("#address").val("Lottery");
+        $("#address").attr("disabled", "disabled");
         break;
     case 'H':
         isHODLing = true;
@@ -302,7 +409,7 @@ function rsvs(radio) {
         break;
   }
 }
-  
+
 function amountChanged(amount) {
   if(!isHODLing) return;
   const a = Number(amount);
@@ -311,22 +418,22 @@ function amountChanged(amount) {
   if (amount == "") { FINAL = hodlRate.toFixed(2) + "%" }
   var newVal = $("#address").val().split(",")[0] + ", F: " + FINAL + "}";
   $("#address").val(newVal);
-  
 }
 
 var tx; // global variable for the transaction
 
 function spendf() {
-  var amount = Number($("#amount").val());
+  var amount = Number(localStorage.getItem('amount'));
   const FEE = PARAMS[CURRENT_COIN].txFee + donation;
-  if(balance < FEE || SWIFT(amount+FEE) > balance) { alert("Insufficient funds! Minimum network fee is " + FEE + " " + CURRENT_COIN + "."); return; }
+  //if(balance < FEE || SWIFT(amount+FEE) > balance) { alert("Insufficient funds! Minimum network fee is " + FEE + " " + CURRENT_COIN + "."); return; }
+  if(11111 < FEE || SWIFT(amount+FEE) > 11111) { return; }
 
   // Validate the address
-  var address = $("#address").val();
+  var address = localStorage.getItem('address');
   if (address != "Lottery" && !address.startsWith("HODL")) {
       try {
-        PARAMS[CURRENT_COIN].coinjs.address.toOutputScript($("#address").val(), PARAMS[CURRENT_COIN].network);
-      } catch(e) { alert("Please enter a valid address!"); return; }
+        PARAMS[CURRENT_COIN].coinjs.address.toOutputScript(localStorage.getItem('address'), PARAMS[CURRENT_COIN].network);
+      } catch(e) { localStorage.setItem("erros", "Endereço invalido"); window.location.href = 'dashboard.html';}
   } else if (CURRENT_COIN != "SWIFT") {
       alert("Lottery and/or HODL transactions only work for SWIFT!"); return;
   }
@@ -423,12 +530,12 @@ function spendf() {
 		balance = change;
 	   } else { utxos = []; balance = 0; }
 
-	   $('#addr-balance').html("" + balance.toFixed(8) + " " + CURRENT_COIN);
-	   $("#addr-balance2").html("$" + usdBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + "");
+	   $('#addr-balance').html("Balance: " + balance.toFixed(8) + " " + CURRENT_COIN);
            setTimeout( function() {
 	      window.open(PARAMS[CURRENT_COIN].explorer + "tx/" + txid);
            }, 1000);
-           alert("Transaction was broadcasted successfully!");
+           //alert("Transaction was broadcasted successfully!");
+		   localStorage.setItem("erros", "Transferencia enviado!");  window.location.href = 'dashboard.html';
 	} else {
 	   console.log(result);
 	   alert("Broadcast failed! Check debug console for details!");
@@ -436,21 +543,24 @@ function spendf() {
 
 	$('#address').prop("disabled", false).val("");
 	$('#amount').prop("disabled", false).val("");
-	$('#submit').prop("disabled", false).html("SEND");
+	$('#vusd').prop("disabled", false).val("");
+	//$('#submit').prop("disabled", false).html("SEND");
 	$('#sendprogress').hide();
+	$('#conteudo').load('dashboard1.html');
     },
     error: function (error) {
         $('#address').prop("disabled", false).val("");
         $('#amount').prop("disabled", false).val("");
         $('#submit').prop("disabled", false).html("SEND");
         $('#sendprogress').hide();
-	alert("Broadcast failed! Check console for the details!");
+	alert("Houve um erro, tentando novamente");
         console.log(error);
     }
   });
   },
    error: function () {
-    alert("Failed to connect to the server!");
+    localStorage.setItem("erros", "Sem conexao com a rede");
+	window.location.href = 'dashboard.html';
   }
  });
 }
@@ -536,7 +646,7 @@ jQuery(document).ready(function() {
   }
 */
   // Private key login
- /* $('#privlogintoggle').click(function() {
+  $('#privlogintoggle').click(function() {
    var state = $('#privlogintoggle').attr('aria-pressed');
    if(state == "false") {
     $('#email').val("");
@@ -551,7 +661,7 @@ jQuery(document).ready(function() {
     $('#btnPasswordEye').show();
    }
   });
-*/
+
   // Copying to clipboard - Tooltip
   $('.clipboard').tooltip({
     trigger: 'click',
