@@ -115,6 +115,7 @@ jQuery.ajax({
 		var ltcbalance = Math.round(localStorage.getItem("blcsltc") * 100);
         var ltcbalance = Math.ceil(ltcbalance)/100;
 		document.getElementById('ltcbalance').innerHTML = ltcbalance; 
+		document.getElementById('ltcbalance1').innerHTML = ltcbalance; 
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
@@ -226,6 +227,7 @@ jQuery.ajax({
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
 		document.getElementById('swibalance').innerHTML = swibalance; 
+		document.getElementById('swibalance1').innerHTML = swibalance; 
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
@@ -363,7 +365,7 @@ usdSwi();
 			 </td>
 		 <td>
 		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance">0.00</span></a>
-		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="ltcbalance1">0.00</span></a>
 		 </td>
          <td>
 		 <a class="menudesktop" onclick="carregar2('coin/litecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdltc">0.00</span></a>
@@ -400,7 +402,7 @@ usdSwi();
 			 </td>
 		 <td>
 		 <a class="menudesktop" onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="swibalance">0.00</span></a>
-		 <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="swibalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="swibalance1">0.00</span></a>
 		 </td>
          <td>
 		 <a class="menudesktop" onclick="carregar2('coin/swiftcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdswi">0.00</span></a>
