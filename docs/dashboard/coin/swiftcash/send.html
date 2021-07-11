@@ -1,38 +1,46 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
+<script>    		
+// Obtém os dados da localStorage
+var adrswi = localStorage.getItem('adrswi');
+if (typeof adrswi !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	     var balance=0;
+         var utxos=[];
+         var sum = 0;
+         utxos = result; 
+	     for(i in utxos) {
+          sum += Number(utxos[i].value/ 1);
+          bbswi = sum;
+		  localStorage.setItem("bbswi", bbswi);
+         } 
+       
+         //Se o balanço esta zerado, formatar corretamente
+//var bbswi = bbswi.replace(, " 0.00");
+		 if (bbswi == "[object HTMLSpanElement]") {  	 
+  $('#bbswi1').html('0.00');
+  $('#bbswi').html('0.00');
+  }   
+  else
+  {
+  $("#bbswi").html(bbswi);
+  $("#bbswi1").html(bbswi);
+		
+  	}
+		//alert(bbswi1);
+      },
    
-   <script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
+});	
+}
+
 </script>
 <script>
    $.ajax({
@@ -122,7 +130,7 @@
                      <div class="modal-content cs_modal">
 	                  
 						  <div class="border_style" style="background-color: #fff;">
-                              <h4> <span id="bbbswi">0.0000000 SWIFT</span></h4>
+                              <h4> <span id="bbbswi">0.0000000</span> SWIFT</h4>
                               </div>
 							  
                         <div class="modal-body">
