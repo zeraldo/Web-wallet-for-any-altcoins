@@ -71,14 +71,13 @@ jQuery.ajax({
 		
 //Se o balanço esta zerado, formatar corretamente
  if (bbltc == 0) {  	 
-  
   $('#bbltc1').html('0.00');
   $('#bbltc').html('0.00');
   }   
   else
   {
   	$('#bbltc1').html(bbltc);
-		$('#bbltc').html(bbltc);
+	$('#bbltc').html(bbltc);
 		
   	}
 		//alert(bbswi1);
@@ -114,8 +113,19 @@ jQuery.ajax({
 		
 		var ltcbalance = Math.round(localStorage.getItem("blcsltc") * 100);
         var ltcbalance = Math.ceil(ltcbalance)/100;
+		//Se o balanço esta zerado, formatar corretamente
+ if (ltcbalance == 0) {  	 
+ 
+		document.getElementById('ltcbalance').innerHTML = 0.00; 
+		document.getElementById('ltcbalance1').innerHTML = 0.00; 
+  }   
+  else
+  {
+  	
 		document.getElementById('ltcbalance').innerHTML = ltcbalance; 
 		document.getElementById('ltcbalance1').innerHTML = ltcbalance; 
+		
+  	}
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
@@ -226,8 +236,18 @@ jQuery.ajax({
 		
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
+		 if (swibalance == 0) {  	 
+		document.getElementById('swibalance').innerHTML = 0.00; 
+		document.getElementById('swibalance1').innerHTML = 0.00; 
+  }   
+  else
+  {
+  	
+		
 		document.getElementById('swibalance').innerHTML = swibalance; 
 		document.getElementById('swibalance1').innerHTML = swibalance; 
+		
+  	}
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
