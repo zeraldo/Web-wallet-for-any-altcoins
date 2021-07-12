@@ -1,6 +1,6 @@
 
 <script>
-localStorage.setItem("ubalance", "0");
+var gbalance = 0;
 </script>
 
 <script>    		
@@ -127,6 +127,8 @@ jQuery.ajax({
 		document.getElementById('ltcbalance').innerHTML = ltcbalance; 
 		document.getElementById('ltcbalance1').innerHTML = ltcbalance; 
 		
+		gbalance = ltcbalance + gbalance;
+		
   	}
     },
 	complete: function() {
@@ -239,15 +241,16 @@ jQuery.ajax({
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
 		 if (swibalance == 0) {  	 
-		document.getElementById('swibalance').innerHTML = "0.00"; 
-		document.getElementById('swibalance1').innerHTML = "0.00"; 
+		document.getElementById('swibalance').innerHTML = 0.00; 
+		document.getElementById('swibalance1').innerHTML = 0.00; 
   }   
   else
   {
   	
-		
 		document.getElementById('swibalance').innerHTML = swibalance; 
 		document.getElementById('swibalance1').innerHTML = swibalance; 
+		
+		gbalance = swibalance + gbalance;
 		
   	}
     },
@@ -264,9 +267,8 @@ usdSwi();
 //Exibir balanço geral
 window.onload = function () {	
 function gebalance() {
- var ubalance = swibalance + ltcbalance;
  $('#ubalance').html(ubalance);
- setTimeout(gebalance, 99999);
+ setTimeout(gebalance, 5000);
 }
 gebalance();
 }
