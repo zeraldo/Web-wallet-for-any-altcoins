@@ -19,28 +19,6 @@ $("#email").val(iduser);
                      <!-- sign_in  -->
                      <div class="modal-content cs_modal">
                       
-	                               <!--   <div class="addresserro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:existemailh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Endereço invalido</h1>
-									  <br> 
-									</div>    
-									
-									 <div class="otherro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
-									  <br> 
-									</div>  
-									 
-									 <div class="funderro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 10px 10px 1px 10px;color: red;">Fundos insuficiente</h1>
-									  <br> 
-									</div> --> 
-		
-		
                         <div class="modal-body">
 					   
 						  <select id="moeda" style="
@@ -63,7 +41,7 @@ $("#email").val(iduser);
 						  <option value="SwiftCash">SwiftCash</option>
 						  </select>  		 
 							
-                          <input autocomplete="off" type="text" id="endereco" name="address" onkeyup="usdtoswi(this.value)" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+                          <input autocomplete="off" type="text" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
 								 	 
 								   <table>
                                  <tr>
@@ -136,9 +114,18 @@ $(document).ready(function(){
   </script>
 
  <script>	 
+//Verificar se o formulario esta preenchido
+function valid_form (){
+if(document.getElementById("nome").value.length < 3){
+alert('Por favor, Digita o endereço' + moeda);
+document.getElementById("nome").focus();
+return false
+}
+}
 //Começar o processo de compra
 function compra2()
 {
+  valid_form();
   $('.mainweb').hide();
   $('.progressbara').show();
 
@@ -212,6 +199,7 @@ function compra2()
 //Começar o processo de compra
 function compra()
 {
+  valid_form();
   $('.mainweb').hide();
   $('.progressbara').show();
 
