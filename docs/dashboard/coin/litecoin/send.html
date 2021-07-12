@@ -1,109 +1,39 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
+<script>    		
+//Exibir saldo litecoin
+// Obtém os dados da localStorage
+var adrltc = localStorage.getItem('adrltc');
+if (typeof adrltc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+         var bbltc = result.balance / 100000000;
+          
+		 localStorage.setItem("bbltc", bbltc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbltc == 0) {  	 
+  $('#bbltc').html('0.0000000' + ' LTC');
+  }   
+  else
+  {
+	$('#bbltc').html(bbltc);
+		
+  	}
+		//alert(bbswi1);
+      },
    
-   <script>    		
-   // Obtém os dados da localStorage
-   $("#bbltc").html('0.00');
-   var adrltc = localStorage.getItem('adrltc');
-   if (typeof adrltc !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.ltcftcash.cc/api/unspent/' + adrltc,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbltc = sum;
-   		  localStorage.setItem("bbltc", bbltc);
-            } 
-   		$("#bbltc").html(bbltc);
-         },
-      
-   });	
-   }
+});	
+}
 </script>
-<script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=ltcftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.ltcftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function ltctousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoltc(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsltc'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   } 
-</script>   
-	
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -122,7 +52,7 @@
                      <div class="modal-content cs_modal">
 	                  
 						  <div class="border_style" style="background-color: #fff;">
-                              <h4> <span id="bbbltc">0.0000000 LTC</span></h4>
+                              <h4> <span id="bbltc">0.0000000 LTC</span></h4>
                               </div>
 							  
                         <div class="modal-body">
