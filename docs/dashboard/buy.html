@@ -112,42 +112,6 @@ $(document).ready(function(){
  $('.funderro').hide();
  });
   </script>
- 
- <script>
-function checkInputs(inputs) {
-
-  var filled = true;
-  
-  inputs.forEach(function(input) {
-      
-    if(input.value === "") {
-        filled = false;
-    }
-  
-  });
-  
-  return filled;
-  
-}
-
-var inputs = document.querySelectorAll("input");
-var button = document.querySelector("button");
-
-inputs.forEach(function(input) {
-    
-  input.addEventListener("keyup", function() {
-
-    if(checkInputs(inputs)) {
-      button.disabled = false;
-    } else {
-      button.disabled = true;
-    }
-
-  });
-
-});
-
-</script>
 
  <script>	 
 //Começar o processo de compra
@@ -226,7 +190,7 @@ function compra2()
 //Começar o processo de compra
 function compra()
 {
-  valid_form();
+
   $('.mainweb').hide();
   $('.progressbara').show();
 
