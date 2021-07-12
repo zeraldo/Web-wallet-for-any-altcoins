@@ -59,14 +59,14 @@ $("#email").val(iduser);
  
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;" disabled="disabled>PROSSEGUIR...</a>
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
 									
                               </div>
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
-									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;" disabled="disabled>PROSSEGUIR...</a>
+									 <a onclick="valid_form()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
 									
                               </div>
 							  
@@ -114,17 +114,33 @@ $(document).ready(function(){
   </script>
  
  <script>	 
- var inputs = $('input').on('keyup', verificarInputs);
-function verificarInputs() {
-    const preenchidos = inputs.get().every(({value}) => value)
-    $('compra2').prop('disabled', !preenchidos);
-	$('compra').prop('disabled', !preenchidos);
+
+//Verificar se o formulario esta preenchido
+function valid_form(){
+if(document.getElementById("moeda").value.length < 3){
+alert('Eescolha a moeda');
+ }
+
+else{
+if(document.getElementById("").value.length < 3){
+alert('Informa o endereço');
+}
+else{
+if(document.getElementById("").value.length < 3){
+alert('Informa o valor desejado em Kwanza');
+}
+else
+{
+compra2();
 }
 
+}
+
+}
 //Começar o processo de compra
 function compra2()
 {
-  valid_form();
+ 
   $('.mainweb').hide();
   $('.progressbara').show();
 
