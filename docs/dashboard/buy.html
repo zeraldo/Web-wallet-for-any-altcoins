@@ -47,10 +47,10 @@ $("#email").val(iduser);
                                  <tr>
                                     <td>
                                        <input type="text" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" id="kwanza">
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" id="kwanza" required>
                                     </td>
                                     <td> <input type="text" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar" required></td>
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar"></td>
                                     
                                  </tr>
                               </table>
@@ -65,7 +65,7 @@ $("#email").val(iduser);
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
-									 <a onclick="valid_form()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
 									
                               </div>
@@ -114,35 +114,18 @@ $(document).ready(function(){
   </script>
  
  <script>	 
-
-//Verificar se o formulario esta preenchido
-function valid_form(){
-
-if(document.getElementById("moeda").value.length < 3){
-alert('Eescolha a moeda');
- }
-
- else
- {
- if(document.getElementById("endereco").value.length < 3){
-alert('Informa o endereço');
+function check_form(){
+    var inputs = document.getElementsByClassName('required');
+  var len = inputs.length;
+  var valid = true;
+  for(var i=0; i < len; i++){
+     if (!inputs[i].value){ valid = false; }
+  }
+  if (!valid){
+    alert('Por favor preencha todos os campos.');
+    return false;
+  } else { return true; }
 }
-}
-else
-{
-if(document.getElementById("kwanza").value.length < 3){
-alert('Informa o valor desejado em Kwanza');
-}
-}
-else
-{
-compra2();
-}
-}
- }
-  
-}
-
 //Começar o processo de compra
 function compra2()
 {
