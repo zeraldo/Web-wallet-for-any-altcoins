@@ -241,8 +241,8 @@ jQuery.ajax({
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
 		 if (swibalance == 0) {  	 
-		document.getElementById('swibalance').innerHTML = 0.00; 
-		document.getElementById('swibalance1').innerHTML = 0.00; 
+		document.getElementById('swibalance').innerHTML = "0.00";  
+		document.getElementById('swibalance1').innerHTML = "0.00"; 
   }   
   else
   {
@@ -266,10 +266,10 @@ usdSwi();
 <script>
 //Exibir balanço geral
 window.onload = function () {	
-function gebalance() {
- $('#ubalance').html(ubalance);
+function ggebalance() {
+ $('#ubalance').html(gbalance);
  alert(ubalance);
- setTimeout(gebalance, 50000);
+ setTimeout(ggebalance, 50000);
 }
 gebalance();
 }
