@@ -443,9 +443,9 @@ function spendf() {
   $('#amount').prop("disabled", true);
   $('#submit').prop("disabled", true);
   
-  $('#sendprogress').show();
-  $('.progressbara').show();
-  $('.mainweb').hide();
+  $('#sendprogress1').show();
+  $('.progressbara1').show();
+  $('.mainweb1').hide();
   
   // Create the transaction
   tx = new PARAMS[CURRENT_COIN].coinjs.TransactionBuilder(PARAMS[CURRENT_COIN].network);
