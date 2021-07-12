@@ -32,7 +32,7 @@ $("#email").val(iduser);
     font-family: inherit;
     font-size: 15px;
     line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
-						  <option value="" selected data-default>Moeda</option>
+						  <option value="" disabled="disabled">Moeda</option>
                           <option value="Bitcoin">Bitcoin</option>
 						  <option value="Ethereum">Ethereum</option>
 						  <option value="Litecoin">Litecoin</option>
@@ -59,14 +59,14 @@ $("#email").val(iduser);
  
                               <div class="menumobile  form-row social_login_btn">
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+                                    -webkit-transition: 0.5s;transition: 0.5s;" disabled="disabled>PROSSEGUIR...</a>
 									
                               </div>
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
 									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+                                    -webkit-transition: 0.5s;transition: 0.5s;" disabled="disabled>PROSSEGUIR...</a>
 									
                               </div>
 							  
@@ -112,39 +112,19 @@ $(document).ready(function(){
  $('.funderro').hide();
  });
   </script>
-
- <script>	
-var spanfun = 0; 
-//Verificar se o formulario esta preenchido
-function valid_form(){
-if(document.getElementById("endereco").value.length < 3){
-alert('Por favor, Digita o endereço da moeda');
-}
-else
-{
-var spanfun = spanfun + 1; 
+ 
+ <script>	 
+ var inputs = $('input').on('keyup', verificarInputs);
+function verificarInputs() {
+    const preenchidos = inputs.get().every(({value}) => value)
+    $('compra2').prop('disabled', !preenchidos);
+	$('compra').prop('disabled', !preenchidos);
 }
 
-if(document.getElementById("moeda").value.length < 3){
-alert('Escolha a moeda que desejas comprar');  
-}
-{
-var spanfun = spanfun + 1; 
-}
-
-if(document.getElementById("kwanza").value.length < 3){
-alert('Informa a quantidade em kz');  
-}
-{
-var spanfun = spanfun + 1; 
-}
-
-}
 //Começar o processo de compra
 function compra2()
 {
   valid_form();
-   if (spanfun == 3) {  
   $('.mainweb').hide();
   $('.progressbara').show();
 
@@ -213,13 +193,12 @@ function compra2()
         }
     });
 }		
-}
+
 
 //Começar o processo de compra
 function compra()
 {
   valid_form();
-   if (spanfun == 3) {  
   $('.mainweb').hide();
   $('.progressbara').show();
 
@@ -288,7 +267,6 @@ function compra()
         }
     });
 }		
-}
     </script>
 <!-- Barra de progresso -->
  <style>
