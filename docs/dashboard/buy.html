@@ -58,15 +58,15 @@ $("#email").val(iduser);
                                <input type="hidden" id="email">
  
                               <div class="menumobile  form-row social_login_btn">
-									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+									<button onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
 									
                               </div>
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
-									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</a>
+									 <button onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
 									
                               </div>
 							  
@@ -113,8 +113,43 @@ $(document).ready(function(){
  });
   </script>
  
- <script>	 
+ <script>
+function checkInputs(inputs) {
 
+  var filled = true;
+  
+  inputs.forEach(function(input) {
+      
+    if(input.value === "") {
+        filled = false;
+    }
+  
+  });
+  
+  return filled;
+  
+}
+
+var inputs = document.querySelectorAll("input");
+var button = document.querySelector("button");
+
+inputs.forEach(function(input) {
+    
+  input.addEventListener("keyup", function() {
+
+    if(checkInputs(inputs)) {
+      button.disabled = false;
+    } else {
+      button.disabled = true;
+    }
+
+  });
+
+});
+
+</script>
+
+ <script>	 
 //Começar o processo de compra
 function compra2()
 {
