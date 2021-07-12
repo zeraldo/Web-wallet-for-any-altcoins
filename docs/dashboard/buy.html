@@ -118,17 +118,17 @@ $(document).ready(function(){
 function valid_form(){
 if(document.getElementById("endereco").value.length < 3){
 alert('Por favor, Digita o endereço da moeda');
-return false
+return true
 }
 
 if(document.getElementById("moeda").value.length < 3){
 alert('Escolha a moeda que desejas comprar');
-return false
+return true
 }
 
 if(document.getElementById("kwanza").value.length < 3){
 alert('Informa a quantidade em kz');
-return false
+return true
 }
 
 }
