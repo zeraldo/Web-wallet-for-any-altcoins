@@ -114,25 +114,29 @@ $(document).ready(function(){
   </script>
 
  <script>	
-
-function spanfun(){ 
-var spanfun = 0;
-}
+var spanfun = 0; 
 //Verificar se o formulario esta preenchido
 function valid_form(){
 if(document.getElementById("endereco").value.length < 3){
 alert('Por favor, Digita o endereço da moeda');
-spanfun()
+}
+else
+{
+var spanfun = spanfun + 1; 
 }
 
 if(document.getElementById("moeda").value.length < 3){
-alert('Escolha a moeda que desejas comprar');
-spanfun()
+alert('Escolha a moeda que desejas comprar');  
+}
+{
+var spanfun = spanfun + 1; 
 }
 
 if(document.getElementById("kwanza").value.length < 3){
-alert('Informa a quantidade em kz');
-spanfun()
+alert('Informa a quantidade em kz');  
+}
+{
+var spanfun = spanfun + 1; 
 }
 
 }
@@ -140,6 +144,7 @@ spanfun()
 function compra2()
 {
   valid_form();
+   if (spanfun == 3) {  
   $('.mainweb').hide();
   $('.progressbara').show();
 
@@ -208,12 +213,13 @@ function compra2()
         }
     });
 }		
-
+}
 
 //Começar o processo de compra
 function compra()
 {
   valid_form();
+   if (spanfun == 3) {  
   $('.mainweb').hide();
   $('.progressbara').show();
 
@@ -282,6 +288,7 @@ function compra()
         }
     });
 }		
+}
     </script>
 <!-- Barra de progresso -->
  <style>
