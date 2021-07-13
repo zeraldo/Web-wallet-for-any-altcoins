@@ -1,65 +1,6 @@
 <script>
+var adrltc = localStorage.getItem('adrltc');
 var callpage = localStorage.getItem("urlback");
-  		
-// Obtém os dados da localStorage
-var adrswi = localStorage.getItem('adrswi');
-if (typeof adrswi !== 'undefined') {  	 
-//Verifcar se a variavel está definida
-jQuery.ajax({
-	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    type: "GET", /* or type:"GET" or type:"PUT" */
-    dataType: "json",
-    data: {
-    },
-    success: function (result) { 
-	     var balance=0;
-         var utxos=[];
-         var sum = 0;
-         utxos = result; 
-	     for(i in utxos) {
-          sum += Number(utxos[i].value/ 1);
-          bbswi = sum;
-		  localStorage.setItem("bbswi", bbswi);
-         } 
-		$("#bbswi").html(bbswi);
-      },
-   
-});	
-}
-</script>
-<script> 
-function usdSwi() {
-jQuery.ajax({
-	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    type: "GET", /* or type:"GET" or type:"PUT" */
-    dataType: "json",
-    data: {
-    },
-    success: function (result) { 
-		var pricusd = Number(result.swiftcash.usd);
-		var bbswi = localStorage.getItem('bbswi');
-        sswi = bbswi * pricusd;
-		localStorage.setItem("blcsswi", sswi); 
-		pricusdswi = pricusd;
-		document.getElementById('pricusdswi').innerHTML = pricusdswi;
-    },
-	complete: function() {
-             //  alert("Zeraldo Zua")
-				setTimeout(usdSwi, 30000);
-            },
-  /*  error: function () {
-       alert("Erro total litecoin");
-    }
-	*/
-});	
-}
-usdSwi();
 </script>
 <section class="main_content dashboard_part">
     
@@ -86,7 +27,7 @@ usdSwi();
 	   <a class="menudesktop" onclick="carregar2(callpage)" href="#" style="color:#000">voltar</a>
 	   </div>
 								 <hr>
-                                       <center> <h5 class="modal-title">HISTORICO</h5> </center>
+                                       <center> <h5 class="modal-title">HISTÓRICO</h5> </center>
                                     </div>
 									 <div style="overflow: auto;">
                                     <div class="modal-body" style="padding-top: 10px !important;
@@ -124,10 +65,15 @@ usdSwi();
     </div>
 
 </section>
-<script>   		
+ 
+<script>    		
+//Exibir saldo litecoin
+// Obtém os dados da localStorage
 
+if (typeof adrltc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
 jQuery.ajax({
-	url: 'https://explorer.swiftcash.cc/api/address/' + adrswi + '/100/1',
+	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -136,28 +82,28 @@ jQuery.ajax({
     data: {
     },
     success: function (result) { 
-	    <!-- var zzz = result.txCount; -->
-		<!-- alert(zzz); -->
-		 $.each(result.transactions, function (i, element) {
-		 
-         var date = new Date(element.timestamp*1000);
-         date = (+date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes()+
-          ":"+date.getSeconds());
+	
+	 $.each(result.txrefs, function (i, element) {
+		  
 		 		 //var element.txid = meu.add(element.txid);
-					
-                            $('#tbl').append(
+				 date1 = element.confirmed.replace("T", " ");
+				 date = date1.replace("Z", " ");
+				 
+				 var amount = element.ref_balance / 100000000;
+                     $('#tbl').append(
+					 
 					        '<tr>' + 
-							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + element.value + '</a></td>' +
-							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + date + '</td>' +
-							'<td><a href="https://explorer.swiftcash.cc/tx/' + element.txid + '" style="color:#ffffff">' + element.txid + '</td>' +
+							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + amount + '</a></td>' +
+							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + date + '</td>' +
+							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + element.tx_hash + '</td>' +
                             '</tr>'
                         );
-                    }); 
-    },
-	 
+                    });
+	   
+//Se o balanço esta zerado, formatar corretamente
+		//alert(bbswi1);
+      },
+   
 });	
+}
 </script>
