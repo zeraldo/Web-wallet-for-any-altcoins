@@ -126,9 +126,7 @@ jQuery.ajax({
   	
 		document.getElementById('ltcbalance').innerHTML = ltcbalance; 
 		document.getElementById('ltcbalance1').innerHTML = ltcbalance; 
-		
-		gbalance = ltcbalance + gbalance;
-		
+		 
   	}
     },
 	complete: function() {
@@ -141,8 +139,48 @@ jQuery.ajax({
 usdLtc();
 
 </script>
-
-
+ 
+<script>    		
+//Exibir o saldo dogecoin
+// Obtém os dados da localStorage
+var adrdgc = localStorage.getItem('adrdgc');
+if (typeof adrdgc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://api.blockcypher.com/v1/doge/main/addrs/' + adrdgc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+		 
+         var bbdgc = result.balance / 100000000;
+         alert(bbdgc); 
+		 localStorage.setItem("bbdgc", bbdgc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbdgc == 0) {  	 
+  $('#bbdgc1').html('0.00');
+  $('#bbdgc').html('0.00');
+  }   
+  else
+  {
+  
+  	$('#bbdgc1').html(bbdgc);
+	$('#bbdgc').html(bbdgc);
+		
+  	}
+		//alert(bbswi1);
+      },
+   
+});	
+}
+</script>
+ 
 <script>
 //Exibir o preço do dogecoin
 function usdDgc() {
@@ -157,13 +195,35 @@ jQuery.ajax({
     },
     success: function (result) { 
 		var pricusd = Number(result.dogecoin.usd);
-		var pricusddgc = pricusd;
+		var bbdgc = localStorage.getItem('bbdgc');
+        sdgc = bbdgc * pricusd;
+		localStorage.setItem("blcsdgc", sdgc); 
+		pricusddgc = pricusd;
 	    //Formatar a saida do preço para dolar
-        var pricusdgc = pricusddgc.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        var pricusdgc = pricusddgc.toLocaleString('pt-br', {minimumFractionDigits: 0});
  
 		document.getElementById('pricusddgc').innerHTML = pricusddgc;
 		document.getElementById('pricusddgc1').innerHTML = pricusddgc;
-		  
+		
+		var dgcbalance = Math.round(localStorage.getItem("blcsdgc") * 100);
+		
+        var dgcbalance = Math.ceil(dgcbalance)/100;
+		 
+		//Se o balanço esta zerado, formatar corretamente
+       		
+		 if (dgcbalance == 0) {  	 
+ 
+		document.getElementById('dgcbalance').innerHTML = "0.00"; 
+		document.getElementById('dgcbalance1').innerHTML = "0.00"; 
+  }   
+  else
+  {
+  	
+		document.getElementById('dgcbalance').innerHTML = dgcbalance; 
+		document.getElementById('dgcbalance1').innerHTML = dgcbalance; 
+		 
+  	}
+	 
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
@@ -173,10 +233,8 @@ jQuery.ajax({
 });	
 }
 usdDgc();
-
 </script>
-
-
+ 
 <script>
 //Exibir o preço do bitcoin
 function usdBtc() {
@@ -249,9 +307,7 @@ jQuery.ajax({
   	
 		document.getElementById('swibalance').innerHTML = swibalance; 
 		document.getElementById('swibalance1').innerHTML = swibalance; 
-		
-		gbalance = swibalance + gbalance;
-		
+		 
   	}
     },
 	complete: function() {
@@ -263,18 +319,7 @@ jQuery.ajax({
 }
 usdSwi();
 </script>
-<script>
-//Exibir balanço geral
-window.onload = function () {	
-function ggebalance() {
- $('#ubalance').html(gbalance);
- alert(ubalance);
- setTimeout(ggebalance, 50000);
-}
-gebalance();
-}
- 
-</script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
      
@@ -399,10 +444,11 @@ gebalance();
 		 <a class="menudesktop"onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">DOGECOIN</a>
 		 </td>
          <td><a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
-		     <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbdgc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbdgc1" class="counter">0.00</span></a>
 			 </td>
 		 <td>
-		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgbalance">0.00</span></a>
+		 <a class="menudesktop" onclick="carregar2('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgcbalance">0.00</span></a>
+		 
 		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="dgcbalance1">0.00</span></a>
 		 </td>
          <td>
