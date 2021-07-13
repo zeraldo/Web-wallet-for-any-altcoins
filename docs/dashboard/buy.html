@@ -2,6 +2,41 @@
 var iduser = localStorage.getItem("user"); 
 $("#email").val(iduser); 
 </script>
+
+<script>
+function formatt() {
+  var elemento = document.getElementById('kwanza');
+  var valor = elemento.value;
+  
+  valor = valor + '';
+  valor = parseInt(valor.replace(/[\D]+/g,''));
+  valor = valor + '';
+  valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+  if (valor.length > 6) {
+    valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+  }
+
+  elemento.value = valor;
+}
+
+function format() {
+  var elemento = document.getElementById('dolar');
+  var valor = elemento.value;
+  
+  valor = valor + '';
+  valor = parseInt(valor.replace(/[\D]+/g,''));
+  valor = valor + '';
+  valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+  if (valor.length > 6) {
+    valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+  }
+
+  elemento.value = valor;
+}
+</script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -47,9 +82,9 @@ $("#email").val(iduser);
                                  <tr>
                                     <td>
                                        <input type="text" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="KWANZA" id="kwanza" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" onkeyup="formatt()" name="valor[]" placeholder="KWANZA" id="kwanza" required>
                                     </td>
-                                    <td> <input type="text" id="dolar" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                    <td> <input type="text" id="dolar" onkeyup="format()" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar"></td>
                                     
                                  </tr>
@@ -57,17 +92,31 @@ $("#email").val(iduser);
 								 
                                <input type="hidden" id="email">
  
-                              <div class="menumobile  form-row social_login_btn">
+                              <div class="ablemob menumobile  form-row social_login_btn">
 									<button onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
 									
                               </div>
 							  
-							   
-                              <div class="menudesktop form-row social_login_btn">
-									 <button onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+							  
+                              <div class="ablemob1 menumobile  form-row social_login_btn">
+									<button class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
 									
+                              </div>
+							  
+							   
+                              <div class="abledesk menudesktop form-row social_login_btn">
+									 <button onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+								 
+                              </div>
+							  
+							  
+                              <div class="abledesk1 menudesktop form-row social_login_btn">
+									 <button href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+								 
                               </div>
 							  
                         </div>
@@ -80,7 +129,7 @@ $("#email").val(iduser);
    </div>
 </section>
 </span>
-
+ 
 <script>
    localStorage.setItem("urlback", "coin/buy.html"); 
 </script>
@@ -112,6 +161,61 @@ $(document).ready(function(){
  $('.funderro').hide();
  });
   </script>
+
+
+<script>
+//Validar o preenchimento do inpu
+$('.abledesk1').show();
+$('.abledesk').hide();
+
+$('.ablemob1').show();
+$('.ablemob').hide();
+
+function checkInputs(inputs) {
+
+  var filled = true;
+  
+  inputs.forEach(function(input) {
+      
+    if(input.value === "") {
+        filled = false;
+    }
+  
+  });
+  
+  return filled;
+  
+}
+
+var inputs = document.querySelectorAll("input");
+var button = document.querySelector("button");
+
+inputs.forEach(function(input) {
+    
+  input.addEventListener("keyup", function() {
+
+    if(checkInputs(inputs)) {
+	   $('.abledesk1').hide();
+       $('.abledesk').show();
+	   
+	   $('.ablemob1').hide();
+       $('.ablemob').show();
+      
+    } else {
+	  
+	   $('.abledesk1').show();
+       $('.abledesk').hide();
+	   
+	   $('.ablemob1').show();
+       $('.ablemob').hide();
+      
+    }
+
+  });
+
+});
+
+</script>
 
  <script>	 
 //Começar o processo de compra
