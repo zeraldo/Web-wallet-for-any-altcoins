@@ -36,6 +36,7 @@ jQuery.ajax({
   }   
   else
   {
+  var bbswi = arred(bbswi,4);
   $("#bbswi").html(bbswi);
   $("#bbswi1").html(bbswi);
 		
@@ -76,7 +77,7 @@ jQuery.ajax({
   }   
   else
   {
-  
+    var bbltc = arred(bbltc,4);
   	$('#bbltc1').html(bbltc);
 	$('#bbltc').html(bbltc);
 		
@@ -168,7 +169,7 @@ jQuery.ajax({
   }   
   else
   {
-  
+    var bbdgc = arred(bbdgc,4);
   	$('#bbdgc1').html(bbdgc);
 	$('#bbdgc').html(bbdgc);
 		
@@ -200,7 +201,7 @@ jQuery.ajax({
 		pricusddgc = pricusd;
 	    //Formatar a saida do preço para dolar
         var pricusdgc = pricusddgc.toLocaleString('pt-br', {minimumFractionDigits: 0});
- 
+        var pricusddgc = arred(pricusddgc,4);
 		document.getElementById('pricusddgc').innerHTML = pricusddgc;
 		document.getElementById('pricusddgc1').innerHTML = pricusddgc;
 		
@@ -291,7 +292,7 @@ jQuery.ajax({
 		pricusdswi = pricusd;
 	    //Formatar a saida do preço para dolar
         var pricusswi = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
- 
+        var pricusdswi = arred(pricusdswi,4);
 		document.getElementById('pricusdswi').innerHTML = pricusdswi;
 		document.getElementById('pricusdswi1').innerHTML = pricusdswi;
 		
