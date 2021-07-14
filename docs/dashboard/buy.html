@@ -2,9 +2,9 @@
 var iduser = localStorage.getItem("user"); 
 $("#email").val(iduser); 
 </script>
-
 <script>
-function formatt() {
+  function aoatousd(text){
+   	   
   var elemento = document.getElementById('kwanza');
   var valor = elemento.value;
   
@@ -12,15 +12,22 @@ function formatt() {
   valor = parseInt(valor.replace(/[\D]+/g,''));
   valor = valor + '';
   valor = valor.replace(/([0-9]{2})$/g, ",$1");
-
-  if (valor.length > 6) {
-    valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-  }
-
+ 
   elemento.value = valor;
-}
-
-function format() {
+      
+        var vcoin = document.getElementById("kwanza").value;
+		var vcoin = vcoin.replace(",", ".");
+		
+		var vcoin =  vcoin * 0.001312;
+		 
+   		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+		 
+   		$("#dolar").val('$ ' + vcoin + '');
+      
+           }
+		   
+ function usdtoaoa(text){
+   	   
   var elemento = document.getElementById('dolar');
   var valor = elemento.value;
   
@@ -28,15 +35,20 @@ function format() {
   valor = parseInt(valor.replace(/[\D]+/g,''));
   valor = valor + '';
   valor = valor.replace(/([0-9]{2})$/g, ",$1");
-
-  if (valor.length > 6) {
-    valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
-  }
-
+ 
   elemento.value = valor;
-}
-</script>
-
+      
+        var vcoin = document.getElementById("dolar").value;
+		var vcoin = vcoin.replace(",", ".");
+		
+		var vcoin =  vcoin * 527;
+		 
+   		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+		 
+   		$("#kwanza").val('AOA ' + vcoin + '');
+      
+           }		   
+	 </script>
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -67,7 +79,7 @@ function format() {
     font-family: inherit;
     font-size: 15px;
     line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
-						  <option value="" disabled="disabled">Moeda</option>
+						  <option disabled="disabled">Moeda</option>
                           <option value="Bitcoin">Bitcoin</option>
 						  <option value="Ethereum">Ethereum</option>
 						  <option value="Litecoin">Litecoin</option>
@@ -82,10 +94,10 @@ function format() {
                                  <tr>
                                     <td>
                                        <input type="text" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" onkeyup="formatt()" name="valor[]" placeholder="KWANZA" id="kwanza" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" onkeyup="aoatousd(this.value)" name="valor[]" placeholder="KWANZA" id="kwanza">
                                     </td>
-                                    <td> <input type="text" id="dolar" onkeyup="format()" placeholder="DÓLAR" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;" id="dolar"></td>
+                                    <td> <input type="text" id="dolar" onkeyup="usdtoaoa(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
                                     
                                  </tr>
                               </table>
