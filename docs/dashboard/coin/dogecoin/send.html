@@ -1,11 +1,12 @@
+
 <script>    		
-//Exibir saldo litecoin
+//Exibir o saldo dogecoin
 // Obtém os dados da localStorage
-var adrltc = localStorage.getItem('adrltc');
-if (typeof adrltc !== 'undefined') {  	 
+var adrdgc = localStorage.getItem('adrdgc');
+if (typeof adrdgc !== 'undefined') {  	 
 //Verifcar se a variavel está definida
 jQuery.ajax({
-	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
+	url: 'https://api.blockcypher.com/v1/doge/main/addrs/' + adrdgc,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -15,18 +16,21 @@ jQuery.ajax({
     },
     success: function (result) { 
 	    // var balance=0.00;
-         var bbltc = result.balance / 100000000;
-          
-		 localStorage.setItem("bbltc", bbltc);
+		 
+         var bbdgc = result.balance / 100000000;
+     
+		 localStorage.setItem("bbdgc", bbdgc);
 		
-//Se o balanço esta zerado, formatar corretamente
- if (bbltc == 0) {  	 
-  $('#bbltc').html('0.0000000' + ' LTC');
+//Se o balanço estiver zerado, formatar corretamente
+ if (bbdgc == 0) {  
+  $('#bbdgc').html('0.00' + ' DOGE');
+  
   }   
   else
   {
-	$('#bbltc').html(bbltc + ' LTC');
-		
+  
+	$('#bbdgc').html(bbdgc + ' DOGE');
+
   	}
 		//alert(bbswi1);
       },
@@ -34,6 +38,65 @@ jQuery.ajax({
 });	
 }
 </script>
+<script>
+   $.ajax({
+   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd',
+       headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       type: "GET", /* or type:"GET" or type:"PUT" */
+       dataType: "json",
+       data: {
+       },
+       success: function (result) { 
+   		 var pricusd = Number(result.dogecoin.usd);
+   		 $("#vusdd").val(pricusd);
+     
+   		 var usdpr = 10/pricusd; 
+   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+            
+   		 $("#usdpr").val(usdpr);
+       },
+      /* error: function () {
+          alert("Erro total");
+       }
+   	*/
+   });	
+         function dgctousd(text){
+   	   
+        var vcoin = document.getElementById("amount").value;
+   		var vcoin = vcoin.replace(",", ".");
+   		
+        var vusd = document.getElementById("vusd").value;
+   		var vusd = vusd.replace(",", ".");
+   		
+   		var vusdd = document.getElementById("vusdd").value;
+   		var vusdd = vusdd.replace(",", ".");
+   		 
+        vusd = vcoin * vusdd;
+   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+   		var vusd = vusd.replace(",", ".");
+   		$("#vusd").val(vusd);
+       
+           }
+        
+        function usdtodgc(text){
+   	    
+   		var vusdd = document.getElementById("vusdd").value;
+   		var vusdd = vusdd.replace(",", ".");
+   		 
+        var vusd = document.getElementById("vusd").value;
+   		var vusd = vusd.replace(",", ".");
+   	 
+   		var usdpr = vusd/vusdd; 
+   		
+   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+   		var vcoin = vcoin.replace(",", ".");
+   		$("#amount").val(vcoin);
+       
+           }
+</script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -52,17 +115,17 @@ jQuery.ajax({
                      <div class="modal-content cs_modal">
 	                  
 						  <div class="border_style" style="background-color: #fff;">
-                              <h4> <span id="bbltc">0.0000000 LTC</span></h4>
+                              <h4> <span id="bbdgc">0.0000000 DOGE</span></h4>
                               </div>
 							  
                         <div class="modal-body">
-                          <input autocomplete="off" type="text" id="address1" name="address" onkeyup="usdtoltc(this.value)" placeholder="LZ4n3FuvyRyQtp4WkJPHYFjux1pzGtBq9E" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" required>
+                          <input autocomplete="off" type="text" id="address1" name="address" onkeyup="usdtoltc(this.value)" placeholder="DJyvKJYkCBdeB1YxJkPYozqkcwC1Rhs7ov" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" required>
 								 
 								   <table>
                                  <tr>
                                     <td>
                                        <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" placeholder="LITECOIN" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="ltctousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" placeholder="DOGECOIN" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="ltctousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
                                     </td>
                                     <td> <input type="text" id="vusd" onkeyup="usdtoltc(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required></td>
@@ -88,34 +151,34 @@ jQuery.ajax({
                                     <td>
                                     
 								  <div class="menudesktop form-group col-md-12 text-center">
-								  <a onclick="carregar2('coin/litecoin/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
+								  <a onclick="carregar2('coin/dogecoin/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
                               </div>
 							  
 							  <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/litecoin/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
+                                 <a onclick="carregar('coin/dogecoin/rece.html')" href="#" class="btn_1 full_width">RECEBER</a>
 								 </div>
 							  
                               
                                     </td>
                                     <td> 
 								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/litecoin/histor.html')" href="#" class="btn_1 full_width">HISTÓRICO</a>
+								 <a onclick="carregar2('coin/dogecoin/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
                               </div>
 							  
 							    
                               <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/litecoin/histor.html')" href="#" class="btn_1 full_width">HISTÓRICO</a>
+                                 <a onclick="carregar('coin/dogecoin/histor.html')" href="#" class="btn_1 full_width">HISTORICO</a>
 								</div>
 								
                                  </tr>
                               </table>
 							   				  
 								 <div class="menudesktop form-group col-md-12 text-center">
-								 <a onclick="carregar2('coin/litecoin/key.html')" href="#" class="btn_1 full_width">CHAVES</a>
+								 <a onclick="carregar2('coin/dogecoin/key.html')" href="#" class="btn_1 full_width">CHAVES</a>
                               </div>
 
 								 <div class="menumobile form-group col-md-12 text-center">
-                                 <a onclick="carregar('coin/litecoin/key.html')" href="#" class="btn_1 full_width">CHAVES</a>
+                                 <a onclick="carregar('coin/dogecoin/key.html')" href="#" class="btn_1 full_width">CHAVES</a>
 								</div>
                         </div>
                      </div>
@@ -129,7 +192,7 @@ jQuery.ajax({
 </span>
 
 <script>
-   localStorage.setItem("urlback", "coin/litecoin/send.html"); 
+   localStorage.setItem("urlback", "coin/dogecoin/send.html"); 
 </script>
 <script>
    //Receber valores
@@ -143,7 +206,7 @@ localStorage.setItem("amount", amount);
 		
 var vusd = document.getElementById("vusd").value;
 localStorage.setItem("vusd", vusd); 
-$("#conteudo").load('coin/litecoin/send1.html');
+$("#conteudo").load('coin/dogecoin/send1.html');
 
 $('.mainweb').hide();
 $('.progressbara').show();
