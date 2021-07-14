@@ -1,5 +1,5 @@
 <script>
-var adrltc = localStorage.getItem('adrltc');
+var adrdgc = localStorage.getItem('adrdgc');
 var callpage = localStorage.getItem("urlback");
 </script>
 <section class="main_content dashboard_part">
@@ -70,10 +70,10 @@ var callpage = localStorage.getItem("urlback");
 //Exibir saldo litecoin
 // Obtém os dados da localStorage
 
-if (typeof adrltc !== 'undefined') {  	 
+if (typeof adrdgc !== 'undefined') {  	 
 //Verifcar se a variavel está definida
 jQuery.ajax({
-	url: 'https://api.blockcypher.com/v1/ltc/main/addrs/' + adrltc,
+	url: 'https://api.blockcypher.com/v1/doge/main/addrs/' + adrdgc,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -93,9 +93,9 @@ jQuery.ajax({
                      $('#tbl').append(
 					 
 					        '<tr>' + 
-							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + amount + '</a></td>' +
-							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + date + '</td>' +
-							'<td><a href="https://live.blockcypher.com/ltc/tx/' + element.tx_hash + '" style="color:#fff">' + element.tx_hash + '</td>' +
+							'<td><a href="https://live.blockcypher.com/doge/tx/' + element.tx_hash + '" style="color:#fff">' + amount + '</a></td>' +
+							'<td><a href="https://live.blockcypher.com/doge/tx/' + element.tx_hash + '" style="color:#fff">' + date + '</td>' +
+							'<td><a href="https://live.blockcypher.com/doge/tx/' + element.tx_hash + '" style="color:#fff">' + element.tx_hash + '</td>' +
                             '</tr>'
                         );
                     });
