@@ -20,17 +20,28 @@
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="style.css">
 	 <!-- jquery-->
-	<script src="js/jquery-3.5.0.min.js"></script>
+	 <script src="js/jquery-3.5.0.min.js"></script>
 	
-
+	
 	<script>
-	  
+ 
 if (!localStorage.getItem("user")) {
     localStorage.setItem("null", "");
 } else {
 	$(location).attr('href', '../dashboard/dashboard.html');
 }
-	</script>
+</script>
+
+<script>
+//Pegar o codigo de referencia
+ var crefer = localStorage.getItem("crefer");
+ 
+//Se o codigo referencia estiver errado, adicionar o codigo padrao
+ if (crefer == 0) {  
+  $('#crefer').val('3333333');
+  }  
+
+</script>
 	
 	<style>
 .Separator {
@@ -49,7 +60,14 @@ if (!localStorage.getItem("user")) {
 
 </head>
 
+
+
+								 <input type="text" style="border-radius: 2px !important;
+                                          margin-bottom: 07px !important; padding: 10px 15px !important; border: 1px solid #28a74500!important; height: 53px; font-size: 12px;" value="" id="red">
+										  
+										  
 <body>
+
 	<!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -90,7 +108,7 @@ if (!localStorage.getItem("user")) {
 								
 								<div class="form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-1">
-										<input type="email" class="form-control email" id="email" placeholder="Email" required="required">
+										<input type="email" class="form-control email" id="email" class="email" value="" placeholder="Email" required="required">
 									</div>
 								</div>
 								
@@ -100,7 +118,7 @@ if (!localStorage.getItem("user")) {
 										<i toggle="#password" class="fa fa-fw fa-eye toggle-password field-icon"></i>
 									</div>
 								</div>
-								
+								   
 								<input type="hidden" id="register" value="register">
 								 
 								<div class="btnregister form-group">
@@ -166,8 +184,7 @@ if (!localStorage.getItem("user")) {
 	<script src="js/validator.min.js"></script>
 	<!-- Custom Js -->
 	<script src="js/main.js"></script>
-
-    		
+		
  <script>
   //Condicionar a saida do botao salvar
 $(document).ready(function(){            
@@ -216,7 +233,8 @@ function registeruser()
  'name' : $("#name").val(),
  'email' : $("#email").val(),
  'password' : $("#password").val(),
- 'register' : $("#register").val()
+ 'register' : $("#register").val(),
+ 'crefer' : crefer
  };
     pageurl = 'https://dogkoin.online/enter/register.php';
     //pageurl = 'http://localhost/dogkoin.online/enter/register.php';
