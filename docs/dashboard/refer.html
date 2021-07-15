@@ -52,7 +52,8 @@ jQuery.ajax({
 		 $.each(result.refer_url, function (i, element) {
 		 
          var date = new Date(element);
-		 $("#referurl").val(element.urlrefer); 
+		 $("#referurl").val('vexpay.top/?f=' + element.urlrefer); 
+		 
 		 
 		  }); 
     },
