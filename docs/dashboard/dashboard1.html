@@ -36,9 +36,9 @@ jQuery.ajax({
   }   
   else
   {
-  var bbswi = arred(bbswi,4);
-  $("#bbswi").html(bbswi);
-  $("#bbswi1").html(bbswi);
+  
+  $("#bbswi").html(arred(bbswi,4));
+  $("#bbswi1").html(arred(bbswi,4));
 		
   	}
 		//alert(bbswi1);
@@ -115,6 +115,39 @@ jQuery.ajax({
 		
 		var ltcbalance = Math.round(localStorage.getItem("blcsltc") * 100);
         var ltcbalance = Math.ceil(ltcbalance)/100;
+		
+						
+//Começa a enviar os dados no servidor para arrumar o balanço
+ var dadosajax = {
+ 
+ 'b_ltc' : ltcbalance,
+ <!-- 'b_swiftc' : swibalance, -->
+ 'email' : iduser
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'https://dogkoin.online/diversos/blltc.php?email=' + iduser;
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+         
+        //retorna o resultado da pagina para onde enviamos os dados
+        
+    });
+	//Termina de enviar o balanço
+       		
 		//Se o balanço esta zerado, formatar corretamente
  if (ltcbalance == 0) {  	 
  
@@ -180,7 +213,13 @@ jQuery.ajax({
 });	
 }
 </script>
+
+
+<script>
  
+    
+</script>     
+
 <script>
 //Exibir o preço do dogecoin
 function usdDgc() {
@@ -208,13 +247,46 @@ jQuery.ajax({
 		var dgcbalance = Math.round(localStorage.getItem("blcsdgc") * 100);
 		
         var dgcbalance = Math.ceil(dgcbalance)/100;
-		 
+		localStorage.setItem('dgcbalance', dgcbalance);
 		//Se o balanço esta zerado, formatar corretamente
+		
+			
+//Começa a enviar os dados no servidor para arrumar o balanço
+ var dadosajax = {
+ 
+ 'b_doge' : dgcbalance,
+ <!-- 'b_swiftc' : swibalance, -->
+ 'email' : iduser
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'https://dogkoin.online/diversos/bldgc.php?email=' + iduser;
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+         
+        //retorna o resultado da pagina para onde enviamos os dados
+        
+    });
+	//Termina de enviar o balanço
        		
 		 if (dgcbalance == 0) {  	 
- 
+       
 		document.getElementById('dgcbalance').innerHTML = "0.00"; 
 		document.getElementById('dgcbalance1').innerHTML = "0.00"; 
+	
   }   
   else
   {
@@ -298,6 +370,39 @@ jQuery.ajax({
 		
 		var swibalance = Math.round(localStorage.getItem("blcsswi") * 100);
         var swibalance = Math.ceil(swibalance)/100;
+		
+				
+//Começa a enviar os dados no servidor para arrumar o balanço
+ var dadosajax = {
+ 
+ 'b_swiftc' : swibalance,
+ <!-- 'b_swiftc' : swibalance, -->
+ 'email' : iduser
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'https://dogkoin.online/diversos/blswi.php?email=' + iduser;
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+         
+        //retorna o resultado da pagina para onde enviamos os dados
+        
+    });
+	//Termina de enviar o balanço
+       		
 		 if (swibalance == 0) {  	 
 		document.getElementById('swibalance').innerHTML = "0.00";  
 		document.getElementById('swibalance1').innerHTML = "0.00"; 
@@ -320,6 +425,43 @@ jQuery.ajax({
 usdSwi();
 </script>
 
+<script>   		
+//Exibiri o saldo total em dólar
+$(document).ready(function(){ 
+
+ function usdBalan() { 		
+jQuery.ajax({
+	url: 'https://dogkoin.online/diversos/geralfund.php?email=' + iduser,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	 
+    $.each(result.bb_usd, function (i, element) {
+ 
+	document.getElementById('ubalance').innerHTML = element.bb_usdd;
+	  
+	
+	}); 
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdBalan(), 120000033);
+            },
+	 
+});	
+
+}
+usdBalan();
+ });
+</script>
+ 	
+</script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
      
@@ -335,7 +477,7 @@ usdSwi();
 									
                                         <div class="single_quick_activity">
                                             <h4>Bitcoin</h4>
-                                            <h3><i class="fab fa-btc"></i> <span class="counter">0.00</span> </h3>
+                                            <h3><i class="fab fa-btc"></i> <span id="bbalance" class="counter">0.00</span> </h3>
                                              
                                         </div>
 										
