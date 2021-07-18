@@ -60,7 +60,35 @@ function arred(d,casas) {
    return Math.floor(d * aux)/aux
 }
 </script>
-	<script src="//code-sa1.jivosite.com/widget/yMVSSgEBcY" async></script>
+	
+	<!-- Messenger Plugin de bate-papo Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin de bate-papo code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "183106910075655");
+      chatbox.setAttribute("attribution", "biz_inbox");
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v11.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/pt_PT/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+	
   <style> 
 .menumobile {
     opacity: 0;  
