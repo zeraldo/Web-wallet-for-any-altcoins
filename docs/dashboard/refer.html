@@ -1,7 +1,9 @@
 <script>   		
 //Area ainda sendo desenvolvido, exibir todos os usuarios convidados do cliente
+var total = 0;
 jQuery.ajax({
-	url: 'https://dogkoin.online/diversos/ver_refer.php?email=' + iduser,
+	 
+	url: 'http://localhost/dogkoin.online/diversos/ver_refer.php?email=' + iduser,
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     },
@@ -10,30 +12,29 @@ jQuery.ajax({
     data: {
     },
     success: function (result) { 
+	   
 	    <!-- var zzz = result.txCount; -->
 		<!-- alert(zzz); -->
-		 $.each(result.profilrefer, function (i, element) {
-		 
-         var date = new Date(element.timestamp*1000);
-         date = (+date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()+
-          " "+date.getHours()+
-          ":"+date.getMinutes()+
-          ":"+date.getSeconds());
+		 $.each(result, function (i, element) {
+         total++;
+		
+				 
 		 		 //var element.txid = meu.add(element.txid);
 					
                             $('#tbl').append(
 					        '<tr>' + 
 							'<td>' + element.name  + '</td>' +
 						 
-							'<td>' + element.datainscrito + '</td>' +
+							'<td>' + element.data + '</td>' +
                             '</tr>'
                         );
+						
                     }); 
+					 document.getElementById('trefer').innerHTML = total;
     },
 	 
 });	
+
 </script>
 
 <script>   		
@@ -53,7 +54,6 @@ jQuery.ajax({
 		 
          var date = new Date(element);
 		 $("#referurl").val('vexpay.top/?f=' + element.urlrefer); 
-		 
 		 
 		  }); 
     },
@@ -87,7 +87,7 @@ jQuery.ajax({
 						   
 						   <hr style="background-color: #000; border-top: 1px solid rgb(199 193 193 / 0%);">
 						    
-                              <h5 class="modal-title"> <strong> <span id="bbbswi">0</span> </strong> REFERIDOS ACTIVOS</h5>
+                              <h5 class="modal-title"> <strong> <span id="trefer">0</span> </strong> REFERIDOS ACTIVOS</h5>
                            </center>
 						 
                         <div class="modal-body">
