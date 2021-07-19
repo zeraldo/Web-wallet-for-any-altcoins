@@ -1,0 +1,211 @@
+
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Acessar conta | Vexpay</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="css/fontawesome-all.min.css">
+	<!-- Flaticon CSS -->
+	<link rel="stylesheet" href="font/flaticon.css">
+	<!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
+	
+	<script src="js/jquery-3.5.0.min.js"></script>
+	 
+	 <meta http-equiv="refresh" content="13;URL='https://vexpay.top/enter/enter.html'" />   
+
+</head>
+
+<body>
+	<!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+	<section class="fxt-template-animation fxt-template-layout9" style="background-color: #000; padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    margin-left: 0px;">
+		
+		<section class="main_content dashboard_part menumobile" style="padding-top: 10% !important;" style="menumobile">
+     <center>	           
+  <img src="openpng.png" alt=""> 
+          
+  <p style="color: #fff;">Feito com <strong style="color:red">&#x2764;	<strong> 
+  </center>
+  
+	<br>	<br>	<br>	<br>	
+		</div>
+	</section>
+		
+	</section>
+	<!-- jquery-->
+	<script src="js/jquery-3.5.0.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Imagesloaded js -->
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<!-- Validator js -->
+	<script src="js/validator.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/main.js"></script>
+    
+    		
+<script>
+
+ $('.email').click(function(){
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+});
+
+ $('.password').click(function(){
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+});
+ //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.process').hide();
+ $('.notemail').hide();
+ $('.notpassword').hide();
+ $('.otherro').hide();
+ $('.logout').hide();
+
+ });
+
+//Exibir  caixa de aviso se com logout
+		
+ //Ocultar saidas
+ function logouth()
+{
+ $('.logout').hide();
+  }
+function notfoundEmail()
+{
+ $('.notemail').hide();
+  }
+  
+  function notfoundSenha()
+{
+ $('.notpassword').hide();
+  }
+  
+   
+  function otherro()
+{
+ $('.otherro').hide();
+  }
+  
+ $(document).ready(function(){            
+ 
+if (!localStorage.getItem("logout")) {
+    localStorage.removeItem('');
+} else {
+      localStorage.removeItem('logout');
+     $('.logout').show();
+}
+
+ }); 
+ 
+//Atualizar senha
+function enteraccount()
+{
+ 
+  //Exibir botao processando
+  $('.process').show(); 
+  $('.btnenter').hide(); 
+  
+ //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+ var dadosajax = {
+ 'email' : $("#email").val(),
+ 'password' : $("#password").val(), 
+ 'login' : $("#login").val()
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show(); 
+			$('.process').hide(); 
+            $('.btnregister').show(); 
+	 
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inscrito com sucesso
+            if($.trim(result) == '100')
+            {
+			var user = document.getElementById("email").value;
+            localStorage.setItem("user", user); 
+            $(location).attr('href', 'recover.html');
+            //exibir sucesso no envio
+			 
+            }
+            //Se não foi inscrito com sucesso
+            else
+            { 
+             if($.trim(result) == '909')
+			 { 
+            $('.notemail').show(); 
+			$('.process').hide(); 
+            $('.btnenter').show(); 
+            //aqui houve um erro
+			}
+		 else
+            {
+			if($.trim(result) == '109')
+			 { 
+            $('.notpassword').show(); 
+			$('.process').hide(); 
+            $('.btnenter').show(); 
+            //aqui houve um erro
+			}
+			else
+            {
+			$('.otherro').show(); 
+			$('.process').hide(); 
+            $('.btnenter').show(); 
+            //aqui houve um erro
+			}	
+              }			
+            }
+
+        }
+    });
+}         
+    </script>
+	
+</body>
+
+</html>
