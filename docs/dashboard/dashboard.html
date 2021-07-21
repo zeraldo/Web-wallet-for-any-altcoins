@@ -60,6 +60,8 @@ function arred(d,casas) {
    return Math.floor(d * aux)/aux
 }
 </script>
+
+<!--Codigo jivosite <script src="//code-sa1.jivosite.com/widget/yMVSSgEBcY" async></script> -->
 	
 	<!-- Messenger Plugin de bate-papo Code -->
     <div id="fb-root"></div>
@@ -160,22 +162,25 @@ h5 {
             <span>INÍCIO</span>
           </a> 
         </li>
-		 
-		 
-		  <li class="mm-active menudesktop">
-          <a onclick="carregar2('buy.html')" href="#" aria-expanded="false">
-         <img src="img/menu-icon/traders.svg" alt=""> 
+		  
+		   
+        <li class="">
+          <a class="has-arrow" href="#" aria-expanded="false">
+          <img src="img/menu-icon/traders.svg" width="20s.334" height="20.334" > 
             <span>NEGOCIAR</span>
           </a>
-		   </li>
+          <ul>
+            <li class="menudesktop"><a onclick="carregar2('buy.html')" href="#" style="color:#fff">COMPRAR</a></li>
+			  <li class="menumobile"><a onclick="carregar('buy.html')" href="#" style="color:#fff">COMPRAR</a></li>
+          </ul>
 		  
+		   <ul>
+            <li class="menudesktop"><a onclick="carregar2('historbuy.html')" href="#" style="color:#fff">HISTÓRICO</a></li>
+			  <li class="menumobile"><a onclick="carregar('historbuy.html')" href="#" style="color:#fff">HISTÓRICO</a></li>
+          </ul>
 		  
-		  <li class="mm-active menumobile">
-          <a onclick="carregar('buy.html')" href="#" aria-expanded="false">
-         <img src="img/menu-icon/traders.svg" alt=""> 
-            <span>NEGOCIAR</span>
-          </a>
-		   </li>
+        </li>
+		
 		  
         <li class="">
           <a class="has-arrow" href="#" aria-expanded="false">
