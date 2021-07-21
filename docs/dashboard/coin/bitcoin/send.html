@@ -1,109 +1,143 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
-<script src="../js/js2/jquery-3.5.0.min.js"></script>
-<script src="../js/js2/js/bootstrap.min.js"></script>
+
+<script>
+//Exibir o preço do bitcoin
+function usdbtc() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	var pricusd = Number(result.bitcoin.usd);
+		
+	$("#vusddbtc").val(pricusd);
+    },
+	complete: function() {
+                 
+				setTimeout(usdbtc, 120000);
+            },
+ 
+});	
+}
+usdbtc();
+
+</script>
+ 
+<script>    		
+//Exibir saldo bitcoin
+// Obtém os dados da localStorage
+var adrbtc = localStorage.getItem('adrbtc');
+
+if (typeof adrbtc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://api.blockcypher.com/v1/btc/main/addrs/' + adrbtc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+         var bbbtc = result.balance / 100000000;
+          
+		 $("#bllcbtc").val(bbbtc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbbtc == 0) {  	 
+  $('#bbbtc').html('0.0000000' + ' btc');
+  }   
+  else
+  {
+	$('#bbbtc').html(bbbtc + ' btc');
+		
+  	}
+		//alert(bbswi1);
+      },
    
-   <script>    		
-   // Obtém os dados da localStorage
-   $("#bbswi").html('0.00');
-   var adrswi = localStorage.getItem('adrswi');
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
+});	
+
+}
 </script>
+
 <script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-      /* error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
+  function btctousd(text){
    	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
-</script>
+  var valor = document.getElementById('amount1');
+  
+  var vcoin = document.getElementById('amount1').value;
+ 
+  var bllcbtc = document.getElementById('bllcbtc').value;
+  
+  var bllcbtc = bllcbtc - 0.001;
+   
+  var vcoin = vcoin.replace(",", ".");
+  var vcoinn = vcoin;
+  
+  var pricusd = document.getElementById('vusddbtc').value; 
+   
+   if (vcoin > bllcbtc) {  	 
+   $('.submit').hide();
+   $('.unsubmit').show();
+   $('.notfund').show();
+   
+  }   
+  else
+  {
+    $('.submit').show();
+    $('.unsubmit').hide();
+	$('.notfund').hide();
+	 
+  	}
+
+  //Passar o valor para dólar
+  vcoin = vcoin * pricusd; 
+  vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2}));	 
+  $("#vusd").val('' + vcoin + '');
+
+ }
+</script>	
 <script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   } 
-</script>   
-	
+   function usdtobtc(text){
+   	   
+  var valor = document.getElementById('vusd');
+  
+  var vcoin = document.getElementById('vusd').value;
+  
+  var bllcbtc = document.getElementById('bllcbtc').value;
+  
+  var pricusd = document.getElementById('vusddbtc').value; 
+ 	
+  var vcoin = vcoin / pricusd;
+
+  vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+  
+  var vcoin = vcoin.replace(",", ".");
+  
+  $("#amount1").val('' + vcoin + '');
+      
+  if (vcoin > bllcbtc) {  	 
+   $('.submit').hide();
+   $('.unsubmit').show();
+   $('.notfund').show();
+   
+  }   
+  else
+  {
+    $('.submit').show();
+    $('.unsubmit').hide();
+	$('.notfund').hide();
+	 
+  	}
+
+           }	   
+</script>
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -128,25 +162,40 @@
                         <div class="modal-body">
                           <input autocomplete="off" type="text" id="address1" name="address" onkeyup="usdtoswi(this.value)" placeholder="1PeTGeNjU5bDv1Ku9EcDGwAUzvLcDeWog7" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" required>
 								 
+							
 								   <table>
                                  <tr>
                                     <td>
-                                       <input type="number" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" placeholder="BITCOIN" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="switousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
+                                       <input type="text" style="border-radius: 3px !important;
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #57b1bb!important;" placeholder="BITCOIN" autocomplete="off" min="0.001" step="0.00000001" name="amount" id="amount1" onkeyup="btctousd(this.value)" oninput="javascript:amountChanged(this.value);" required>
                                     </td>
-                                    <td> <input type="text" id="vusd" onkeyup="usdtoswi(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required></td>
-                                    <input type="hidden" id='vusdd'>
+                                    <td> 
+									<input type="text" id="vusd" onkeyup="usdtobtc(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required>
+									   </td>
+									   
+                                    <input type="hidden" id='vusddbtc'>
+									<input type="hidden" id='bllcbtc'>
+									
                                  </tr>
                               </table>
+							  
+								 <p style="color:red" class="notfund">* Saldo insuficiente</p>
 								 
                               <div class="form-row social_login_btn">
 							  
-                                 <button type="submit" class="form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                 <button type="submit" class="submit form-group col-md-12 text-center" id="submit" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;" onClick="saveinfo()">ENVIAR</button>
 									
                               </div>
-							     
+							  
+                              <div class="form-row social_login_btn">
+							  
+                                 <button type="submit" class="unsubmit form-group col-md-12 text-center" name="submit" style="width: 100%;display: block;margin-top: 20px;background-color: #c6c6c6;border: 1px solid #ffffff;color: #999797;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;" onClick="saveinfo()">ENVIAR</button>
+									
+                              </div>	 
+								 
                               <div class="border_style" style="background-color: #fff;">
                                  <span>OU</span>
                               </div>
@@ -237,7 +286,14 @@ $('.progressbara').show();
    document.getElementById('erros').innerHTML = localStorage.getItem("erros");
   } 
 </script>
-
+<script>
+ //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.submit').hide();
+ $('.unsubmit').show(); 
+ $('.notfund').hide();
+ });
+</script>
 <!-- Barra de progresso -->
  <style>
  body,
