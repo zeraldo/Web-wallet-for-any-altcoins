@@ -13,7 +13,7 @@ jQuery.ajax({
     success: function (result) { 
 	var pricusd = Number(result.swiftcash.usd);
 		
-	$("#vusdd").val(pricusd);
+	$("#vusddswi").val(pricusd);
     },
 	complete: function() {
                  
@@ -85,7 +85,7 @@ jQuery.ajax({
   var vcoin = vcoin.replace(",", ".");
   var vcoinn = vcoin;
   
-  var pricusd = document.getElementById('vusdd').value; 
+  var pricusd = document.getElementById('vusddswi').value; 
    
    if (vcoin > bllcswi) {  	 
    $('.submit').hide();
@@ -118,7 +118,7 @@ jQuery.ajax({
   
   var bllcswi = document.getElementById('bllcswi').value;
   
-  var pricusd = document.getElementById('vusdd').value; 
+  var pricusd = document.getElementById('vusddswi').value; 
  	
   var vcoin = vcoin / pricusd;
 
@@ -178,7 +178,7 @@ jQuery.ajax({
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required>
 									   </td>
 									   
-                                    <input type="hidden" id='vusdd'>
+                                    <input type="hidden" id='vusddswi'>
 									<input type='hidden' id='bllcswi'>
 									
                                  </tr>
