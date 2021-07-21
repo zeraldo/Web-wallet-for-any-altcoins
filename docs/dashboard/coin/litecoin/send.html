@@ -14,7 +14,7 @@ jQuery.ajax({
     success: function (result) { 
 	var pricusd = Number(result.litecoin.usd);
 		
-	$("#vusdd").val(pricusd);
+	$("#vusddltc").val(pricusd);
     },
 	complete: function() {
                  
@@ -80,7 +80,7 @@ jQuery.ajax({
   var vcoin = vcoin.replace(",", ".");
   var vcoinn = vcoin;
   
-  var pricusd = document.getElementById('vusdd').value; 
+  var pricusd = document.getElementById('vusddltc').value; 
    
    if (vcoin > bllcltc) {  	 
    $('.submit').hide();
@@ -114,7 +114,7 @@ jQuery.ajax({
   
   var bllcltc = document.getElementById('bllcltc').value;
   
-  var pricusd = document.getElementById('vusdd').value; 
+  var pricusd = document.getElementById('vusddltc').value; 
  	
   var vcoin = vcoin / pricusd;
 
@@ -175,8 +175,8 @@ jQuery.ajax({
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #57b1bb!important;" required>
 									   </td>
 									   
-                                    <input type="hidden" id='vusdd'>
-									<input type='hidden' id='bllcltc'>
+                                    <input type="hidden" id='vusddltc'>
+									<input type="hidden" id='bllcltc'>
 									
                                  </tr>
                               </table>
