@@ -1,130 +1,76 @@
-<script>   		
-//Area ainda sendo desenvolvido, exibir todos os usuarios convidados do cliente
-var total = 0;
-jQuery.ajax({
-	 
-	url: 'http://localhost/dogkoin.online/diversos/historbuy.php?email=' + iduser,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    type: "GET", /* or type:"GET" or type:"PUT" */
-    dataType: "json",
-    data: {
-    },
-    success: function (result) { 
-	   
-	    <!-- var zzz = result.txCount; -->
-		<!-- alert(zzz); -->
-		 $.each(result, function (i, element) {
-		 
-		 
-   if (element.status = 0) {  	 
-   var status = 'Processado';
-  }   
-  else
-  {
-    var status = 'Pendente'; 
-  	}
-	 
-		 		 //var element.txid = meu.add(element.txid);
-					
-                            $('#tbl').append(
-					        '<tr>' + 
-							'<td>' + element.nomoeda + '</td>' +
-						 
-							'<td>' + status + '</td>' +
-							
-							'<td onclick="openmore()">Comprovar</td>' +
-							
-                            '</tr>'
-                        );
-						
-                    }); 
-    },
-	 
-});	
- 
-</script>
- 
 <span class="mainweb">	
-<section class="mainweb main_content dashboard_part">
-    
-    <div class="main_content_iner ">
-        <div class="container-fluid plr_30 body_white_bg pt_30">
-            <div class="row justify-content-center">
-                <div class="col-lg-12">
-                    <div class="white_box mb_30">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-6">
-							
-                                <!-- sign_in  -->
-                                <div class="modal-content cs_modal">
-								
-                                    <div style="font-size: 17px;
-    font-weight: 100;
-    background-color: #f7faff;
-    padding: 5px 5px;
-    border-bottom: 0px solid transparent;
-    align-items: normal;">
-	 <div style="font-size: 17px;font-weight: 100;background-color: #f7faff;padding: 5px 5px;border-bottom: 0px solid transparent;align-items: normal;">
-	
-	   </div> 
-                                       <center> <h6 class="modal-title">HISTÓRICO FINANCEIRO</h6></center>
-                                    </div>
-									 <div style="overflow: auto;">
-                                    <div class="modal-body" style="padding-top: 10px !important;
-    padding-right: 1px !important;
-    padding-bottom: 15px !important;
-    padding-left: 11px !important;">
-<table class="table table-hover table-dark tablero" id="tbl">
+<section class="main_content dashboard_part">
+   <div class="main_content_iner ">
+   <div class="container-fluid plr_30 body_white_bg pt_30">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+               
+                        <div class="modal-body">
+					    
+                              <div class="border_style">
+                                 <span style="font-size: 15px;"> <h6 class="modal-title"><strong>Ordem Nº 21733</strong></h6></span>
+                              </div>
+  
+							   <table class="table table-hover table-dark tablero" id="tbl">
  <thead style="font-size: 12px;">
 <tr>
 <th class="text-left">Moeda</th>
-<th class="text-left">Estado</th>
-<th class="text-left">Ação</th>
+<th class="text-left">Dólar</th>
+<th class="text-left">AOA</th>
 </tr>
 </thead>
  <tbody class="table-hover" style="font-size: 12px;">
+  <tr> 
+							<td>BITCOIN</td>
+						 
+							<td>10.00</td>
+							
+							<td>22.222</td>
+							
+                            </tr>
+							
  </tbody>
-<thead>
-<tr>
-<th class="text-left">Moeda</th>
-<th class="text-left">Estado</th>
-<th class="text-left">Ação</th>
-</tr>
-</thead>
 
+							
 </table>  
-</div>
-									  </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-        </div>
-    </div>
 
+
+<td style="font-size: 13px !important"><p>Carteira: vvvvvvvvvvvvvvvvvv </p></td>
+
+<br>
+<td><p>Hash: vvvvvvvvvvvvvvvvvv </p></td>
+ <br>
+
+<td style="font-size: 13px !important"><p>Data: 13  de Abril de 2000</p></td>
+<br>
+
+<td style="font-size: 13px !important"><p>Estado: <i style="color:red">Pendente</i></p></td>
+
+
+
+							   
+							   <hr style="border-top: 1px solid #000000;">
+							   
+							    
+								  <div class="form-group col-md-12 text-center">
+								  <a onclick="carregar2('coin/litecoin/rece.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">ENVIAR COMPROVANTE</a>
+                              </div>
+							   
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
 </section>
 </span>
-
-<script>
-localStorage.setItem("urlback", "coin/historbuy.html"); 
-</script>
-	 <script type = "text/javascript">
-        jQuery(document).ready(function() {
-		$('.progressbara').hide();
-        $('.mainweb').show();
-        });
-</script>
-<script>
- function openmore(){
-		$("#conteudo").load('buymore.html');
-		$('.progressbara').show();
-        $('.mainweb').hide();
-		}
-</script>
 
 <!-- Barra de progresso -->
  <style>
@@ -283,9 +229,9 @@ html,
 </section>
 </span>
 
-<script type = "text/javascript">
+	 <script type = "text/javascript">
         jQuery(document).ready(function() {
 		$('.progressbara').hide();
         $('.mainweb').show();
         });
-</script>
+		</script>
