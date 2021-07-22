@@ -24,7 +24,7 @@
     max-width: 50%;
     }
 </style>
-
+<!--Codigo jivosite <script src="//code-sa1.jivosite.com/widget/yMVSSgEBcY" async></script> -->
 <!-- Messenger Plugin de bate-papo Code -->
     <div id="fb-root"></div>
 
@@ -52,6 +52,14 @@
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
     </script>
+    
+	<script>
+//Obter o codigo de referencia
+var crefer = window.location.href;
+crefer = crefer.split('?f=');
+crefer = crefer[1];
+localStorage.setItem("crefer", crefer); 
+</script>
 
 	</head>
 	<body>
