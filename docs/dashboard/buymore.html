@@ -1,3 +1,64 @@
+<script>
+var callpage = localStorage.getItem("urlback");
+</script>
+<script>    		
+//Exibir saldo litecoin
+// Obtém os dados da localStorage
+ 	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://dogkoin.online/diversos/historbuy1.php?email=' + iduser + '&id_order=' + localStorage.getItem("idorder"),
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	     
+		 $.each(result, function (i, element) {
+
+		 $('#nomoeda').html(element.nomoeda);
+		 
+		 $('#data').html(element.data);
+		 
+		 $('#hash').html(element.hash);
+		 
+		 $('#moeda').html(element.moeda);
+		 
+		 $('#usd').html(element.usd);
+		 
+		 $('#endereco').html(element.endereco);
+		 
+		 $('#id_one').html(element.id_one);
+		 
+		 
+    var status = '<i style="color:red">Pendente</i>'; 
+  
+	$('#status').html(status);
+		 }); 
+      },
+    
+});	
+
+</script>
+
+<style>
+.Separator {
+    border-top: 1px solid #a1a1a1;
+    margin: 25px 0 10px;
+    text-align: center;
+} 
+.Separator .textInSeparator {
+    background-color: #000000;
+    padding: 0 .5em;
+    position: relative;
+    color: #a1a1a1;
+    top: -.7em;
+}
+</style>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -13,10 +74,10 @@
                         <div class="modal-body">
 					    
                               <div class="border_style">
-                                 <span style="font-size: 15px;"> <h6 class="modal-title"><strong>Ordem Nº 21733</strong></h6></span>
+                                 <span style="font-size: 10px;"> <h6 class="modal-title"><strong>Ordem<span id="id_one">000000</span></strong></h6></span>
                               </div>
   
-							   <table class="table table-hover table-dark tablero" id="tbl">
+							   <table class="table table-hover table-dark tablero">
  <thead style="font-size: 12px;">
 <tr>
 <th class="text-left">Moeda</th>
@@ -26,11 +87,11 @@
 </thead>
  <tbody class="table-hover" style="font-size: 12px;">
   <tr> 
-							<td>BITCOIN</td>
+							<td id="nomoeda">Moeda</td>
 						 
-							<td>10.00</td>
-							
-							<td>22.222</td>
+							<td id="usd">Dólar</td>
+							 
+							<td id="moeda">Aoa</td>
 							
                             </tr>
 							
@@ -39,19 +100,18 @@
 							
 </table>  
 
-
-<td style="font-size: 13px !important"><p>Carteira: vvvvvvvvvvvvvvvvvv </p></td>
+<p style="float: left">Carteira: <span id="endereco">carteira</span>  </p>
 
 <br>
-<td><p>Hash: vvvvvvvvvvvvvvvvvv </p></td>
+<p style="float: left">Hash: <span id="hash">hash</span> </p>
  <br>
 
-<td style="font-size: 13px !important"><p>Data: 13  de Abril de 2000</p></td>
+<p style="float: left">Data: <span id="data"> data</span> </p>
 <br>
 
-<td style="font-size: 13px !important"><p>Estado: <i style="color:red">Pendente</i></p></td>
+<p style="float: left">Estado: <span id="status"> estado</span></p>
 
-
+<br><br><br><br><br>
 
 							   
 							   <hr style="border-top: 1px solid #000000;">
@@ -60,7 +120,32 @@
 								  <div class="form-group col-md-12 text-center">
 								  <a onclick="carregar2('coin/litecoin/rece.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">ENVIAR COMPROVANTE</a>
                               </div>
-							   
+							   	 
+                              <div class="border_style" style="background-color: #fff;">
+                                 <span>OU</span>
+                              </div>
+							  
+							  <table>
+                                 <tr>
+                                    <td>
+                                     <div class="form-group col-md-12 text-center">
+								     
+	   <a class="menumobile" onclick="carregar(callpage)" href="#" style="color:#000">VOLTAR</a>
+	   <a class="menudesktop" onclick="carregar2(callpage)" href="#" style="color:#000">VOLTAR</a>
+	   
+                                    </div>
+                                    </td>
+                                    <td> 
+									 <div class="form-group col-md-12 text-center">
+								  <a onclick="carregar2('coin/litecoin/rece.html')" href="#" class="btn_1 full_width" style="background-color:red; width: 100%; margin-top: 0px;">EXCLUIR</a>
+                              </div>
+									   </td>
+									  
+                                 </tr>
+                              </table>
+							    
+								 
+							  
                         </div>
                      </div>
                   </div>

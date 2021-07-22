@@ -15,18 +15,15 @@ jQuery.ajax({
 	   
 	    <!-- var zzz = result.txCount; -->
 		<!-- alert(zzz); -->
-		 $.each(result, function (i, element) {
-		 
-		 
-   if (element.status = 0) {  	 
-   var status = 'Processado';
-  }   
-  else
-  {
-    var status = 'Pendente'; 
-  	}
+    $.each(result, function (i, element) {
+ 
+    var status = element.status; 	 
+    var status = '<i style="color:red">Pendente</i>'; 
+  
+	$('#status').html(status);
 	 
-		 		 //var element.txid = meu.add(element.txid);
+		 		 var idorder1  = element.id_one;
+				 var virgula  = "'";
 					
                             $('#tbl').append(
 					        '<tr>' + 
@@ -34,8 +31,8 @@ jQuery.ajax({
 						 
 							'<td>' + status + '</td>' +
 							
-							'<td onclick="openmore()">Comprovar</td>' +
-							
+							'<td><a onclick="openmore('+ virgula +''+ idorder1 +''+ virgula +''+')">Comprovar</a><td>' +
+						
                             '</tr>'
                         );
 						
@@ -45,7 +42,7 @@ jQuery.ajax({
 });	
  
 </script>
- 
+
 <span class="mainweb">	
 <section class="mainweb main_content dashboard_part">
     
@@ -119,13 +116,13 @@ localStorage.setItem("urlback", "coin/historbuy.html");
         });
 </script>
 <script>
- function openmore(){
-		$("#conteudo").load('buymore.html');
+ function openmore(idorder){
+        localStorage.setItem("idorder", idorder);
+		$("#conteudo").load("buymore.html");
 		$('.progressbara').show();
         $('.mainweb').hide();
 		}
 </script>
-
 <!-- Barra de progresso -->
  <style>
  body,
@@ -283,6 +280,9 @@ html,
 </section>
 </span>
 
+<script>
+   localStorage.setItem("urlback", "historbuy.html"); 
+</script>
 <script type = "text/javascript">
         jQuery(document).ready(function() {
 		$('.progressbara').hide();
