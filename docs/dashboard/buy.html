@@ -2,6 +2,7 @@
 var iduser = localStorage.getItem("user"); 
 $("#email").val(iduser); 
 </script>
+
 <script>
   function aoatousd(text){
    	   
@@ -41,14 +42,17 @@ $("#email").val(iduser);
         var vcoin = document.getElementById("dolar").value;
 		var vcoin = vcoin.replace(",", ".");
 		
-		var vcoin =  vcoin * 527;
+		var usdaoa = localStorage.getItem("usdaoa");
+		
+		var vcoin =  vcoin * usdaoa;
 		 
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
    		$("#kwanza").val('AOA ' + vcoin + '');
       
            }		   
-	 </script>
+</script>
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -244,7 +248,7 @@ function compra2()
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
  };
-    pageurl = 'https://dogkoin.online/diversos/compra.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -318,7 +322,7 @@ function compra()
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
  };
-    pageurl = 'https://dogkoin.online/diversos/compra.php';
+    pageurl = 'http://localhost/dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
