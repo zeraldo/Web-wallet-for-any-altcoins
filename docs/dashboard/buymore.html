@@ -101,13 +101,12 @@ jQuery.ajax({
 </table>  
 
 <p style="float: left">Carteira: <span id="endereco">carteira</span>  </p>
-
 <br>
-<p style="float: left">Hash: <span id="hash">hash</span> </p>
- <br>
-
 <p style="float: left">Data: <span id="data"> data</span> </p>
 <br>
+
+<p style="float: left">Hash: <span id="hash">hash</span> </p>
+ <br>
 
 <p style="float: left">Estado: <span id="status"> estado</span></p>
 
@@ -137,7 +136,7 @@ jQuery.ajax({
                                     </td>
                                     <td> 
 									 <div class="form-group col-md-12 text-center">
-								  <a onclick="carregar2('coin/litecoin/rece.html')" href="#" class="btn_1 full_width" style="background-color:red; width: 100%; margin-top: 0px;">EXCLUIR</a>
+								  <a onclick="deletorder()" href="#" class="btn_1 full_width" style="background-color:red; width: 100%; margin-top: 0px;">EXCLUIR</a>
                               </div>
 									   </td>
 									  
@@ -157,6 +156,52 @@ jQuery.ajax({
 </section>
 </span>
 
+ <script>	 
+//Começa o processo para eliminar a ordem
+function deletorder()
+{
+  $('.mainweb').hide();
+  $('.progressbara').show();
+
+  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+  var dadosajax = {
+ 'email' : iduser
+ };
+ 
+    pageurl = 'https://dogkoin.online/diversos/delet_orden.php?idorder=' + localStorage.getItem("idorder"),
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //cache
+        cache: false,
+	
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            alert('Não foi possivel processar o seu pedido');
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi deletado com exito
+			//Criamos o alerta de erros
+			localStorage.getItem("erros");
+			localStorage.setItem('erros', 'A ordem ' + localStorage.getItem("idorder") + ' foi eliminado');
+            $("#conteudo").load('alert1.html');
+        }
+    });
+}		
+</script>
 <!-- Barra de progresso -->
  <style>
  body,
