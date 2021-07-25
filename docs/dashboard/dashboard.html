@@ -462,13 +462,12 @@ jQuery.ajax({
     },
     success: function (result) { 
 	$.each(result, function (i, element) {
-    
-	var usdaoa = (element.usdaoa * 82) / 100;
-	localStorage.setItem("usdaoa", usdaoa);
+	
+	localStorage.setItem("aoausd", element.usdaoa );
 	 
 	//Preço em dólar
-	var usdaoa1 = (element.usdaoa * 118) / 100;
-	localStorage.setItem("usdaoa1", usdaoa1);
+	var usdaoa = (element.usdaoa * 118) / 100;
+	localStorage.setItem("usdaoa", usdaoa);
      
 		// alert(usdaoa);
 		 
