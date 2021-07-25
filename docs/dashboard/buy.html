@@ -20,11 +20,13 @@ $("#email").val(iduser);
         var vcoin = document.getElementById("kwanza").value;
 		var vcoin = vcoin.replace(",", ".");
 		
-		var usdaoa = localStorage.getItem("usdaoa");
-        var usdaoa = (1 / usdaoa);
+		var aoausd = localStorage.getItem("aoausd");
+        var aoausd = (1 / aoausd);
        
-		var vcoin =  vcoin * usdaoa;
-		 
+		var vcoin =  vcoin * aoausd;
+		
+		var vcoin = (vcoin * 82) / 100;
+		
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
    		$("#dolar").val('$ ' + vcoin + '');
@@ -46,9 +48,9 @@ $("#email").val(iduser);
         var vcoin = document.getElementById("dolar").value;
 		var vcoin = vcoin.replace(",", ".");
 		
-		var usdaoa1 = localStorage.getItem("usdaoa1");
+		var usdaoa = localStorage.getItem("usdaoa");
         
-		var vcoin = vcoin * usdaoa1;
+		var vcoin = vcoin * usdaoa;
 		 
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
