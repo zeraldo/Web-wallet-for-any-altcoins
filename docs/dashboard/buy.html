@@ -24,9 +24,9 @@ $("#email").val(iduser);
         var aoausd = (1 / aoausd);
        
 		var vcoin =  vcoin * aoausd;
-		
+		//alert(vcoin);
 		var vcoin = (vcoin * 82) / 100;
-		
+	//	alert(vcoin);
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
    		$("#dolar").val('$ ' + vcoin + '');
