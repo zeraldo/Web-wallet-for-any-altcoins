@@ -465,8 +465,10 @@ jQuery.ajax({
     
 	var usdaoa = (element.usdaoa * 82) / 100;
 	localStorage.setItem("usdaoa", usdaoa);
-		 
-	var usdaoa = localStorage.getItem("usdaoa");
+	 
+	//Preço em dólar
+	var usdaoa1 = (element.usdaoa * 118) / 100;
+	localStorage.setItem("usdaoa1", usdaoa1);
      
 		// alert(usdaoa);
 		 

@@ -1,9 +1,10 @@
-<script> 
+<script>
 var iduser = localStorage.getItem("user"); 
 $("#email").val(iduser); 
 </script>
 
 <script>
+ 
   function aoatousd(text){
    	   
   var elemento = document.getElementById('kwanza');
@@ -19,7 +20,10 @@ $("#email").val(iduser);
         var vcoin = document.getElementById("kwanza").value;
 		var vcoin = vcoin.replace(",", ".");
 		
-		var vcoin =  vcoin * 0.001312;
+		var usdaoa = localStorage.getItem("usdaoa");
+        var usdaoa = (1 / usdaoa);
+       
+		var vcoin =  vcoin * usdaoa;
 		 
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
@@ -42,9 +46,9 @@ $("#email").val(iduser);
         var vcoin = document.getElementById("dolar").value;
 		var vcoin = vcoin.replace(",", ".");
 		
-		var usdaoa = localStorage.getItem("usdaoa");
-		
-		var vcoin =  vcoin * usdaoa;
+		var usdaoa1 = localStorage.getItem("usdaoa1");
+        
+		var vcoin = vcoin * usdaoa1;
 		 
    		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
