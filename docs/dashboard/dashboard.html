@@ -210,11 +210,23 @@ h5 {
 			  <li class="menumobile"><a onclick="carregar('coin/dogecoin/send.html')" href="#" style="color:#fff">DOGECOIN</a></li>
           </ul>
 		  
+		   <!-- 
+		  <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/dogecoin/bitcoincash.html')" href="#" style="color:#fff">BITCOINCASH</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/dogecoin/bitcoincash.html')" href="#" style="color:#fff">BITCOINCASH</a></li>
+          </ul>
+		   -->
           <ul>
             <li class="menudesktop"><a onclick="carregar2('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
 			  <li class="menumobile"><a onclick="carregar('coin/swiftcash/send.html')" href="#" style="color:#fff">SWIFT CASH</a></li>
           </ul>
 		  
+		  <!-- 
+		  <ul>
+            <li class="menudesktop"><a onclick="carregar2('coin/01coin/send.html')" href="#" style="color:#fff">01COIN</a></li>
+			  <li class="menumobile"><a onclick="carregar('coin/01coin/send.html')" href="#" style="color:#fff">01COIN</a></li>
+          </ul>
+		  -->
         </li>
         
         <li class="">
@@ -400,7 +412,18 @@ jQuery(document).ready(function() {
   //Aqui nao existe notificaçao de erros 
   $('.progressbara').hide();
   $('.mainweb').show();
+  //Verifcar se o usuario aceitou os termos e politicas
+   if (!localStorage.getItem("tmplt")) {  
+  //Aqui o usuario não aceitou os termos e politicas
+  $("#conteudo").load('politica.html');
+  } 
+ 
+else  
+  {  
+   //Aqui o usuario aceitou os temos e politicas
   $("#conteudo").load('dashboard1.html');
+  } 
+  
   }  
 else  
   {  
