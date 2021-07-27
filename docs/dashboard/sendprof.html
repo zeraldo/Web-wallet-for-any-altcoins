@@ -1,5 +1,5 @@
 <script>
-var callpage = localStorage.getItem("urlback");
+var callpage = "buymore.html";
 </script>
 <script>    		
 //Exibir saldo litecoin
@@ -57,7 +57,81 @@ jQuery.ajax({
     color: #a1a1a1;
     top: -.7em;
 }
+ 
+ 
+.progress {
+    display: none;
+    position: relative;
+    margin: 20px;
+    width: 400px;
+    background-color: #ddd;
+    border: 1px solid blue;
+    padding: 1px;
+    left: 15px;
+    border-radius: 3px;
+}
+
+.progress-bar {
+    background-color: green;
+    width: 0%;
+    height: 30px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+}
+
+.percent {
+    position: absolute;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    margin-top: -9px;
+    margin-left: -20px;
+    -webkit-border-radius: 4px;
+}
+
+#outputImage {
+    display: none;
+}
+
+.error {
+    color: #ad7b7b;
+    background: #ffb3b3;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 3px;
+    border: #f1a8a8 1px solid;
+}
+
+input#uploadImage {
+    border: #f1f1f1 1px solid;
+    padding: 6px;
+    border-radius: 3px;
+}
+
+#outputImage img {
+    max-width: 300px;
+}
+
+#submitButton {
+    padding: 7px 20px;
+    background: #9a9a9a;
+    border: #898a89 1px solid;
+    color: #F0F0F0;
+    margin-left: 10px;
+    border-radius: 3px;
+    font-size: 0.8em;
+}
+
+.error {
+    
+}
 </style>
+
+<script src="js/jquery.form.min.js"></script>
 
 <span class="mainweb">	
 <section class="main_content dashboard_part">
@@ -74,54 +148,34 @@ jQuery.ajax({
                         <div class="modal-body">
 					    
                               <div class="border_style">
-                                 <span style="font-size: 10px;"> <h6 class="modal-title"><strong>Ordem<span id="id_one">000000</span></strong></h6></span>
+                                 <span style="font-size: 10px;"> <h6 class="modal-title"><strong>Ordem <span id="id_one">000000</span></strong></h6></span>
                               </div>
-  
-							   <table class="table table-hover table-dark tablero">
- <thead style="font-size: 12px;">
-<tr>
-<th class="text-left">Moeda</th>
-<th class="text-left">Dólar</th>
-<th class="text-left">AOA</th>
-</tr>
-</thead>
- <tbody class="table-hover" style="font-size: 12px;">
-  <tr> 
-							<td id="nomoeda">Moeda</td>
-						 
-							<td id="usd">Dólar</td>
-							 
-							<td id="moeda">Aoa</td>
-							
-                            </tr>
-							
- </tbody>
-
-							
-</table>  
-
-<p style="float: left">Carteira: <span id="endereco">carteira</span>  </p>
-<br>
-<p style="float: left">Data: <span id="data"> data</span> </p>
-<br>
-
-<p style="float: left">Hash: <span id="hash">hash</span> </p>
- <br>
-
-<p style="float: left">Estado: <span id="status"> estado</span></p>
-
-<br><br><br><br><br>
-
-							   
-							   <hr style="border-top: 1px solid #000000;">
-							   
-							    
-								  <div class="form-group col-md-12 text-center">
-								  <a onclick="carregar2('sendprof.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">ENVIAR COMPROVANTE</a>
-                              </div>
-							   	 
+                              
+						 <p> Enviar comprovante</p>	
+						 <form action="https://dogkoin.online/diversos/1234img.php" id="uploadForm" name="frmupload"
+            method="post" enctype="multipart/form-data">
+						<input class="btn_1 full_width" style="background-color: #fff; color: #000;" type="file" id="uploadImage" name="uploadImage" />
+				
+				<center>
+                <div class="form-group col-md-12 text-center">             
+		        <button
+                id="submitButton" type="submit" name="btnSubmit" style="background-color: #57bb5d; font-size: 1.5em;" class="btn_1 full_width"> Enviar Arquivo</button>
+				 </div>
+				 </center>
+				 
+				 </form>
+				 
+				  <center>
+				  <div class='progress' id="progressDivId">
+            <div class='progress-bar' id='progressBar'></div>
+            <div class='percent' id='percent'>0%</div>
+        </div>
+        <div style="height: 10px;"></div>
+        <div id='outputImage'></div>
+		 </center>
+      	 
                               <div class="border_style" style="background-color: #fff;">
-                                 <span>OU</span>
+                                 <span>-</span>
                               </div>
 							  
 							  <table>
@@ -134,12 +188,7 @@ jQuery.ajax({
 	   
                                     </div>
                                     </td>
-                                    <td> 
-									 <div class="form-group col-md-12 text-center">
-								  <a onclick="deletorder()" href="#" class="btn_1 full_width" style="background-color:red; width: 100%; margin-top: 0px;">EXCLUIR</a>
-                              </div>
-									   </td>
-									  
+                                    
                                  </tr>
                               </table>
 							    
@@ -155,6 +204,63 @@ jQuery.ajax({
    </div>
 </section>
 </span>
+
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('#submitButton').click(function () {
+    	    $('#uploadForm').ajaxForm({
+    	        target: '#outputImage',
+  url: 'https://dogkoin.online/diversos/1234img.php?idorder=' + localStorage.getItem("idorder") + '&?email=' + iduser,
+    	        beforeSubmit: function () {
+    	        	  $("#outputImage").hide();
+    	        	   if($("#uploadImage").val() == "") {
+    	        		   $("#outputImage").show();
+    	        		   $("#outputImage").html("<div class='error'>Choose a file to upload.</div>");
+                    return false; 
+                }
+    	            $("#progressDivId").css("display", "block");
+    	            var percentValue = '0%';
+
+    	            $('#progressBar').width(percentValue);
+    	            $('#percent').html(percentValue);
+    	        },
+    	        uploadProgress: function (event, position, total, percentComplete) {
+
+    	            var percentValue = percentComplete + '%';
+    	            $("#progressBar").animate({
+    	                width: '' + percentValue + ''
+    	            }, {
+    	                duration: 5000,
+    	                easing: "linear",
+    	                step: function (x) {
+                        percentText = Math.round(x * 100 / percentComplete);
+    	                    $("#percent").text(percentText + "%");
+                        if(percentText == "100") {
+                        	   $("#outputImage").show();
+                        }
+    	                }
+    	            });
+    	        },
+    	        error: function (response, status, e) {
+    	            alert('Oops something went.');
+    	        },
+    	        
+    	        complete: function (xhr) {
+    	            if (xhr.responseText && xhr.responseText != "error")
+    	            {
+    	            	  $("#outputImage").html(xhr.responseText);
+    	            }
+    	            else{  
+    	               	$("#outputImage").show();
+        	            	$("#outputImage").html("<div class='error'>Problemas ao enviar o comprovante.</div>");
+        	            	$("#progressBar").stop();
+    	            }
+    	        }
+    	    });
+    });
+});
+</script>
 
  <script>	 
 //Começa o processo para eliminar a ordem
