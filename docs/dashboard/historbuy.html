@@ -18,8 +18,15 @@ jQuery.ajax({
     $.each(result, function (i, element) {
  
     var status = element.status; 	 
+    
+    
+	if (element.status == 1) {
+    var status = '<i style="color:green">Processado</i>'; 
+    
+  } else {
     var status = '<i style="color:red">Pendente</i>'; 
-  
+    
+  }
 	$('#status').html(status);
 	 
 		 		 var idorder1  = element.id_one;
@@ -31,7 +38,7 @@ jQuery.ajax({
 						 
 							'<td>' + status + '</td>' +
 							
-							'<td><a onclick="openmore('+ virgula +''+ idorder1 +''+ virgula +''+')">Comprovar</a><td>' +
+							'<td><a onclick="openmore('+ virgula +''+ idorder1 +''+ virgula +''+')">Detalhes</a><td>' +
 						
                             '</tr>'
                         );
