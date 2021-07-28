@@ -1,5 +1,5 @@
 <script>
-var callpage = "buymore.html";
+var callpage = localStorage.getItem("urlback");
 </script>
 <script>    		
 //Exibir saldo litecoin
@@ -18,25 +18,10 @@ jQuery.ajax({
     success: function (result) { 
 	     
 		 $.each(result, function (i, element) {
+ 
+	     var urlimg = element.urlimg;
+         alert(urlimg);
 
-		 $('#nomoeda').html(element.nomoeda);
-		 
-		 $('#data').html(element.data);
-		 
-		 $('#hash').html(element.hash);
-		 
-		 $('#moeda').html(element.moeda);
-		 
-		 $('#usd').html(element.usd);
-		 
-		 $('#endereco').html(element.endereco);
-		 
-		 $('#id_one').html(element.id_one);
-		 
-		 
-    var status = '<i style="color:red">Pendente</i>'; 
-  
-	$('#status').html(status);
 		 }); 
       },
     
@@ -57,81 +42,7 @@ jQuery.ajax({
     color: #a1a1a1;
     top: -.7em;
 }
- 
- 
-.progress {
-    display: none;
-    position: relative;
-    margin: 20px;
-    width: 400px;
-    background-color: #ddd;
-    border: 1px solid blue;
-    padding: 1px;
-    left: 15px;
-    border-radius: 3px;
-}
-
-.progress-bar {
-    background-color: green;
-    width: 0%;
-    height: 30%;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-}
-
-.percent {
-    position: absolute;
-    display: inline-block;
-    color: #fff;
-    font-weight: bold;
-    top: 50%;
-    left: 50%;
-    margin-top: -9px;
-    margin-left: -20px;
-    -webkit-border-radius: 4px;
-}
-
-#outputImage {
-    display: none;
-}
-
-.error {
-    color: #ad7b7b;
-    background: #ffb3b3;
-    padding: 10px;
-    box-sizing: border-box;
-    margin: 10px;
-    border-radius: 3px;
-    border: #f1a8a8 1px solid;
-}
-
-input#uploadImage {
-    border: #f1f1f1 1px solid;
-    padding: 6px;
-    border-radius: 3px;
-}
-
-#outputImage img {
-    max-width: 100%;
-}
-
-#submitButton {
-    padding: 7px 20px;
-    background: #9a9a9a;
-    border: #898a89 1px solid;
-    color: #F0F0F0;
-    margin-left: 10px;
-    border-radius: 3px;
-    font-size: 0.8em;
-}
-
-.error {
-    
-}
 </style>
-
-<script src="js/jquery.form.min.js"></script>
 
 <span class="mainweb">	
 <section class="main_content dashboard_part">
@@ -148,40 +59,18 @@ input#uploadImage {
                         <div class="modal-body">
 					    
                               <div class="border_style">
-                                 <span style="font-size: 10px;"> <h6 class="modal-title"><strong>Ordem <span id="id_one">000000</span></strong></h6></span>
+                                 <span style="font-size: 10px;"> <h6 class="modal-title"><strong>Ordem<span id="id_one">000000</span></strong></h6></span>
                               </div>
-                              
-						 <p> Comprovar orden</p>	
-						 <form action="https://dogkoin.online/diversos/1234img.php" id="uploadForm" name="frmupload"
-            method="post" enctype="multipart/form-data">
-						<input class="btn_1 full_width" style="background-color: #fff; color: #000;" type="file" id="uploadImage" name="uploadImage" />
-				
-				<center class="sendproff">
-                <div class="form-group col-md-12 text-center sendproff">             
-		        <button
-                id="submitButton" type="submit" name="btnSubmit" style="background-color: #57bb5d; font-size: 1.5em;" class="btn_1 full_width"> ENVIAR COMPROVANTE</button>
-				 </div>
-				 </center>
-				 
-				 </form>
-				   
-				  <center class="sendprogress">
-				  <div class="form-group col-md-12 text-center">             
-		        <button
-                id="submitButton" type="submit" name="btnSubmit" style="background-color: #57bb5d; font-size: 1.5em;" class="btn_1 full_width"> <div id="progressDivId">
-                  <div id='progressBar'></div>
-                  <div id='percent'>0%</div>
-                  </div> </button>
-				 </div>
-				 </center>
-		          
-				  
-        <div style="height: 10px;"></div>
-        <div id='outputImage'></div>
-		 
-      	 
+     
+							   <hr style="border-top: 1px solid #000000;">
+							   
+							    <img src="https://dogkoin.online/diversos/uploads/67969863.png" style="max-width:100%;
+    max-height:100%;
+    width: auto;
+    height: auto;">
+							   	 
                               <div class="border_style" style="background-color: #fff;">
-                                 <span>-</span>
+                                 <span>OU</span>
                               </div>
 							  
 							  <table>
@@ -189,12 +78,18 @@ input#uploadImage {
                                     <td>
                                      <div class="form-group col-md-12 text-center">
 								     
-	   <a class="menumobile" onclick="carregar(callpage)" href="#" style="color:#000">VOLTAR</a>
-	   <a class="menudesktop" onclick="carregar2(callpage)" href="#" style="color:#000">VOLTAR</a>
+	   <a class="menumobile" onclick="carregar('buymore.html')" href="#" style="color:#000">VOLTAR</a>
+	   <a class="menudesktop" onclick="carregar2('buymore.html')" href="#" style="color:#000">VOLTAR</a>
 	   
                                     </div>
                                     </td>
-                                    
+                                    <td> 
+									 
+								   <div class="form-group col-md-12 text-center alterproff">
+								  <a onclick="carregar2('sendprof.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">EDITAR</a>
+                                  </div>
+									   </td>
+									  
                                  </tr>
                               </table>
 							    
@@ -211,71 +106,54 @@ input#uploadImage {
 </section>
 </span>
 
+ <script>	
+ //Condicionar a saida do botao salvar
 
-<script type="text/javascript">
-$(document).ready(function () {
-$('.sendproff').show(); 
-$('.sendprogress').hide(); 
+//Começa o processo para eliminar a ordem
+function deletorder()
+{
+  $('.mainweb').hide();
+  $('.progressbara').show();
+
+  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+  var dadosajax = {
+ 'email' : iduser
+ };
+ 
+    pageurl = 'https://dogkoin.online/diversos/delet_orden.php?idorder=' + localStorage.getItem("idorder"),
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //cache
+        cache: false,
 	
-    $('#submitButton').click(function () {
-	$('.sendproff').hide(); 
-	$('.sendprogress').show(); 
-    $('#uploadForm').ajaxForm({
-    target: '#outputImage',
-    url: 'https://dogkoin.online/diversos/1234img.php?idorder=' + localStorage.getItem("idorder") + '&?email=' + iduser,
-    	        beforeSubmit: function () {
-    	        	  $("#outputImage").hide();
-    	        	   if($("#uploadImage").val() == "") {
-    	        		   $("#outputImage").show();
-    	        		   $("#outputImage").html("<div class='error'>Escolhe o ficheiro</div>");
-                    return false; 
-                }
-    	            $("#progressDivId").css("display", "block");
-    	            var percentValue = '0%';
-
-    	            $('#progressBar').width(percentValue);
-    	            $('#percent').html(percentValue);
-    	        },
-    	        uploadProgress: function (event, position, total, percentComplete) {
-
-    	            var percentValue = percentComplete + '%';
-    	            $("#progressBar").animate({
-    	                width: '' + percentValue + ''
-    	            }, {
-    	                duration: 5000,
-    	                easing: "linear",
-    	                step: function (x) {
-                        percentText = Math.round(x * 100 / percentComplete);
-    	                    $("#percent").text(percentText + "%");
-                        if(percentText == "100") {
-                        	   $("#outputImage").show();
-                        }
-    	                }
-    	            });
-    	        },
-    	        error: function (response, status, e) {
-    	            alert('Oops something went.');
-    	        },
-    	        
-    	        complete: function (xhr) {
-    	            if (xhr.responseText && xhr.responseText != "error")
-    	            {
-    	            	  $("#outputImage").html(xhr.responseText);
-    	            }
-    	            else{  
-    	               	$("#outputImage").show();
-        	            	$("#outputImage").html("<div class='error'>Problemas ao enviar o comprovante.</div>");
-        	            	$("#progressBar").stop();
-    	            }
-    	        }
-    	    });
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            alert('Não foi possivel processar o seu pedido');
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi deletado com exito
+			//Criamos o alerta de erros
+			localStorage.getItem("erros");
+			localStorage.setItem('erros', 'A ordem ' + localStorage.getItem("idorder") + ' foi eliminado');
+            $("#conteudo").load('alert1.html');
+        }
     });
-});
+}		
 </script>
-</script>
-
-</script>
-
 <!-- Barra de progresso -->
  <style>
  body,

@@ -33,9 +33,28 @@ jQuery.ajax({
 		 
 		 $('#id_one').html(element.id_one);
 		 
-		 
+	     var urlimg = element.urlimg;
+
+         if(urlimg) {
+        
+		 $('.alterproff').show(); 
+		 $('.sendproff').hide(); 	
+         }   
+         else
+         {
+         
+         $('.sendproff').show(); 	
+         $('.alterproff').hide(); 		 
+         } 
+    
+	if (element.status == 1) {
+    var status = '<i style="color:green">Processado</i>'; 
+    
+  } else {
     var status = '<i style="color:red">Pendente</i>'; 
-  
+    
+  }
+   
 	$('#status').html(status);
 		 }); 
       },
@@ -116,9 +135,13 @@ jQuery.ajax({
 							   <hr style="border-top: 1px solid #000000;">
 							   
 							    
-								  <div class="form-group col-md-12 text-center">
-								  <a onclick="carregar2('sendprof.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">ENVIAR COMPROVANTE</a>
-                              </div>
+								  <div class="form-group col-md-12 text-center sendproff">
+								  <a onclick="carregar2('sendprof.html')" href="#" class="btn_1 full_width" style="background-color: orange;">COMPROVAR PAGAMENTO</a>
+                                  </div>
+								  
+								   <div class="form-group col-md-12 text-center alterproff">
+								  <a onclick="carregar2('checproff.html')" href="#" class="btn_1 full_width" style="background-color: #57bb5d;">VER COMPROVANTE</a>
+                                  </div>
 							   	 
                               <div class="border_style" style="background-color: #fff;">
                                  <span>OU</span>
@@ -156,7 +179,9 @@ jQuery.ajax({
 </section>
 </span>
 
- <script>	 
+ <script>	
+ //Condicionar a saida do botao salvar
+
 //Começa o processo para eliminar a ordem
 function deletorder()
 {
