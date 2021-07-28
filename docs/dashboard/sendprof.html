@@ -74,7 +74,7 @@ jQuery.ajax({
 .progress-bar {
     background-color: green;
     width: 0%;
-    height: 30px;
+    height: 30%;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -113,7 +113,7 @@ input#uploadImage {
 }
 
 #outputImage img {
-    max-width: 300px;
+    max-width: 100%;
 }
 
 #submitButton {
@@ -164,15 +164,20 @@ input#uploadImage {
 				 </center>
 				 
 				 </form>
-				 
-				  <center>
-				  <div class='progress' id="progressDivId">
-            <div class='progress-bar' id='progressBar'></div>
-            <div class='percent' id='percent'>0%</div>
-        </div>
+				   
+				  
+				  <div class="form-group col-md-12 text-center">             
+		        <button
+                id="submitButton" type="submit" name="btnSubmit" style="background-color: #57bb5d; font-size: 1.5em;" class="btn_1 full_width"> <div id="progressDivId">
+                  <div id='progressBar'></div>
+                  <div id='percent'>0%</div>
+                  </div> </button>
+				 </div>
+		          
+				  
         <div style="height: 10px;"></div>
         <div id='outputImage'></div>
-		 </center>
+		 
       	 
                               <div class="border_style" style="background-color: #fff;">
                                  <span>-</span>
@@ -216,7 +221,7 @@ $(document).ready(function () {
     	        	  $("#outputImage").hide();
     	        	   if($("#uploadImage").val() == "") {
     	        		   $("#outputImage").show();
-    	        		   $("#outputImage").html("<div class='error'>Choose a file to upload.</div>");
+    	        		   $("#outputImage").html("<div class='error'>Escolhe o ficheiro</div>");
                     return false; 
                 }
     	            $("#progressDivId").css("display", "block");
