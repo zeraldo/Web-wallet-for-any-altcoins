@@ -20,6 +20,7 @@ jQuery.ajax({
 		 $.each(result, function (i, element) {
  
 	     var urlimg = element.urlimg;
+		 $('#imgprof').attr('src',  '//dogkoin.online/diversos/' + urlimg);
          alert(urlimg);
 
 		 }); 
@@ -64,7 +65,7 @@ jQuery.ajax({
      
 							   <hr style="border-top: 1px solid #000000;">
 							   
-							    <img src="https://dogkoin.online/diversos/uploads/67969863.png" style="max-width:100%;
+							    <img id="imgprof" src="" style="max-width:100%;
     max-height:100%;
     width: auto;
     height: auto;">
