@@ -18,11 +18,10 @@ jQuery.ajax({
     success: function (result) { 
 	     
 		 $.each(result, function (i, element) {
- 
+         $('#id_one').html(element.id_one);
 	     var urlimg = element.urlimg;
 		 $('#imgprof').attr('src',  '//dogkoin.online/diversos/' + urlimg);
-         alert(urlimg);
-
+         
 		 }); 
       },
     
