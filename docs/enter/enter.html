@@ -118,7 +118,8 @@ if (!localStorage.getItem("user")) {
 										<button onClick="enteraccount()" class="fxt-btn-fill">ENTRAR</button>
 									</div>
 								</div>
-								 
+								
+								<p style="margin-top: -3%;"> <center> <a href="recoverpass.html" style="color:#a1a1a1; "> Recuperar senha<a> </center> <p>
 								 
 								<div class="process form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
@@ -256,8 +257,8 @@ function enteraccount()
  'password' : $("#password").val(), 
  'login' : $("#login").val()
  };
-    pageurl = 'https://dogkoin.online/enter/enter.php';
-	//pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
