@@ -127,7 +127,7 @@ if (!localStorage.getItem("user")) {
 									</div>
 								</div>
 								
-								<p style="margin-top: -3%;"> <center> <a href="recoverpass.html" style="color:#a1a1a1; "> Recuperar senha<a> </center> <p>
+								<p class="btnentert" style="margin-top: -3%;"> <center> <a href="recoverpass.html" style="color:#a1a1a1; "> Recuperar senha<a> </center> <p>
 								 
 								<div class="process form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
@@ -271,6 +271,7 @@ function enteraccount()
   //Exibir botao processando
   $('.process').show(); 
   $('.btnenter').hide(); 
+  $('.btnentert').hide(); 
   
  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
  var dadosajax = {
@@ -278,8 +279,8 @@ function enteraccount()
  'password' : $("#password").val(), 
  'login' : $("#login").val()
  };
-    //pageurl = 'https://dogkoin.online/enter/enter.php';
-	pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
+    pageurl = 'https://dogkoin.online/enter/enter.php';
+	//pageurl = 'http://localhost/dogkoin.online/enter/enter.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -301,6 +302,7 @@ function enteraccount()
             $('.otherro').show(); 
 			$('.process').hide(); 
             $('.btnregister').show(); 
+			 $('.btnentert').show(); 
 	 
         },
         //retorna o resultado da pagina para onde enviamos os dados
@@ -323,6 +325,7 @@ function enteraccount()
             $('.notemail').show(); 
 			$('.process').hide(); 
             $('.btnenter').show(); 
+			$('.btnentert').show(); 
             //aqui houve um erro
 			}
 		 else
@@ -332,6 +335,7 @@ function enteraccount()
 			$('.otherro').show(); 
 			$('.process').hide(); 
             $('.btnenter').show(); 
+			$('.btnentert').show(); 
             //aqui houve um erro
 		 
               }			
