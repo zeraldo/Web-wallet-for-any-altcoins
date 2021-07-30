@@ -127,8 +127,6 @@ if (!localStorage.getItem("user")) {
 									</div>
 								</div>
 								
-								<p class="btnentert" style="margin-top: -3%;"> <center> <a href="recoverpass.html" style="color:#a1a1a1; "> Recuperar senha<a> </center> <p>
-								 
 								<div class="process form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-4">
 										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
@@ -152,6 +150,10 @@ if (!localStorage.getItem("user")) {
 									</div>
 								</div> 
 								
+								
+								<p class="ocultarr" style="margin-top: -3%;"> <center> <a href="recoverpass.html" style="color:#a1a1a1; "> Recuperar senha<a> </center> <p>
+								 
+								 
                                   <div class="form-group">
                                     <div class="fxt-transformY-50 fxt-transition-delay-3">  
                                      <center> 
@@ -216,6 +218,7 @@ $(document).ready(function(){
  $('.notpassword').hide();
  $('.otherro').hide();
  $('.logout').hide();
+ $('.btnentert').show();
  $('.recoverr').hide();
 
  });
@@ -256,10 +259,11 @@ if (!localStorage.getItem("logout")) {
 }
 
 if (!localStorage.getItem("recover")) {
-    localStorage.removeItem('');
+    localStorage.removeItem('recover');
 } else {
       localStorage.removeItem('recover');
      $('.recoverr').show();
+	 localStorage.removeItem('recover');
 }
 
  }); 
@@ -272,6 +276,7 @@ function enteraccount()
   $('.process').show(); 
   $('.btnenter').hide(); 
   $('.btnentert').hide(); 
+  $('.ocultarr').hide(); 
   
  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
  var dadosajax = {
