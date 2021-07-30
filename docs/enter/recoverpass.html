@@ -232,9 +232,8 @@ function recoverccount()
             //Se foi inscrito com sucesso
             if($.trim(result) == '100')
             {
-			var user = document.getElementById("email").value;
-            localStorage.setItem("user", user); 
-            $(location).attr('href', 'recover.html');
+            localStorage.setItem("recover", 1); 
+            $(location).attr('href', 'enter.html');
             //exibir sucesso no envio
 			 
             }

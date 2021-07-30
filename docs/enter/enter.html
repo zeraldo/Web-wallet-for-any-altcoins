@@ -95,6 +95,14 @@ if (!localStorage.getItem("user")) {
 								   <span aria-hidden="true" onclick="javascript:logouth();">×</span></div>
                                     <h1 style="font-size: 19px;margin: 0 0 2px 0;color: orange;">Sessão terminado</h1>
 									  <br> 
+									</div>    	
+
+                                    
+									 <div class="recoverr">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:recovert();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: orange;">Nova senha foi enviado por email</h1>
+									  <br> 
 									</div>    									
 									   
 						<div class="fxt-form">
@@ -191,6 +199,7 @@ if (!localStorage.getItem("user")) {
  $('.notpassword').hide();
  $('.otherro').hide();
  $('.logout').hide();
+ $('.recoverr').hide();
 });
 
  $('.password').click(function(){
@@ -198,6 +207,7 @@ if (!localStorage.getItem("user")) {
  $('.notpassword').hide();
  $('.otherro').hide();
  $('.logout').hide();
+ $('.recoverr').hide();
 });
  //Condicionar a saida do botao salvar
 $(document).ready(function(){            
@@ -206,12 +216,17 @@ $(document).ready(function(){
  $('.notpassword').hide();
  $('.otherro').hide();
  $('.logout').hide();
+ $('.recoverr').hide();
 
  });
 
-//Exibir  caixa de aviso se com logout
-		
+//Exibir  caixa de aviso se com logout	
  //Ocultar saidas
+  function recovert()
+{
+ $('.recoverr').hide();
+  }
+  
  function logouth()
 {
  $('.logout').hide();
@@ -233,12 +248,18 @@ function notfoundEmail()
   }
   
  $(document).ready(function(){            
- 
 if (!localStorage.getItem("logout")) {
     localStorage.removeItem('');
 } else {
       localStorage.removeItem('logout');
      $('.logout').show();
+}
+
+if (!localStorage.getItem("recover")) {
+    localStorage.removeItem('');
+} else {
+      localStorage.removeItem('recover');
+     $('.recoverr').show();
 }
 
  }); 
@@ -307,19 +328,12 @@ function enteraccount()
 		 else
             {
 			if($.trim(result) == '109')
-			 { 
-            $('.notpassword').show(); 
-			$('.process').hide(); 
-            $('.btnenter').show(); 
-            //aqui houve um erro
-			}
-			else
-            {
+			 
 			$('.otherro').show(); 
 			$('.process').hide(); 
             $('.btnenter').show(); 
             //aqui houve um erro
-			}	
+		 
               }			
             }
 
