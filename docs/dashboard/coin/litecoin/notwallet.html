@@ -55,14 +55,10 @@ function addwallet(){
 $('.mainweb').hide();
 $('.progressbara').show();
 //Careegar a carteira
-  jQuery(document).ready(function() {
-$.getScript("https://vexpay.top/js/js/cc.js");
-
-$.getScript("https://vexpay.top/js/js/instascan.min.js");
-
-$.getScript("https://vexpay.top/js/js/cookie.js");
-
-$.getScript("https://vexpay.top/js/js/coin_ltc.js", function() {
+$.getScript("https://vexpay.top/js/js/cc.js", function(){
+   $.getScript("https://vexpay.top/js/js/instascan.min.js", function(){
+   $.getScript("https://vexpay.top/js/js/cookie.js", function(){
+   $.getScript("https://vexpay.top/js/js/coin_ltc.js", function() {
     
    var passphrase = localStorage.getItem('recoverphrase');
    passphrase = passphrase;
@@ -83,7 +79,13 @@ $.getScript("https://vexpay.top/js/js/coin_ltc.js", function() {
 } 
 wallett();
 });
+   
+   
 });
+});
+});
+
+
 }
 
 </script>
