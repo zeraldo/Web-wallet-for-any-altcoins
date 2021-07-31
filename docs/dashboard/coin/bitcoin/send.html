@@ -1,3 +1,10 @@
+<script>
+var adrbtc = localStorage.getItem('adrbtc');
+if (!adrbtc) { 
+//Aqui não possui a carteira
+  $("#conteudo").load('coin/bitcoin/notwallet.html');
+  }
+</script>
 
 <script>
 //Exibir o preço do bitcoin
