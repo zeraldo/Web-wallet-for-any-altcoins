@@ -1,3 +1,10 @@
+<script>
+var adrltc = localStorage.getItem('adrltc');
+if (!adrltc) { 
+//Aqui não possui a carteira
+  $("#conteudo").load('coin/litecoin/notwallet.html');
+  }
+</script>
 
 <script>
 //Exibir o preço do litecoin
