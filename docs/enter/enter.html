@@ -218,7 +218,6 @@ $(document).ready(function(){
  $('.notpassword').hide();
  $('.otherro').hide();
  $('.logout').hide();
- $('.btnentert').show();
  $('.recoverr').hide();
 
  });
@@ -275,7 +274,6 @@ function enteraccount()
   //Exibir botao processando
   $('.process').show(); 
   $('.btnenter').hide(); 
-  $('.btnentert').hide(); 
   $('.ocultarr').hide(); 
   
  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
@@ -307,7 +305,6 @@ function enteraccount()
             $('.otherro').show(); 
 			$('.process').hide(); 
             $('.btnregister').show(); 
-			 $('.btnentert').show(); 
 	 
         },
         //retorna o resultado da pagina para onde enviamos os dados
@@ -330,17 +327,15 @@ function enteraccount()
             $('.notemail').show(); 
 			$('.process').hide(); 
             $('.btnenter').show(); 
-			$('.btnentert').show(); 
             //aqui houve um erro
 			}
 		 else
             {
 			if($.trim(result) == '109')
 			 
-			$('.otherro').show(); 
+			$('.notpassword').show(); 
 			$('.process').hide(); 
             $('.btnenter').show(); 
-			$('.btnentert').show(); 
             //aqui houve um erro
 		 
               }			
