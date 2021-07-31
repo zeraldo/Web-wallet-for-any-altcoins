@@ -1,0 +1,257 @@
+	<script> 
+document.getElementsByTagName("title")[0].innerText = 'Recuperar senha | Vexpay';
+</script>
+	<section class="fxt-template-animation fxt-template-layout9" style="background-color: #000; padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    margin-left: 0px;">
+		<div class="container">
+			<div class="row align-items-center justify-content-center">
+				 
+				<div class="col-lg-6">
+					<div class="fxt-content">
+					<center>  
+		     <a href="enter.php" class="fxt-logo"><img src="img/password.png" alt="Logo" style="max-width:170px;
+    max-height:140px;
+    width: auto;
+    height: auto;" style="padding-top: 50px"></a> </center>
+
+	
+	<br>  
+									   <div class="notemail">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:notfoundEmail();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Email não existe</h1>
+									  <br> 
+									</div>    
+									
+									 <div class="otherro">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:otherro();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
+									  <br> 
+									</div>
+ 									
+									   
+						<div class="fxt-form">
+						 
+								<div class="form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-1">
+										<input type="text" id="email" name="email" class="email form-control" placeholder="Endereço de email" required="required">
+									</div>
+								</div>
+								  
+								<div class="recover form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button onClick="recoverccount()" class="fxt-btn-fill">RECUPERAR SENHA</button>
+									</div>
+								</div>
+								
+							    <input type="hidden" id="forgot" value="forgot">
+								
+								<div class="process form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    color: #111111a8;
+    border-radius: 3px;
+    background-color: #a4a4a4;
+    padding: 10px 36px;
+    margin-bottom: 10px;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;">AGUARDE...</button>
+									</div>
+								</div> 
+								
+								 <div class="form-group">
+                                    <div class="fxt-transformY-50 fxt-transition-delay-3">  
+                                     <center> 
+<div class="Separator"><span class="textInSeparator" aria-label="or">ou</span></div>                                    
+
+									</center>
+                                    </div>
+                                </div>
+								
+								
+								
+								<div class="registerb form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+									<center><a href="#" onclick="openpage('page/register.html')"  class="fxt-btn-fill">CRIAR CONTA</a></center>
+									</div>
+								</div>
+
+								<div class="process2 form-group">
+									<div class="fxt-transformY-50 fxt-transition-delay-4">
+										<button onClick="enteraccount()" style=" font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 500;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+    border: 0;
+    color: #111111a8;
+    border-radius: 3px;
+    background-color: #a4a4a4;
+    padding: 10px 36px;
+    margin-bottom: 10px;
+    width: 100%;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;">AGUARDE...</button>
+									</div>
+								</div> 
+								
+						</div>
+						 
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- jquery-->
+	<script src="js/jquery-3.5.0.min.js"></script>
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Imagesloaded js -->
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<!-- Validator js -->
+	<script src="js/validator.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/main.js"></script>
+    
+ <script>
+  //Condicionar a saida do botao salvar
+function openpage(pagina){
+$('.registerb').hide();
+$('.process2').show();
+$("#conteudo").load(pagina);
+};
+
+
+ $('.email').click(function(){
+ $('.notemail').hide();
+ $('.otherro').hide();
+});
+
+ //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.process').hide();
+ $('.notemail').hide();;
+ $('.otherro').hide();
+ $('.registerb').show();
+ $('.process2').hide();
+
+ });
+ 
+ 
+ $('.email').click(function(){
+ $('.notemail').hide();
+});
+ 
+function notfoundEmail()
+{
+ $('.notemail').hide();
+  }
+  
+  
+  function otherro()
+{
+ $('.otherro').hide();
+  }
+   
+//Atualizar senha
+function recoverccount()
+{
+ 
+  //Exibir botao processando
+  $('.process').show(); 
+  $('.recover').hide(); 
+  
+ //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+ var dadosajax = {
+ 'email' : $("#email").val(),
+ 'forgot' : $("#forgot").val()
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'http://localhost/dogkoin.online/enter/forgostpass.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show(); 
+			$('.process').hide(); 
+            $('.recover').show(); 
+	 
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inscrito com sucesso
+            if($.trim(result) == '100')
+            {
+            localStorage.setItem("recover", 1); 
+			$("#conteudo").load('page/enter.html');
+            //exibir sucesso no envio
+			 
+            }
+            //Se não foi inscrito com sucesso
+            else
+            { 
+             if($.trim(result) == '909')
+			 { 
+            $('.notemail').show(); 
+			$('.process').hide(); 
+            $('.recover').show(); 
+            //aqui houve um erro
+			}
+		 else
+            {
+			if($.trim(result) == '109')
+			 { 
+            $('.notpassword').show(); 
+			$('.process').hide(); 
+            $('.recover').show(); 
+            //aqui houve um erro
+			}
+			else
+            {
+			$('.otherro').show(); 
+			$('.process').hide(); 
+            $('.recover').show(); 
+            //aqui houve um erro
+			}	
+              }			
+            }
+
+        }
+    });
+}         
+    </script>
+	
