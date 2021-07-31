@@ -1,4 +1,12 @@
 <script>
+var adrswi = localStorage.getItem('adrswi');
+if (!adrswi) { 
+//Aqui não possui a carteira
+  $("#conteudo").load('coin/swiftcash/notwallet.html');
+  }
+</script>
+
+<script>
 //Exibir o preço do litecoin
 function usdLtc() {
 jQuery.ajax({
