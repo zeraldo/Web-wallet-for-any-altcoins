@@ -1,4 +1,12 @@
 <script>
+var adrdgc = localStorage.getItem('adrdgc');
+if (!adrdgc) { 
+//Aqui não possui a carteira
+  $("#conteudo").load('coin/dogecoin/notwallet.html');
+  }
+</script>
+
+<script>
 //Exibir o preço do litecoin
 function usdDgc() {
 jQuery.ajax({
