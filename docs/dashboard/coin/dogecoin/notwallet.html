@@ -44,46 +44,42 @@
 </span>
  
 <script>
+   localStorage.setItem("urlback", "coin/dogecoin/send.html"); 
+</script>
 
+<script src="../js/js/cc.js"></script>
+<script src="../js/js/instascan.min.js"></script>
+<script src="../js/js/cookie.js"></script>
+<script src="../js/js/coin_dgc.js"></script>
+ 
+  <script>
+  var passphrase = localStorage.getItem('recoverphrase');
+  passphrase = passphrase;
+  var hash = cc.bitcoin.crypto.keccak256(passphrase);
+  </script>
+
+     <script>
+	 
    //Receber valores
 function addwallet(){
 	 
 $('.mainweb').hide();
 $('.progressbara').show();
-//Careegar a carteira
-$.getScript("https://vexpay.top/js/js/cc.js", function(){
-   $.getScript("https://vexpay.top/js/js/instascan.min.js", function(){
-   $.getScript("https://vexpay.top/js/js/cookie.js", function(){
-   $.getScript("https://vexpay.top/js/js/coin_dgc.js", function() {
-    
-   var passphrase = localStorage.getItem('recoverphrase');
-   passphrase = passphrase;
-   var hash = cc.bitcoin.crypto.keccak256(passphrase);
-   
-   function wallett() {
-    //Verifcar se a carteira já está disponivel para uso
-   setTimeout(hashit, 1000, hash.toString("hex"), function(hashed) {
+function wallett() {
+//Verifcar se a carteira já está disponivel para uso
+setTimeout(hashit, 1000, hash.toString("hex"), function(hashed) {
     var d = new cc.bigi.fromBuffer(hashed);
     keyPair = new cc.bitcoin.ECPair(d, null, { network: cc.bitcoin.networks.dogecoin });
     address = keyPair.getAddress();
-    // Salva os dados na localStorage
-    localStorage.setItem('adrdgc', address);
-	//Redireciona usuario para carteira
-	$("#conteudo").load('coin/dogecoin/send.html');
-	
+// Salva os dados na localStorage
+localStorage.setItem('adrdgc', address);
+
+$("#conteudo").load('coin/dogecoin/send.html');
 });
 } 
 wallett();
-});
-   
-   
-});
-});
-});
-
 
 }
-
 </script>
 
 <script> 
