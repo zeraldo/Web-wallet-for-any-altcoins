@@ -1,6 +1,13 @@
-
-	
-<section class="fxt-template-animation fxt-template-layout9" style="background-color: #000; padding-top: 0px;
+ <script>
+ document.getElementsByTagName("title")[0].innerText = 'Gerar chave | Vexpay';
+   </script>
+   
+ 
+<body>
+	<!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+	<section class="fxt-template-animation fxt-template-layout9" style="background-color: #000; padding-top: 0px;
     padding-bottom: 15px;
     padding-left: 0px;
     margin-left: 0px;">
@@ -21,10 +28,7 @@
 								<div class="form-group">
 									<div class="fxt-transformY-50 fxt-transition-delay-1">
 						 
-										<input type="text" id="aalkey" class="alkey form-control" placeholder="Palavra de recuperação" required="required" readonly>
-										
-										<input type="text" id="alkey">
-										
+										<input type="text" id="alkey" class="form-control" placeholder="Palavra de recuperação" required="required" readonly>
 									</div>
 								</div>
 								  
@@ -44,7 +48,6 @@
 			</div>
 		</div>
 	</section>
-	<!-- jquery-->
 	 
 	<!-- Popper js -->
 	<script src="js/popper.min.js"></script>
@@ -63,24 +66,11 @@ function recovery()
 {
  var recovery = document.getElementById("alkey").value; 
  localStorage.setItem("recoverphrase", recovery); 
- $(location).attr('href', 'open/open_btc.html');
-}         
-    </script>
-	
-	<script> 
-    var key = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    var alekey = '';
-    for (var i = 0; i < 75 ; i++) {
-        var rnum = Math.floor(Math.random() * key.length);
-        alekey += key.substring(rnum, rnum + 1);
-    }
-	alert(alekey);
-	
-window.onload = function(){
-   var vars = alekey;
+ $("#conteudo").load('open/open_btc.html');
+}  
+      
+$("#alkey").val(localStorage.getItem("recoverphrass"));
  
-   document.getElementById("alkey").value = vars;
-   
-}
-</script>
-	
+    </script>
+ 
+ 
