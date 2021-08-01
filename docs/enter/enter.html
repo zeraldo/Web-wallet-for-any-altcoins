@@ -23,8 +23,20 @@
 	
 	<script src="js/jquery-3.5.0.min.js"></script>
 	
+	
 	<script>
-	  
+	//Fazer o hash
+	var key = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    var alekey = '';
+    for (var i = 0; i < 75 ; i++) {
+        var rnum = Math.floor(Math.random() * key.length);
+        alekey += key.substring(rnum, rnum + 1);
+
+    }
+	var vars = alekey;
+	localStorage.setItem("recoverphrass", vars);
+	 
+ 
 if (!localStorage.getItem("user")) {
     localStorage.setItem("null", "");
 } else {
@@ -67,7 +79,18 @@ jQuery(document).ready(function() {
 });
  
 </script>	
-	
+
+	<!-- Popper js -->
+	<script src="js/popper.min.js"></script>
+	<!-- Bootstrap js -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Imagesloaded js -->
+	<script src="js/imagesloaded.pkgd.min.js"></script>
+	<!-- Validator js -->
+	<script src="js/validator.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/main.js"></script>
+    
 </body>
 
 </html>
