@@ -307,8 +307,49 @@ jQuery.ajax({
 usdDgc();
 </script>
  
+
+<script>    		
+//Exibir o saldo dogecoin
+// Obtém os dados da localStorage
+var adrbtc = localStorage.getItem('adrbtc');
+if (typeof adrbtc !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://api.blockcypher.com/v1/btc/main/addrs/' + adrbtc,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+         var bbbtc = result.balance / 100000000;
+         
+		 localStorage.setItem("bbbtc", bbbtc);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbdgc == 0) {  	 
+  $('#bbbtc1').html('0.00');
+  $('#bbbtc').html('0.00');
+  }   
+  else
+  {
+    var bbdgc = arred(bbbtc,4);
+  	$('#bbbtc1').html(bbbtc);
+	$('#bbbtc').html(bbbtc);
+		
+  	}
+		//alert(bbswi1);
+      },
+   
+});	
+}
+</script>
+
 <script>
-//Exibir o preço do bitcoin
+//Exibir o preço do litecoin
 function usdBtc() {
 jQuery.ajax({
 	url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
@@ -325,15 +366,63 @@ jQuery.ajax({
         sbtc = bbbtc * pricusd;
 		localStorage.setItem("blcsbtc", sbtc); 
 		pricusdbtc = pricusd;
-		//Formatar a saida do preço para dolar
-        var pricusdbtc = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
- 
-		document.getElementById('pricusdbtc').innerHTML = pricusdbtc;
-		document.getElementById('pricusdbtc1').innerHTML = pricusdbtc;
-		/* Aqui verificamos a quantidade do saldo
+
+	    //Formatar a saida do preço para dolar
+        var pricusbtc = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
+		
+        //Formatar saida do bitcoin para dólar.
+		var pricusbtc = pricusbtc.replace(/([0-9]{3})$/g, "$1");
+		document.getElementById('pricusdbtc').innerHTML = pricusbtc;
+		document.getElementById('pricusdbtc1').innerHTML = pricusbtc;
+		
 		var btcbalance = Math.round(localStorage.getItem("blcsbtc") * 100);
         var btcbalance = Math.ceil(btcbalance)/100;
-		document.getElementById('btcbalance').innerHTML = btcbalance; */
+		
+						
+//Começa a enviar os dados no servidor para arrumar o balanço
+ var dadosajax = {
+ 
+ 'b_btc' : btcbalance,
+ <!-- 'b_swiftc' : swibalance, -->
+ 'email' : iduser
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'https://dogkoin.online/diversos/blbtc.php?email=' + iduser;
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+         
+        //retorna o resultado da pagina para onde enviamos os dados
+        
+    });
+	//Termina de enviar o balanço
+       		
+		//Se o balanço esta zerado, formatar corretamente
+ if (btcbalance == 0) {  	 
+ 
+		document.getElementById('btcbalance').innerHTML = "0.00"; 
+		document.getElementById('btcbalance1').innerHTML = "0.00"; 
+  }   
+  else
+  {
+  	
+		document.getElementById('btcbalance').innerHTML = btcbalance; 
+		document.getElementById('btcbalance1').innerHTML = btcbalance; 
+		 
+  	}
     },
 	complete: function() {
              //  alert("Zeraldo Zua")
@@ -343,7 +432,9 @@ jQuery.ajax({
 });	
 }
 usdBtc();
+
 </script>
+
 <script> 
 //Exibir o preço do swiftcash
 function usdSwi() {
@@ -611,11 +702,11 @@ usdBalan();
 		 <a class="menudesktop"onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOIN</a>
 		 </td>
          <td><a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
-		     <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbbtc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbbtc1" class="counter">0.00</span></a>
 			 </td>
 		 <td>
 		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
-		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="btcbalance1">0.00</span></a>
 		 </td>
          <td>
 		 <a class="menudesktop" onclick="carregar2('coin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbtc">0.00</span></a>
