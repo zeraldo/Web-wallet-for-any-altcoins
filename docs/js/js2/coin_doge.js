@@ -5,7 +5,7 @@ var PARAMS = {
                 coinjs: cc.bitcoin,
                 network: cc.bitcoin.networks.dogecoin,
                 qrColor: 'C19347',
-                minFee: 1,
+                minFee: 0.5,
                 maxFee: 10,
                 txFee: 1,
                 explorer: 'https://live.blockcypher.com/doge/',
