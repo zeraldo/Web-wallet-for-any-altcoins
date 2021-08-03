@@ -330,13 +330,13 @@ jQuery.ajax({
 		 localStorage.setItem("bbbtc", bbbtc);
 		
 //Se o balanço esta zerado, formatar corretamente
- if (bbdgc == 0) {  	 
+ if (bbbtc == 0) {  	 
   $('#bbbtc1').html('0.00');
   $('#bbbtc').html('0.00');
   }   
   else
   {
-    var bbdgc = arred(bbbtc,4);
+    var bbbtc = arred(bbbtc,4);
   	$('#bbbtc1').html(bbbtc);
 	$('#bbbtc').html(bbbtc);
 		
