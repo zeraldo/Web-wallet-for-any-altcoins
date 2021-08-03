@@ -38,7 +38,7 @@ usdbtc();
 //Exibir saldo bitcoin
 // Obtém os dados da localStorage
 var adrbtc = localStorage.getItem('adrbtc');
-
+ 
 if (typeof adrbtc !== 'undefined') {  	 
 //Verifcar se a variavel está definida
 jQuery.ajax({
@@ -53,16 +53,16 @@ jQuery.ajax({
     success: function (result) { 
 	    // var balance=0.00;
          var bbbtc = result.balance / 100000000;
-          
+        
 		 $("#bllcbtc").val(bbbtc);
 		
 //Se o balanço esta zerado, formatar corretamente
  if (bbbtc == 0) {  	 
-  $('#bbbtc').html('0.0000000' + ' btc');
+  $('#bbbtc').html('0.0000000' + ' BTC');
   }   
   else
   {
-	$('#bbbtc').html(bbbtc + ' btc');
+	$('#bbbtc').html(bbbtc + ' BTC');
 		
   	}
 		//alert(bbswi1);
@@ -163,7 +163,7 @@ jQuery.ajax({
                      <div class="modal-content cs_modal">
 	                  
 						  <div class="border_style" style="background-color: #fff;">
-                              <h4> <span id="bbbswi">0.0000000 BTC</span></h4>
+                              <h4> <span id="bbbtc">0.0000000 BTC</span></h4>
                               </div>
 							  
                         <div class="modal-body">
@@ -259,7 +259,7 @@ jQuery.ajax({
 </span>
 
 <script>
-   localStorage.setItem("urlback", "coin/swiftcash/send.html"); 
+   localStorage.setItem("urlback", "coin/bitcoin/send.html"); 
 </script>
 <script>
    //Receber valores
