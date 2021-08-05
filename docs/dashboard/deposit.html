@@ -1,0 +1,713 @@
+<script>
+var iduser = localStorage.getItem("user"); 
+$("#email").val(iduser); 
+</script>
+
+<script>
+ 
+  function aoatousd(text){
+   	   
+  var elemento = document.getElementById('kwanza');
+  var valor = elemento.value;
+  
+  valor = valor + '';
+  valor = parseInt(valor.replace(/[\D]+/g,''));
+  valor = valor + '';
+  valor = valor.replace(/([0-9]{2})$/g, ",$1");
+ 
+  elemento.value = valor;
+      
+        var vcoin = document.getElementById("kwanza").value;
+		var vcoin = vcoin.replace(",", ".");
+		
+		var aoausd = localStorage.getItem("aoausd");
+        var aoausd = (1 / aoausd);
+       
+		var vcoin =  vcoin * aoausd;
+		//alert(vcoin);
+		var vcoin = (vcoin * 82) / 100;
+	//	alert(vcoin);
+   		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+		 
+   		$("#dolar").val('$ ' + vcoin + '');
+      
+           }
+		   
+ function usdtoaoa(text){
+   	   
+  var elemento = document.getElementById('dolar');
+  var valor = elemento.value;
+  
+  valor = valor + '';
+  valor = parseInt(valor.replace(/[\D]+/g,''));
+  valor = valor + '';
+  valor = valor.replace(/([0-9]{2})$/g, ",$1");
+ 
+  elemento.value = valor;
+      
+        var vcoin = document.getElementById("dolar").value;
+		var vcoin = vcoin.replace(",", ".");
+		
+		var usdaoa = localStorage.getItem("usdaoa");
+        
+		var vcoin = vcoin * usdaoa;
+		 
+   		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
+		 
+   		$("#kwanza").val('AOA ' + vcoin + '');
+      
+           }		   
+</script>
+	   
+<span class="mainweb">	
+<section class="main_content dashboard_part">
+   <div class="main_content_iner ">
+   <div class="container-fluid plr_30 body_white_bg pt_30">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+				  
+				  <center>
+				  <img src="img/icon/depositfund.svg" width="100.334" height="100.334" alt=""> 
+				   </center>
+				    
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+	                  
+						  <div class="border_style" style="background-color: #fff;">
+                              <h4> <span>DEPOSITAR SALDO</span></h4>
+                              </div>
+                     </div>
+	   
+					        <div class="form-row social_login_btn">   	  
+                          <select id="ttmoeda" style="
+	height: 50px;
+    background-color: #fff;
+    color: #7e7172;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>  
+						  <option disabled="disabled" selected>ENVIAR</option>
+						  <option value="banco">Transferencia Bancaria</option>
+                          <option value="bitcoin">BitCoin</option>
+						  <option value="litecoin">LiteCoin</option>
+						  <option value="dogecoin">DogeCoin</option>
+						  <option value="swiftcash">SwiftCash</option>
+						  </select>  
+						   </div>
+						
+						<!-- Transferencia bancaria -->
+						 <div class="sendbank">
+						 <div class="modal-content cs_modal">
+                      
+                        <div class="modal-body">
+					 
+						  <select id="tmoeda" onChange="creatorder()" style="
+	height: 50px;
+    background-color: #fff;
+    color: #7e7172;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
+						  <option disabled="disabled" selected style="">RECEBER</option>
+                          <option value="bitcoin">Bitcoin</option>
+						  <option value="litecoin">Litecoin</option>
+						  <option value="Dogecoin">Dogecoin</option>
+						  <option value="Bitcoincash">Bitcoincash</option>
+						  <option value="swiftCash">SwiftCash</option>
+						  </select>  		 
+							
+                          <input autocomplete="off" type="text" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+								 	 
+								   <table>
+                                 <tr>
+                                    <td>
+                                       <input type="text" style="border-radius: 3px !important;
+                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" onkeyup="aoatousd(this.value)" name="valor[]" placeholder="KWANZA" id="kwanza">
+                                    </td>
+                                    <td> <input type="text" id="dolar" onkeyup="usdtoaoa(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
+                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
+                                    
+                                 </tr>
+                              </table>
+								 
+                               <input type="hidden" id="email">
+ 
+                              <div class="ablemob menumobile  form-row social_login_btn">
+									<button onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+									
+                              </div>
+							  
+							  
+                              <div class="ablemob1 menumobile  form-row social_login_btn">
+									<button class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+									
+                              </div>
+							  
+							   
+                              <div class="abledesk menudesktop form-row social_login_btn">
+									 <button onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+								 
+                              </div>
+							  
+							  
+                              <div class="abledesk1 menudesktop form-row social_login_btn">
+									 <button href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+								 
+                              </div>
+							  
+                        </div>
+                     </div>
+					 </div>
+					 
+					<!-- Final transferencia bancaria -->
+					
+                              <div class="lasbutt form-row social_login_btn">
+							  
+                              <button class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;" onClick="addwallet()">PROSSEGUIR...</button>
+									
+                              </div>
+							  
+							  
+                              <div class="nowbutt form-row social_login_btn">
+									 <button onclick="usingcoin()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+								 
+                              </div>
+							  
+                              <!-- 
+							  
+							     <center>
+								 <p style="color: green">* Os valores depositados refletem na sua conta Vexpay, mas em momento algum eles são armazenados na nossa base de dados. Para controlar e recuperar o seu dinheiro sempre  guarde  a sua palavra de segurança.</p>
+								 </center>
+								 Final transferencia bancaria -->
+								 
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+
+<script>
+   localStorage.setItem("urlback", "coin/swifcash/notwallet.html"); 
+</script>
+ 
+
+<script>
+   localStorage.setItem("urlback", "coin/buy.html"); 
+</script>
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        });
+</script>
+<script>
+
+//Receber valores1
+function compra(){
+
+$("#conteudo").load('pay.html');
+$('.mainweb').hide();
+$('.progressbara').show();
+
+}
+</script>
+
+	
+ <script>
+  //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.existemail').hide();
+ $('.otherro').hide();
+ $('.addresserro').hide();
+ $('.funderro').hide();
+ });
+  </script>
+
+
+<script>
+//Validar o preenchimento do inpu
+$('.abledesk1').show();
+$('.abledesk').hide();
+
+$('.ablemob1').show();
+$('.ablemob').hide();
+
+function checkInputs(inputs) {
+
+  var filled = true;
+  
+  inputs.forEach(function(input) {
+      
+    if(input.value === "") {
+        filled = false;
+    }
+  
+  });
+  
+  return filled;
+  
+}
+
+var inputs = document.querySelectorAll("input");
+var button = document.querySelector("button");
+
+inputs.forEach(function(input) {
+    
+  input.addEventListener("keyup", function() {
+
+    if(checkInputs(inputs)) {
+	   $('.abledesk1').hide();
+       $('.abledesk').show();
+	   
+	   $('.ablemob1').hide();
+       $('.ablemob').show();
+      
+    } else {
+	  
+	   $('.abledesk1').show();
+       $('.abledesk').hide();
+	   
+	   $('.ablemob1').show();
+       $('.ablemob').hide();
+      
+    }
+
+  });
+
+});
+
+</script>
+
+ <script>	 
+//Começar o processo de compra
+function compra2()
+{
+  $('.mainweb').hide();
+  $('.progressbara').show();
+
+  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+  var dadosajax = {
+ 'email' : $("#email").val(), 
+ 'moeda' : $("#moeda").val(),
+ 'endereco' : $("#endereco").val(),
+ 'kwanza' : $("#kwanza").val(),
+ 'dolar' : $("#dolar").val()
+ };
+    pageurl = 'https://dogkoin.online/diversos/compra.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //cache
+        cache: false,
+	
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show();
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inserido com sucesso
+            if($.trim(result) == '100')
+            {
+			 //exibir sucesso no envio
+            $("#conteudo").load('pay.html');
+          
+            }
+            //Se não foi inserido com sucesso
+            else
+            { 
+             if($.trim(result) == '111')
+			 { 
+           // $('.existemail').show();
+            alert('Ocorreu um erro.');	
+			$('.mainweb').show();
+            $('.progressbara').hide();			
+            //aqui houve um erro
+			}
+			 
+			else
+            {
+			// $('.otherro').show();
+			alert('Ocorreu um erro.');
+			$('.mainweb').show();
+            $('.progressbara').hide();
+             }			 
+			 
+            }
+
+        }
+    });
+}		
+
+
+//Começar o processo de compra
+function compra()
+{
+
+  $('.mainweb').hide();
+  $('.progressbara').show();
+
+  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+  var dadosajax = {
+ 'email' : $("#email").val(), 
+ 'moeda' : $("#moeda").val(),
+ 'endereco' : $("#endereco").val(),
+ 'kwanza' : $("#kwanza").val(),
+ 'dolar' : $("#dolar").val()
+ };
+    pageurl = 'https://dogkoin.online/diversos/compra.php';
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //cache
+        cache: false,
+	
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+        error: function(){
+           //Exbir erro critico
+            $('.otherro').show();
+        },
+        //retorna o resultado da pagina para onde enviamos os dados
+        success: function(result)
+        { 
+            //Se foi inserido com sucesso
+            if($.trim(result) == '100')
+            {
+			 //exibir sucesso no envio
+            $("#conteudo").load('pay.html');
+          
+            }
+            //Se não foi inserido com sucesso
+            else
+            { 
+             if($.trim(result) == '111')
+			 { 
+           // $('.existemail').show();
+            alert('Ocorreu um erro.');	
+			$('.mainweb').show();
+            $('.progressbara').hide();			
+            //aqui houve um erro
+			}
+			 
+			else
+            {
+			// $('.otherro').show();
+			alert('Ocorreu um erro.');
+			$('.mainweb').show();
+            $('.progressbara').hide();
+             }			 
+			 
+            }
+
+        }
+    });
+}		
+    </script>
+ 
+<script>
+
+//Ocultar saidas
+$(document).ready(function(){            
+
+$('.sendbank').hide();
+$('.nowbutt').hide();
+
+ });
+$('#ttmoeda').change(function() {
+  var ttmoeda = $('#ttmoeda').val();
+  localStorage.setItem("lastcoin", ttmoeda); 
+  switch (ttmoeda) {
+    case '':
+      alert ("Selecione uma moeda");
+      break;
+	  case 'banco':
+      $('.sendbank').show();
+	  $('.lasbutt').hide();
+	  $('.nowbutt').hide();
+	 
+	  
+      break;
+    case 'bitcoin':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	 
+      break;
+    case 'swiftcash':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+     // $("#conteudo").load('coin/swiftcash/rece.html');
+      break;
+    case 'litecoin':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+     // $("#conteudo").load('coin/litecoin/rece.html');
+      break;
+	case 'dogecoin':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	 
+    //  $("#conteudo").load('coin/dogecoin/rece.html');
+      break;
+    default:
+      alert ("Selecione uma moeda")
+      break;
+  }
+});
+
+//Chamar a pagina a ser aberta para o envio dos fundos
+function usingcoin() {
+var lastcoin = localStorage.getItem("lastcoin");
+if (lastcoin == 'bitcoin') {
+ 
+   $('.progressbara').show();
+   $('.mainweb').hide();
+   $("#conteudo").load('coin/bitcoin/rece.html');
+ 
+  };
+  
+  if (lastcoin == 'litecoin') {
+ 
+   $('.progressbara').show();
+   $('.mainweb').hide();
+   $("#conteudo").load('coin/litecoin/rece.html');
+ 
+  };
+  
+  if (lastcoin == 'swiftcash') {
+ 
+   $('.progressbara').show();
+   $('.mainweb').hide();
+   $("#conteudo").load('coin/swiftcash/rece.html');
+ 
+  };
+  
+  if (lastcoin == 'dogecoin') {
+ 
+   $('.progressbara').show();
+   $('.mainweb').hide();
+   $("#conteudo").load('coin/dogecoin/rece.html');
+ 
+  };
+  
+  
+  
+};
+</script>
+
+<script>
+ //Condicionar a saida do botao salvar
+$(document).ready(function(){            
+ $('.submit').hide();
+ $('.unsubmit').show(); 
+ $('.notfund').hide();
+ });
+</script>
+<!-- Barra de progresso -->
+ <style>
+ body,
+html,
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  position: relative;
+  background: #e7f0f7;
+}
+.progressbar {
+  display: block;
+  position: absolute;
+  z-index: 9;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 30px;
+}
+.progressbar::before,
+.progressbar::after {
+  content: '';
+  display: block;
+  position: absolute;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-image: linear-gradient(
+90deg
+, #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
+  background-repeat: repeat-x;
+  -webkit-animation: movebar 5s linear infinite;
+          animation: movebar 5s linear infinite;
+}
+.progressbar::before {
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
+}
+.progressbar::after {
+  z-index: 9;
+  top: 6px;
+  filter: blur(16px);
+  opacity: 0.7;
+}
+.stylization {
+  position: absolute;
+  z-index: 999;
+  height: 4px;
+  width: 90%;
+  left: 5%;
+  top: 6px;
+  opacity: 0.3;
+}
+.stylization::before,
+.stylization::after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 4px;
+  top: 0;
+  border-radius: 2px;
+}
+.stylization::before {
+  background: #fff;
+  left: 0;
+  right: 10px;
+}
+.stylization::after {
+  width: 6px;
+  background: #000;
+  right: 0;
+}
+@-webkit-keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+@keyframes movebar {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 400px 0;
+  }
+}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+ 
+<span class="progressbara">
+<section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+  
+</div>
+      
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
+   <div class="main_content_iner">
+   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+      <div class="row justify-content-center">
+         <div class="col-lg-12">
+            <div class="white_box mb_30" style="background: #000;">
+               <div class="row justify-content-center">
+                  <div class="col-lg-6">
+                     <!-- sign_in  -->
+                     <div class="modal-content cs_modal">
+                        
+                        <div class="modal-body">
+					   
+					   <div class="wrapper">
+  <div class="progressbar">
+    <div class="stylization"></div>
+  </div>
+</div>     
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+</span>
+
+	 <script type = "text/javascript">
+        jQuery(document).ready(function() {
+		$('.progressbara').hide();
+        $('.mainweb').show();
+        });
+		</script>
