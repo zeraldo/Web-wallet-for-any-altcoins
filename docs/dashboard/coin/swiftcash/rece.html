@@ -1,5 +1,6 @@
 <script>
 var adrswi = localStorage.getItem('adrswi');
+$("#adrswi").val(adrswi);
 if (!adrswi) { 
 //Aqui não possui a carteira
   $("#conteudo").load('coin/swiftcash/notwallet.html');
