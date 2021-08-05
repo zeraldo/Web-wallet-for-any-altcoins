@@ -1,104 +1,11 @@
-<script src="../js/js/jquery-3.5.0.min.js"></script>
-<script>    		
-   // Obtém os dados da localStorage
-   var adrswi = localStorage.getItem('adrswi');
-   $("#adrswi").val(adrswi);
-   if (typeof adrswi !== 'undefined') {  	 
-   //Verifcar se a variavel está definida
-   jQuery.ajax({
-   	url: 'https://explorer.swiftcash.cc/api/unspent/' + adrswi,
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   	     var balance=0;
-            var utxos=[];
-            var sum = 0;
-            utxos = result; 
-   	     for(i in utxos) {
-             sum += Number(utxos[i].value/ 1);
-             bbswi = sum;
-   		  localStorage.setItem("bbswi", bbswi);
-            } 
-   		$("#bbswi").html(bbswi);
-         },
-      
-   });	
-   }
-</script>
 <script>
-   $.ajax({
-   	url: 'https://api.coingecko.com/api/v3/simple/price?ids=swiftcash&vs_currencies=usd',
-       headers: {
-           'Content-Type': 'application/x-www-form-urlencoded'
-       },
-       type: "GET", /* or type:"GET" or type:"PUT" */
-       dataType: "json",
-       data: {
-       },
-       success: function (result) { 
-   		var pricusd = Number(result.swiftcash.usd);
-   		 $("#vusdd").val(pricusd);
-     
-   		 var usdpr = 10/pricusd; 
-   		 usdpr = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-            
-   		 $("#usdpr").val(usdpr);
-       },
-     /*  error: function () {
-          alert("Erro total");
-       }
-   	*/
-   });	
-         function switousd(text){
-   	   
-           var vcoin = document.getElementById("amount").value;
-   		var vcoin = vcoin.replace(",", ".");
-   		
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   		
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           vusd = vcoin * vusdd;
-   		vusd = (vusd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-   		var vusd = vusd.replace(",", ".");
-   		$("#vusd").val(vusd);
-       
-           }
-        
-        function usdtoswi(text){
-   	    
-   		var vusdd = document.getElementById("vusdd").value;
-   		var vusdd = vusdd.replace(",", ".");
-   		 
-           var vusd = document.getElementById("vusd").value;
-   		var vusd = vusd.replace(",", ".");
-   	 
-   		var usdpr = vusd/vusdd; 
-   		
-   		vcoin = (usdpr.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-   		var vcoin = vcoin.replace(",", ".");
-   		$("#amount").val(vcoin);
-       
-           }
+var adrswi = localStorage.getItem('adrswi');
+if (!adrswi) { 
+//Aqui não possui a carteira
+  $("#conteudo").load('coin/swiftcash/notwallet.html');
+  }
 </script>
-<script>
-   window.onload = function () {	
-   setInterval(function() {
-   var ubalance = parseFloat(localStorage.getItem('blcsswi'));
-   var ubalance = Math.round(ubalance * 100);
-   var ubalance = Math.ceil(ubalance)/100;
-   // alert(ubalance);
-   document.getElementById('ubalance').innerHTML = ubalance;
-    }, 5000);
-   }  
-</script>
+
 <script>
    function copy() {
    
