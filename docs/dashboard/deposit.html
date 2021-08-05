@@ -108,7 +108,7 @@ $("#email").val(iduser);
                       
                         <div class="modal-body">
 					 
-						  <select id="tmoeda" onChange="creatorder()" style="
+						  <select id="moeda" onChange="creatorder()" style="
 	height: 50px;
     background-color: #fff;
     color: #7e7172;
@@ -120,11 +120,14 @@ $("#email").val(iduser);
     font-size: 15px;
     line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">  
 						  <option disabled="disabled" selected style="">RECEBER</option>
-                          <option value="bitcoin">Bitcoin</option>
-						  <option value="litecoin">Litecoin</option>
+                          <option value="Bitcoin">Bitcoin</option>
+						  <option value="Litecoin">Litecoin</option>
 						  <option value="Dogecoin">Dogecoin</option>
 						  <option value="Bitcoincash">Bitcoincash</option>
-						  <option value="swiftCash">SwiftCash</option>
+						  <option value="SwiftCash">SwiftCash</option>
+						  <option value="Advcash">Adv Cash</option>
+						  <option value="Payeer">Payeer</option>
+						  <option value="Perfect Money">Perfect Money</option>
 						  </select>  		 
 							
                           <input autocomplete="off" type="text" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
@@ -207,13 +210,9 @@ $("#email").val(iduser);
 </span>
 
 <script>
-   localStorage.setItem("urlback", "coin/swifcash/notwallet.html"); 
+   localStorage.setItem("urlback", "deposit.html"); 
 </script>
  
-
-<script>
-   localStorage.setItem("urlback", "coin/buy.html"); 
-</script>
 	 <script type = "text/javascript">
         jQuery(document).ready(function() {
 		$('.progressbara').hide();
@@ -225,7 +224,7 @@ $("#email").val(iduser);
 //Receber valores1
 function compra(){
 
-$("#conteudo").load('pay.html');
+$("#conteudo").load('paybank.html');
 $('.mainweb').hide();
 $('.progressbara').show();
 
@@ -342,7 +341,7 @@ function compra2()
             if($.trim(result) == '100')
             {
 			 //exibir sucesso no envio
-            $("#conteudo").load('pay.html');
+            $("#conteudo").load('paybank.html');
           
             }
             //Se não foi inserido com sucesso
