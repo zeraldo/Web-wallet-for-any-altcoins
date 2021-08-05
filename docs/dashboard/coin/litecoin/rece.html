@@ -1,5 +1,6 @@
 <script>
 var adrltc = localStorage.getItem('adrltc');
+$("#adrltc").val(adrltc);
 if (!adrltc) { 
 //Aqui não possui a carteira
   $("#conteudo").load('coin/litecoin/notwallet.html');
