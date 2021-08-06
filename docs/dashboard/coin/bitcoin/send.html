@@ -90,9 +90,9 @@ jQuery.ajax({
   var pricusd = document.getElementById('vusddbtc').value; 
    
    if (vcoin > bllcbtc) {  	 
-   $('.submit').hide();
-   $('.unsubmit').show();
-   $('.notfund').show();
+   $('.submit').show();
+   //$('.unsubmit').show();
+  // $('.notfund').show();
    
   }   
   else
@@ -130,9 +130,9 @@ jQuery.ajax({
   $("#amount1").val('' + vcoin + '');
       
   if (vcoin > bllcbtc) {  	 
-   $('.submit').hide();
-   $('.unsubmit').show();
-   $('.notfund').show();
+   $('.submit').show();
+  // $('.unsubmit').show();
+   //$('.notfund').show();
    
   }   
   else
