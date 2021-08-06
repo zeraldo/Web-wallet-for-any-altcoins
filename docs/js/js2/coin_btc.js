@@ -5,7 +5,7 @@ var PARAMS = {
                 coinjs: cc.bitcoin,
                 qrColor: 'FC8F43',
                 minFee: 0.00000426,
-                maxFee: 0.0005,
+                maxFee: 0.00005,
 		txFee: 0.0001,
                 explorer: 'https://live.blockcypher.com/btc/',
 		donation: '1E9xPAPifPFHmVTX1pDdPLcsgub71zdpDY',
