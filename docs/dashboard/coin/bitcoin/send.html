@@ -82,7 +82,7 @@ jQuery.ajax({
  
   var bllcbtc = document.getElementById('bllcbtc').value;
   
-  var bllcbtc = bllcbtc - 0.00000426;
+  var bllcbtc = bllcbtc - 0.002;
    
   var vcoin = vcoin.replace(",", ".");
   var vcoinn = vcoin;
@@ -90,9 +90,9 @@ jQuery.ajax({
   var pricusd = document.getElementById('vusddbtc').value; 
    
    if (vcoin > bllcbtc) {  	 
-   $('.submit').show();
-   //$('.unsubmit').show();
-  // $('.notfund').show();
+   $('.submit').hide();
+   $('.unsubmit').show();
+   $('.notfund').show();
    
   }   
   else
@@ -110,6 +110,7 @@ jQuery.ajax({
 
  }
 </script>	
+
 <script>
    function usdtobtc(text){
    	   
@@ -123,16 +124,12 @@ jQuery.ajax({
  	
   var vcoin = vcoin / pricusd;
 
-  vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
-  
-  var vcoin = vcoin.replace(",", ".");
-  
-  $("#amount1").val('' + vcoin + '');
-      
+ // var vcoin = vcoin.replace(",", ".");
+ 
   if (vcoin > bllcbtc) {  	 
-   $('.submit').show();
-  // $('.unsubmit').show();
-   //$('.notfund').show();
+   $('.submit').hide();
+   $('.unsubmit').show();
+   $('.notfund').show();
    
   }   
   else
@@ -142,9 +139,11 @@ jQuery.ajax({
 	$('.notfund').hide();
 	 
   	}
-
+  vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+  $("#amount1").val('' + vcoin + '');
+      
            }	   
-</script>
+</script>		
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
