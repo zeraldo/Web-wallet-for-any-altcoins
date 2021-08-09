@@ -53,13 +53,42 @@
       }(document, 'script', 'facebook-jssdk'));
     </script>
     
-	<script>
+<script>
 //Obter o codigo de referencia
 var crefer = window.location.href;
 crefer = crefer.split('?f=');
 crefer = crefer[1];
 localStorage.setItem("crefer", crefer); 
 </script>
+
+
+  <style> 
+.menumobile {
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+
+.menudesktop{
+    opacity: 1;  
+    height: auto;
+}
+@media only screen and (max-width: 991px) {
+    .menumobile{
+    opacity: 1;  
+    height: auto;
+	display: block;
+	
+   }
+   .menudesktop{
+    opacity: 0;  
+    height: 0;
+	display: none;
+}
+ 
+}	
+
+</style> 
 
 	</head>
 	<body>
@@ -90,7 +119,7 @@ localStorage.setItem("crefer", crefer);
 								<li> <a href="enter/enter.html">entrar</a>   </li>
 							</ul>
 							<div class="signin d-inline-block">
-								<a href="enter/enter.html#" class="btn">CRIAR CONTA</a>
+								<a href="enter/enter.html?r=1" class="btn">CRIAR CONTA</a>
 							</div>
 						</div>
 					</div>
@@ -105,7 +134,11 @@ localStorage.setItem("crefer", crefer);
 						<div class="banner-contain">
 							<h1 class="banner-heading">Compra <span>criptomoeda</span> em Angola com mais facilidade.</h1>
 							<p class="banner-des" style="color: rgb(0 0 0 / 90%);">Agora você já pode comprar e vender criptomoeda apartir de Angola pagando via multicaixa express, transferência bancária e muito mais.</p>
-						<a href="dashboard/dashboard.html" class="btn">Comprar agora</a> 
+							
+						<a href="enter/enter.html?r=1" class="btn menudesktop">Comprar agora</a> 
+						
+						<a href="https://play.google.com/store/apps/details?id=com.vexterior.vexpay" class="btn menumobile">Baixar APP</a> 
+						
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6 position-u wow fadeInRight">
