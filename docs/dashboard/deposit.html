@@ -99,6 +99,7 @@ $("#email").val(iduser);
 						  <option value="litecoin">LiteCoin</option>
 						  <option value="dogecoin">DogeCoin</option>
 						  <option value="swiftcash">SwiftCash</option>
+						  <option value="BitTorrent">BitTorrent</option>
 						  </select>  
 						   </div>
 						
@@ -124,6 +125,7 @@ $("#email").val(iduser);
 						  <option value="Litecoin">Litecoin</option>
 						  <option value="Dogecoin">Dogecoin</option>
 						  <option value="Bitcoincash">Bitcoincash</option>
+						  <option value="BitTorrent">BitTorrent</option>
 						  <option value="SwiftCash">SwiftCash</option>
 						  <option value="Advcash">Adv Cash</option>
 						  <option value="Payeer">Payeer</option>
@@ -487,6 +489,12 @@ $('#ttmoeda').change(function() {
      // $("#conteudo").load('coin/litecoin/rece.html');
       break;
 	case 'dogecoin':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	  break;
+	  
+	case 'BitTorrent':
       $('.nowbutt').show();
       $('.lasbutt').hide();
 	  $('.sendbank').hide();
