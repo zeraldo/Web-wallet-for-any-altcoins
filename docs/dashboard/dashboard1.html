@@ -49,6 +49,55 @@ jQuery.ajax({
 
 </script>
 
+
+<script>    		
+// Obtém os dados da localStorage
+var adrsmart = localStorage.getItem('adrsmart');
+if (typeof adrsmart !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'https://explorer.smartftcash.cc/api/unspent/' + adrsmart,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	     var balance=0;
+         var utxos=[];
+         var sum = 0;
+         utxos = result; 
+	     for(i in utxos) {
+          sum += Number(utxos[i].value/ 1);
+          bbsmart = sum;
+		  localStorage.setItem("bbsmart", bbsmart);
+         } 
+       
+         //Se o balanço esta zerado, formatar corretamente
+//var bbsmart = bbsmart.replace(, " 0.00");
+		 if (bbsmart == "[object HTMLSpanElement]") {  	 
+  $('#bbsmart1').html('0.00');
+  $('#bbsmart').html('0.00');
+   
+  }   
+  else
+  {
+  
+  $("#bbsmart").html(arred(bbsmart,4));
+  $("#bbsmart1").html(arred(bbsmart,4));
+		
+  	}
+		//alert(bbsmart1);
+      },
+   
+});	
+}
+
+</script>
+
+
 <script>    		
 //Exibir saldo litecoin
 // Obtém os dados da localStorage
@@ -214,12 +263,7 @@ jQuery.ajax({
 }
 </script>
 
-
-<script>
  
-    
-</script>     
-
 <script>
 //Exibir o preço do dogecoin
 function usdDgc() {
@@ -515,6 +559,88 @@ jQuery.ajax({
 }
 usdSwi();
 </script>
+
+
+<script> 
+//Exibir o preço do smartcash
+function usdsmart() {
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=smartcash&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.smartcash.usd);
+		var bbsmart = localStorage.getItem('bbsmart');
+        ssmart = bbsmart * pricusd;
+		localStorage.setItem("blcssmart", ssmart); 
+		pricusdsmart = pricusd;
+	    //Formatar a saida do preço para dolar
+        var pricussmart = pricusdbtc.toLocaleString('pt-br', {minimumFractionDigits: 0});
+        var pricusdsmart = arred(pricusdsmart,4);
+		document.getElementById('pricusdsmart').innerHTML = pricusdsmart;
+		document.getElementById('pricusdsmart1').innerHTML = pricusdsmart;
+		
+		var smartbalance = Math.round(localStorage.getItem("blcssmart") * 100);
+        var smartbalance = Math.ceil(smartbalance)/100;
+		
+				
+//Começa a enviar os dados no servidor para arrumar o balanço
+ var dadosajax = {
+ 
+ 'b_smartftc' : smartbalance,
+ <!-- 'b_smartftc' : smartbalance, -->
+ 'email' : iduser
+ };
+    //pageurl = 'https://dogkoin.online/enter/enter.php';
+	pageurl = 'https://dogkoin.online/diversos/blsmart.php?email=' + iduser;
+    //para consultar mais opcoes possiveis numa chamada ajax
+    //http://api.jquery.com/jQuery.ajax/
+    $.ajax({
+    
+        //url da pagina
+        url: pageurl,
+        //parametros a passar
+        data: dadosajax,
+        //tipo: POST ou GET
+        type: 'POST',
+        //cache
+        cache: false,
+	//ativar requisação entre domínio
+	crossDomain: true,
+        //se ocorrer um erro na chamada ajax, retorna este alerta
+        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
+         
+        //retorna o resultado da pagina para onde enviamos os dados
+        
+    });
+	//Termina de enviar o balanço
+       		
+		 if (smartbalance == 0) {  	 
+		document.getElementById('smartbalance').innerHTML = "0.00";  
+		document.getElementById('smartbalance1').innerHTML = "0.00"; 
+  }   
+  else
+  {
+  	
+		document.getElementById('smartbalance').innerHTML = smartbalance; 
+		document.getElementById('smartbalance1').innerHTML = smartbalance; 
+		 
+  	}
+    },
+	complete: function() {
+             //  alert("Zeraldo Zua")
+				setTimeout(usdsmart, 120000);
+            },
+ 
+});	
+}
+usdsmart();
+</script>
  
 <script>
 //Exibir o preço do 01coin
@@ -750,7 +876,7 @@ usdBalan();
 		 <a class="menumobile" onclick="carregar('coin/dogecoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusddgc1">0.00</span></a>
 		 </td>
     </tr>
-	
+	<!-- 
 	 <tr>
          <td>
 		 <a class="menumobile"onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">BITCOINCASH</a>
@@ -767,7 +893,7 @@ usdBalan();
 		 <a class="menudesktop" onclick="carregar2('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbch">0.00</span></a>
 		 <a class="menumobile" onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdbch1">0.00</span></a>
 		 </td>
-    </tr>
+    </tr> -->
 	
 	 <tr>
          <td>
@@ -787,23 +913,40 @@ usdBalan();
 		 </td>
     </tr>
 	
-		
     
 	 <tr>
          <td>
-		 <a class="menumobile"onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">01COIN</a>
-		 <a class="menudesktop"onclick="carregar2('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">01COIN</a>
+		 <a class="menumobile"onclick="carregar('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">SMART CASH</a>
+		 <a class="menudesktop"onclick="carregar2('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">SMART CASH</a>
 		 </td>
-         <td><a class="menudesktop" onclick="carregar2('ccoin/bitcoin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbzoc" class="counter">0.00</span></a>
-		     <a class="menumobile" onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbzoc" class="counter">0.00</span></a>
+         <td><a class="menudesktop" onclick="carregar2('coin/smartcash/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbsmart" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbsmart1" class="counter">0.00</span></a>
 			 </td>
 		 <td>
-		 <a class="menudesktop" onclick="carregar2('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="zocbalance">0.00</span></a>
-		 <a class="menumobile" onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="zocbalance">0.00</span></a>
+		 <a class="menudesktop" onclick="carregar2('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="smartbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="smartbalance1">0.00</span></a>
 		 </td>
          <td>
-		 <a class="menudesktop" onclick="carregar2('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdzoc">0.00</span></a>
-		 <a class="menumobile" onclick="carregar('ccoin/bitcoin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdzoc1">0.00</span></a>
+		 <a class="menudesktop" onclick="carregar2('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdsmart">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdsmart1">0.00</span></a>
+		 </td>
+    </tr>
+    
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">01COIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">01COIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/01coin/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bbzoc" class="counter">0.00</span></a>
+		     <a class="menumobile" onclick="carregar('coin/01coin/send.html')" class="progress" href="#" style="color:#fff"> <span id="bbzoc" class="counter">0.00</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="zocbalance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="zocbalance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdzoc">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/01coin/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusdzoc1">0.00</span></a>
 		 </td>
     </tr>
 	
