@@ -3194,15 +3194,37 @@ module.exports = {
     wif: 0x9e
   },
    
-  swiftcash: {
-    messagePrefix: '\x18SwiftCash Signed Message:\n',
+  zcoin: {
+    messagePrefix: '\x19Dogecoin Signed Message:\n',
     bip32: {
-      public: 0x0488b21e,
-      private: 0x0488ade4
+      public:  0x00000c8e,
+      private: 0x1e0ffff0
+    },
+    pubKeyHash: 0x50,
+    scriptHash: 0xa,
+    wif: 0xc6
+  },
+
+  smartcash: {
+    messagePrefix: '\x19Dogecoin Signed Message:\n',
+    bip32: {
+      public:  0x00000c8e,
+      private: 0x1e0ffff0
     },
     pubKeyHash: 0x3f,
     scriptHash: 0x12,
-    wif: 0x98
+    wif: 0xBF
+  },
+  
+  swiftcash: {
+    messagePrefix: '\x18SwiftCash Signed Message:\n',
+    bip32: {
+      public:  0x00000c8e,
+      private: 0x1e0ffff0
+    },
+    pubKeyHash: 0x3f,
+    scriptHash: 0x12,
+    wif: 0xBF
   },
 }
 
