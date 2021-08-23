@@ -561,6 +561,46 @@ usdSwi();
 </script>
 
 
+
+<script>    		
+//Exibir o saldo smartcash
+// Obtém os dados da localStorage
+var adrbtc = localStorage.getItem('adrsmart');
+if (typeof adrsmart !== 'undefined') {  	 
+//Verifcar se a variavel está definida
+jQuery.ajax({
+	url: 'http://seed.smarts.cash:8080/v1/address/balance/' + adrsmart,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+	    // var balance=0.00;
+         var bbsmart = result.balance.total / 100000000;
+         
+		 localStorage.setItem("bbsmart", bbsmart);
+		
+//Se o balanço esta zerado, formatar corretamente
+ if (bbsmart == 0) {  	 
+  $('#bbsmart').html('0.00');
+  $('#bbsmart').html('0.00');
+  }   
+  else
+  {
+    var bbsmart = arred(bbsmart,4);
+  	$('#bbsmart').html(bbsmart);
+	$('#bbsmart1').html(bbsmart);
+		
+  	}
+		//alert(bbswi1);
+      },
+   
+});	
+}
+</script>
 <script> 
 //Exibir o preço do smartcash
 function usdsmart() {
@@ -641,6 +681,7 @@ jQuery.ajax({
 }
 usdsmart();
 </script>
+ 
  
 <script>
 //Exibir o preço do 01coin
@@ -914,6 +955,25 @@ usdBalan();
     </tr>
 	
     
+	 <tr>
+         <td>
+		 <a class="menumobile"onclick="carregar('coin/riva/send.html')" class="progress" href="#" style="color:#fff">RIVACOIN</a>
+		 <a class="menudesktop"onclick="carregar2('coin/riva/send.html')" class="progress" href="#" style="color:#fff">RIVACOIN</a>
+		 </td>
+         <td><a class="menudesktop" onclick="carregar2('coin/riva/send.html')" class="progress"  href="#" style="color:#fff"> <span id="bb" class="counter">1.000.000</span></a>
+		     <a class="menumobile" onclick="carregar('coin/riva/send.html')" class="progress" href="#" style="color:#fff"> <span id="bb" class="counter">1.000.000</span></a>
+			 </td>
+		 <td>
+		 <a class="menudesktop" onclick="carregar2('coin/riva/send.html')" class="progress" href="#" style="color:#fff">$ <span id="balance">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/riva/send.html')" class="progress" href="#" style="color:#fff">$ <span id="balance">0.00</span></a>
+		 </td>
+         <td>
+		 <a class="menudesktop" onclick="carregar2('coin/riva/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricus">0.00</span></a>
+		 <a class="menumobile" onclick="carregar('coin/riva/send.html')" class="progress" href="#" style="color:#fff">$ <span id="pricusd">0.00</span></a>
+		 </td>
+    </tr>
+	
+	
 	 <tr>
          <td>
 		 <a class="menumobile"onclick="carregar('coin/smartcash/send.html')" class="progress" href="#" style="color:#fff">SMART CASH</a>
