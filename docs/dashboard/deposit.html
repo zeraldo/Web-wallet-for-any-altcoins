@@ -79,7 +79,7 @@ $("#email").val(iduser);
 						  <div class="border_style" style="background-color: #fff;">
                               <h4> <span>DEPOSITAR SALDO</span></h4>
                               </div>
-                     </div>
+                             </div>
 	   
 					        <div class="form-row social_login_btn">   	  
                           <select id="ttmoeda" style="
@@ -99,7 +99,7 @@ $("#email").val(iduser);
 						  <option value="litecoin">LiteCoin</option>
 						  <option value="dogecoin">DogeCoin</option>
 						  <option value="swiftcash">SwiftCash</option>
-						  
+						  <option value="yetucoin">Yetucoin</option>
 						  </select>  
 						   </div>
 						
@@ -109,7 +109,7 @@ $("#email").val(iduser);
                       
                         <div class="modal-body">
 					 
-						  <select id="moeda" onChange="creatorder()" style="
+						  <select id="moedat" onChange="creatorder()" style="
 	height: 50px;
     background-color: #fff;
     color: #7e7172;
@@ -126,14 +126,18 @@ $("#email").val(iduser);
 						  <option value="Dogecoin">Dogecoin</option>
 						  <option value="Bitcoincash">Bitcoincash</option>
 						  <option value="BitTorrent">BitTorrent</option>
+						  <option value="Tron">Tron</option>
+						  <option value="Bnb">BNB</option>
 						  <option value="SwiftCash">SwiftCash</option>
+						  <option value="Yetucoin">Yetucoin</option>
 						  <option value="Advcash">Adv Cash</option>
 						  <option value="Payeer">Payeer</option>
 						  <option value="PayPal">PayPal</option>
-						  <option value="Perfect Money">Perfect Money</option>
+						  <option value="PerfectMoney">Perfect Money</option>
 						  </select>  		 
-							
-                          <input autocomplete="off" type="text" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>
+						  
+						  <span class="notwcoin1">
+                          <input autocomplete="off" type="text" id="endereco" placeholder="Endereço" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								 	 
 								   <table>
                                  <tr>
@@ -146,7 +150,8 @@ $("#email").val(iduser);
                                     
                                  </tr>
                               </table>
-								 
+							</span>	 
+							
                                <input type="hidden" id="email">
  
                               <div class="ablemob menumobile  form-row social_login_btn">
@@ -183,7 +188,6 @@ $("#email").val(iduser);
 					<!-- Final transferencia bancaria -->
 					
                               <div class="lasbutt form-row social_login_btn">
-							  
                               <button class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;" onClick="addwallet()">PROSSEGUIR...</button>
 									
@@ -196,13 +200,22 @@ $("#email").val(iduser);
 								 
                               </div>
 							  
-                              <!-- 
-							  
+							  <span class="notwcoin2">
+                              <div class="notwcoin form-row social_login_btn" style="margin: -4% 0px 0px 0px">
+									 <button onclick="addwal()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">Adicionar carteira</button>
+								 
+                              </div>
+							     
+								  <center class="notwcoin">
+								 <p style="color: green">* Para comprares <span id="coindsj">-----</span> na Vexpay precisas adicionar o endereco dessa moeda na sua conta Vexpay. Clica em Adicionar carteira para continuar e depois tenta novamente efectuar a compra ou escolha uma outra moeda.</p>
+								 </center> 
+								  </span>
+								 <!-- 
 							     <center>
 								 <p style="color: green">* Os valores depositados refletem na sua conta Vexpay, mas em momento algum eles são armazenados na nossa base de dados. Para controlar e recuperar o seu dinheiro sempre  guarde  a sua palavra de segurança.</p>
-								 </center>
-								 Final transferencia bancaria -->
-								 
+								 </center> 
+								  -->
                   </div>
                </div>
             </div>
@@ -222,18 +235,17 @@ $("#email").val(iduser);
         $('.mainweb').show();
         });
 </script>
-<script>
 
+<!-- <script>
 //Receber valores1
 function compra(){
 
 $("#conteudo").load('paybank.html');
 $('.mainweb').hide();
 $('.progressbara').show();
-
 }
 </script>
-
+ -->
 	
  <script>
   //Condicionar a saida do botao salvar
@@ -242,6 +254,7 @@ $(document).ready(function(){
  $('.otherro').hide();
  $('.addresserro').hide();
  $('.funderro').hide();
+ $('.notwcoin').hide();
  });
   </script>
 
@@ -265,9 +278,7 @@ function checkInputs(inputs) {
     }
   
   });
-  
-  return filled;
-  
+  return filled; 
 }
 
 var inputs = document.querySelectorAll("input");
@@ -306,15 +317,47 @@ function compra2()
 {
   $('.mainweb').hide();
   $('.progressbara').show();
-
+  
+  //Se certificar que o endereco ltc, doge, btc é nato da Vexpay
+  var endereco = document.getElementById("endereco").value;
+  
+  localStorage.setItem('endereco', endereco);
+  
+  var moedat = document.getElementById("moedat").value;
+  
+  if (moedat == 'Litecoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrltc'));
+   $("#endereco").val(localStorage.getItem('adrltc'));
+  };
+  
+  if (moedat == 'Bitcoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrbtc'));
+   $("#endereco").val(localStorage.getItem('adrbtc'));
+  };
+  
+  if (moedat == 'Dogecoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrdoge'));
+   $("#endereco").val(localStorage.getItem('adrdoge'));
+  };
+  
+  if (moedat == 'SwiftCash') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrswi'));
+   $("#endereco").val(localStorage.getItem('adrswi'));
+  };
+  
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
  'moeda' : $("#moeda").val(),
- 'endereco' : $("#endereco").val(),
+ 'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
  };
+ 
     pageurl = 'https://dogkoin.online/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
@@ -377,15 +420,45 @@ function compra2()
 //Começar o processo de compra
 function compra()
 {
-
   $('.mainweb').hide();
   $('.progressbara').show();
-
+  
+  //Se certificar que o endereco ltc, doge, btc é nato da Vexpay
+  var endereco = document.getElementById("endereco").value;
+  
+  localStorage.setItem('endereco', endereco);
+  
+  var moedat = document.getElementById("moedat").value;
+  
+  if (moedat == 'Litecoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrltc'));
+   $("#endereco").val(localStorage.getItem('adrltc'));
+  };
+  
+  if (moedat == 'Bitcoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrbtc'));
+   $("#endereco").val(localStorage.getItem('adrbtc'));
+  };
+  
+  if (moedat == 'Dogecoin') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrdoge'));
+   $("#endereco").val(localStorage.getItem('adrdoge'));
+  };
+  
+  if (moedat == 'SwiftCash') {
+   //Adicionar o endereço de recebimento
+   localStorage.setItem('endereco', localStorage.getItem('adrswi'));
+   $("#endereco").val(localStorage.getItem('adrswi'));
+  };
+  
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
  'moeda' : $("#moeda").val(),
- 'endereco' : $("#endereco").val(),
+ 'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
  };
@@ -419,7 +492,6 @@ function compra()
             {
 			 //exibir sucesso no envio
              $("#conteudo").load('paybank.html');
-          
             }
             //Se não foi inserido com sucesso
             else
@@ -446,17 +518,222 @@ function compra()
         }
     });
 }		
-    </script>
- 
-<script>
+</script>
 
+<script>
+function addwal()
+{
+ //Abrimos a opção para o usuario adicionar carteira da moeda
+ alert('Chamou o endereço');
+ $('.progressbara').show();
+ $('.mainweb').hide();
+ $("#conteudo").load(localStorage.getItem('lastnotw'));
+ }
+</script>
+
+ <script>
 //Ocultar saidas
 $(document).ready(function(){            
-
 $('.sendbank').hide();
 $('.nowbutt').hide();
-
  });
+
+//Aqui adicionamos o endereço da moeda
+
+//Verificar se a moeda que ele deseja receber já está na conta do cliente
+$('#moedat').change(function() {
+  var moedat = $('#moedat').val();
+  localStorage.setItem("lastcoinseg", moedat); 
+  $('.notwcoin').show();
+  $('.notwcoin2').hide();
+  
+  switch (moedat) {
+    //case '':
+      // alert ("Selecione uma moeda onde desejas receber os fundos")
+     // break;
+	   
+    case 'Bitcoin':
+	  var adrbtc = localStorage.getItem('adrbtc');
+      if (!adrbtc) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/bitcoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrbtc')); 
+      }
+      break;
+	  
+    case 'SwiftCash':
+	  var adrswi = localStorage.getItem('adrswi');
+      if (!adrswi) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin2').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/swiftcash/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrswi'));
+      }
+      break;
+	
+    case 'Litecoin':
+	  var adrltc = localStorage.getItem('adrltc');
+      if (!adrltc) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/litecoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrltc'));
+	   } 
+      break;
+
+	case 'Dogecoin': 
+	  var adrdoge = localStorage.getItem('adrdgc');
+      if (!adrdgc) { 
+       //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/dogecoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrdgc'));
+      }
+	  break; 
+  
+	case 'Yetucoin': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 	
+	  
+	case 'Advcash': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 	
+	  
+	case 'Payeer': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 	
+	  
+	case 'PayPal': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 	
+	  
+    case 'PerfectMoney': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 	
+	    
+	case 'BitTorrent': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 
+	        
+	case 'Tron': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 
+	 
+    case 'Bitcoincash': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 
+	  
+	case 'Bnb': 
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  $('.notwcoin2').hide();
+	  $("#endereco").val('');
+	  break; 
+	  
+	 <!-- 
+    //default:
+    //  alert ("Selecione uma moeda onde desejas receber os fundos")
+    //  break; -->
+  }
+});
+//Final aqui
+
 $('#ttmoeda').change(function() {
   var ttmoeda = $('#ttmoeda').val();
   localStorage.setItem("lastcoin", ttmoeda); 
@@ -468,38 +745,166 @@ $('#ttmoeda').change(function() {
       $('.sendbank').show();
 	  $('.lasbutt').hide();
 	  $('.nowbutt').hide();
-	 
+	  //Verificar a moeda que ele deseja receber
+	  var moedat = $('#moedat').val();
+    localStorage.setItem("lastcoinseg", moedat); 
+    switch (moedat) {
+    
+    case 'Bitcoin':
+	  var adrbtc = localStorage.getItem('adrbtc');
+      if (!adrbtc) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/bitcoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrbtc')); 
+      }
+      break;
 	  
+    case 'SwiftCash':
+	  var adrswi = localStorage.getItem('adrswi');
+      if (!adrswi) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin2').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/swiftcash/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrswi'));
+      }
+      break;
+	
+    case 'Litecoin':
+	  var adrltc = localStorage.getItem('adrltc');
+      if (!adrltc) { 
+      //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/litecoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrltc'));
+	   } 
+      break;
+
+	case 'Dogecoin': 
+	  var adrdoge = localStorage.getItem('adrdgc');
+      if (!adrdgc) { 
+       //Aqui não possui a carteira
+	  $('.notwcoin').show();
+	  $('.notwcoin1').hide();
+	  $('.abledesk1').hide();
+	  $('.ablemob1').hide();
+      $('#coindsj').html(moedat);
+	  //Criamos endereço onde deve ser aberto caso o cliente continua
+	  localStorage.setItem('lastnotw', 'coin/dogecoin/notwallet.html');
+      } else
+	  {
+	  //Aqui possui a carteira
+	  $('.notwcoin').hide();
+	  $('.notwcoin1').show();
+	  $('.abledesk1').show();
+	  $('.ablemob1').show();
+	  //Adicionar o endereço de recebimento
+	  $("#endereco").val(localStorage.getItem('adrdgc'));
+      }
+	  break; 
+  }
+	  //Final de verificar a moeda que ele deseja receber
       break;
     case 'bitcoin':
       $('.nowbutt').show();
       $('.lasbutt').hide();
 	  $('.sendbank').hide();
-	 
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
       break;
     case 'swiftcash':
       $('.nowbutt').show();
       $('.lasbutt').hide();
 	  $('.sendbank').hide();
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
      // $("#conteudo").load('coin/swiftcash/rece.html');
+      break;
+	case 'tron':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
+     // $("#conteudo").load('coin/swiftcash/rece.html');
+      break;
+	case 'bnb':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
+     // $("#conteudo").load('coin/swiftcash/rece.html');
+      break;
+	case 'yetucoin':
+      $('.nowbutt').show();
+      $('.lasbutt').hide();
+	  $('.sendbank').hide();
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
+     // $("#conteudo").load('deposit/yetu.html');
       break;
     case 'litecoin':
       $('.nowbutt').show();
       $('.lasbutt').hide();
 	  $('.sendbank').hide();
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
      // $("#conteudo").load('coin/litecoin/rece.html');
       break;
 	case 'dogecoin':
       $('.nowbutt').show();
       $('.lasbutt').hide();
 	  $('.sendbank').hide();
-	  break;
-	  
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
+	  break; 
 	case 'BitTorrent':
       $('.nowbutt').show();
       $('.lasbutt').hide();
-	  $('.sendbank').hide();
-	 
+	  $('.sendbank').hide(); 
+	  $('.notwcoin2').hide();
+	  $('.notwcoin').hide();
     //  $("#conteudo").load('coin/dogecoin/rece.html');
       break;
     default:
@@ -540,7 +945,15 @@ if (lastcoin == 'bitcoin') {
    $('.progressbara').show();
    $('.mainweb').hide();
    $("#conteudo").load('coin/dogecoin/rece.html');
- 
+   
+  };
+  
+  if (lastcoin == 'yetucoin') {
+
+   $('.progressbara').show();
+   $('.mainweb').hide();
+   $("#conteudo").load('deposit/yetu.html');
+   
   };
   
   
