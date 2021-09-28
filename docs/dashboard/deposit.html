@@ -352,7 +352,7 @@ function compra2()
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
- 'moeda' : $("#moeda").val(),
+ 'moeda' : $("#moedat").val(),
  'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
@@ -456,7 +456,7 @@ function compra()
   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
   var dadosajax = {
  'email' : $("#email").val(), 
- 'moeda' : $("#moeda").val(),
+ 'moeda' : $("#moedat").val(),
  'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
  'dolar' : $("#dolar").val()
@@ -523,7 +523,6 @@ function compra()
 function addwal()
 {
  //Abrimos a opção para o usuario adicionar carteira da moeda
- alert('Chamou o endereço');
  $('.progressbara').show();
  $('.mainweb').hide();
  $("#conteudo").load(localStorage.getItem('lastnotw'));
