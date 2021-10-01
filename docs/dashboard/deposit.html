@@ -92,9 +92,11 @@ $("#email").val(iduser);
     margin: 0;
     font-family: inherit;
     font-size: 15px;
-    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" required>  
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
 						  <option disabled="disabled" selected>ENVIAR</option>
-						  <option value="banco">Transferencia Bancaria</option>
+						  <option value="bancoatlc">Banco Atlântico </option>
+						  <option value="bancobai">Banco BAI</option>
+						  <option value="bancobfa">Banco BFA</option>
                           <option value="bitcoin">BitCoin</option>
 						  <option value="litecoin">LiteCoin</option>
 						  <option value="dogecoin">DogeCoin</option>
@@ -246,6 +248,14 @@ $('.progressbara').show();
 }
 </script>
  -->
+
+<script>
+const selectElement = document.querySelector('.bankselect');
+selectElement.addEventListener('change', (event) => {
+  const result = document.querySelector('.result'); 
+ // result.textContent = `You like ${event.target.value}`;
+});
+</script>
 	
  <script>
   //Condicionar a saida do botao salvar
@@ -387,7 +397,7 @@ function compra2()
             if($.trim(result) == '100')
             {
 			 //exibir sucesso no envio
-            $("#conteudo").load('paybank.html');
+            $("#conteudo").load('paybank.html?banc=bancoatlc');
           
             }
             //Se não foi inserido com sucesso
@@ -490,7 +500,8 @@ function compra()
             if($.trim(result) == '100')
             {
 			 //exibir sucesso no envio
-             $("#conteudo").load('paybank.html');
+             $("#conteudo").load('paybank.html?banc=bancoatlc');
+			 
             }
             //Se não foi inserido com sucesso
             else
@@ -734,22 +745,13 @@ $('#moedat').change(function() {
 });
 //Final aqui
 
-$('#ttmoeda').change(function() {
-  var ttmoeda = $('#ttmoeda').val();
-  localStorage.setItem("lastcoin", ttmoeda); 
-  switch (ttmoeda) {
-    case '':
-      alert ("Selecione uma moeda");
-      break;
-	  case 'banco':
-      $('.sendbank').show();
-	  $('.lasbutt').hide();
-	  $('.nowbutt').hide();
-	  //Verificar a moeda que ele deseja receber
-	  var moedat = $('#moedat').val();
+//Criamos uma função para continuar a verificação
+    function checcoin()
+{
+	//Verificar a moeda que ele deseja receber
+	var moedat = $('#moedat').val();
     localStorage.setItem("lastcoinseg", moedat); 
     switch (moedat) {
-    
     case 'Bitcoin':
 	  var adrbtc = localStorage.getItem('adrbtc');
       if (!adrbtc) { 
@@ -843,8 +845,40 @@ $('#ttmoeda').change(function() {
       }
 	  break; 
   }
-	  //Final de verificar a moeda que ele deseja receber
+ }
+  
+  
+$('#ttmoeda').change(function() {
+  var ttmoeda = $('#ttmoeda').val();
+  localStorage.setItem("lastcoin", ttmoeda); 
+  switch (ttmoeda) {
+    case '':
+      alert ("Selecione uma moeda");
       break;
+	  case 'bancoatlc':
+      $('.sendbank').show();
+	  $('.lasbutt').hide();
+	  $('.nowbutt').hide();
+	  localStorage.setItem('bancpay', 'bancoatlc'); 
+	  checcoin()
+      break;
+
+	  case 'bancobai':
+      $('.sendbank').show();
+	  $('.lasbutt').hide();
+	  $('.nowbutt').hide();
+	  localStorage.setItem('bancpay', 'bancobai');
+	  checcoin()
+      break;
+	  
+	  case 'bancobfa':
+      $('.sendbank').show();
+	  $('.lasbutt').hide();
+	  $('.nowbutt').hide();
+	  localStorage.setItem('bancpay', 'bancobfa');
+	  checcoin()
+      break;
+	//Final das opções bancarias
     case 'bitcoin':
       $('.nowbutt').show();
       $('.lasbutt').hide();

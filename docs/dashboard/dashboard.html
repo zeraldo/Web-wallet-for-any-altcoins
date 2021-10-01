@@ -133,7 +133,8 @@ h5 {
 
 </head>
 <body class="crm_body_bg">
-    
+
+  
 <!-- main content part here -->
  
  <!-- sidebar  -->
@@ -353,7 +354,7 @@ h5 {
 						 <i class="ti-menu menudesktop"></i>
                     </div>
                     <div class="serach_field-area">
-                            <div style="font-weight: 400;
+                    <div style="font-weight: 400;
     line-height: 1.5;
     color: #212529;
     text-align: left;"> 
@@ -380,6 +381,7 @@ h5 {
 <!-- final menu top mobile -->	
 
 <!-- menu top desktop -->
+    <!--  <center>
       <div class="container-fluid no-gutters menudesktop" style="margin: 0px 0px 0px 270.0px; width: 80%;">
         <div class="row">
             <div class="col-lg-12 p-0">
@@ -405,7 +407,7 @@ h5 {
                             <div class="profile_info_iner">
                                 <p>Bem vindo!</p>
                                 <!-- <h5>Travor James</h5> -->
-                                <div class="profile_info_details">
+                                <!-- <div class="profile_info_details">
                                    
                                     <a href="logout.html">Sair<i class="ti-shift-left"></i></a>
                                 </div>
@@ -417,7 +419,7 @@ h5 {
         </div>
 		 
     </div>
-<!-- final menu top desktop -->	
+	</center> --> 
 
 <!-- sidebar part end -->
  <!--/ sidebar  -->
@@ -515,7 +517,7 @@ else
         
 //Abrir exchanger
   function opentroc(){		
-   window.location.href = 'https://troca.top/keyuser.html?usr=' + iduser;	
+   window.location.href = 'http://localhost/vexpay/docs/docs/dashboard/exchanger/keyuser.html?usr=' + iduser;	
   }
 
   
@@ -574,9 +576,7 @@ jQuery.ajax({
 	//Preço em dólar
 	var usdaoa = (element.usdaoa * 118) / 100;
 	localStorage.setItem("usdaoa", usdaoa);
-     
-		// alert(usdaoa);
-		 
+		// alert(usdaoa);	 
 		 }); 
       },
   
