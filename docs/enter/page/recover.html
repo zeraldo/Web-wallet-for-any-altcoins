@@ -16,7 +16,14 @@ document.getElementsByTagName("title")[0].innerText = 'Recuperar carteira | Vexp
     width: auto;
     height: auto;" style="padding-top: 50px"></a> </center>
 
-	<br> 
+	<br>           
+									   <div class="notkey">  
+									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+								   <span aria-hidden="true" onclick="javascript:notfoundEmail();">×</span></div>
+                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Por favor, digita a sua chave priva.</h1>
+									  <br> 
+									</div>
+									
 						<div class="fxt-form">
 						 
 								<div class="form-group">
@@ -119,6 +126,7 @@ $(document).ready(function(){
  $('.process').hide();
  $('.gerarb').show();
  $('.process2').hide();
+ $('.process2').hide();
  });
  //Alterar a pagina
 function openpage(pagina){
@@ -134,7 +142,20 @@ function recovery()
  $('.process').show();
  $('.recover').hide();
  var recovery = document.getElementById("recovery").value; 
- localStorage.setItem("recoverphrase", recovery); 
- $("#conteudo").load('open/open_btc.html');
+
+if (!recovery) { 
+//Aqui não digitou as chaves
+  $('.process').hide();
+  $('.recover').show();
+  $('.notkey').show();
+  alert('Não digitou a carteira');
+  }
+  else
+  { 
+//Aqui a chave foi adicionada
+alert('Digitou a carteira');
+$("#conteudo").load('open/open_btc.html');
+  }
+ 
 }         
     </script>
