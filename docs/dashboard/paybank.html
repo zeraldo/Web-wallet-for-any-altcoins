@@ -1,3 +1,4 @@
+
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -22,18 +23,45 @@
 							   
                            </center>
                         </div>
-                        <div class="modal-body">
-					    
+						
+                        <div class="modal-body bancobai"> 
+                              <div class="border_style">
+                                 <span style="font-size: 15px;">Banco BAI</span>
+                              </div>
+   
+                               <p style="margin-top: 2px;">Titular: Francisco Mango João</p>
+							   <p style="margin-top: 2px;">Iban: AO06.0040.0000.4153.2109.1017.0</p>
+							   <p style="margin-top: 2px;">Conta: 014153210910001</p>
+							   <hr style="border-top: 1px solid #000000;">
+							    <p style="margin-top: 1px;">Após o envio dos valores, mande o comprovante acessoando Historico > Detalhes da orden > e depois envia o comprovante.</p>
+                        </div>
+						
+						
+                        <div class="modal-body bancobfa"> 
+                              <div class="border_style">
+                                 <span style="font-size: 15px;">Banco BFA</span>
+                              </div>
+   
+                               <p style="margin-top: 2px;">Titular: Rafael Liauka Manuel</p>
+							   <p style="margin-top: 2px;">Iban: AO06.0006 0000 8302 9481 3015 5</p>
+							   <p style="margin-top: 2px;">Conta: 183029481/30/01</p>
+							   <hr style="border-top: 1px solid #000000;">
+							    <p style="margin-top: 1px;">Após o envio dos valores, mande o comprovante acessoando Historico > Detalhes da orden > e depois envia o comprovante.</p>
+                        </div>
+						
+						
+                        <div class="modal-body bancoatlc"> 
                               <div class="border_style">
                                  <span style="font-size: 15px;">Banco Atlantico</span>
                               </div>
    
-                               <p style="margin-top: 2px;">Titular: Emanuel Joaquim da Fonseca</p>
-							   <p style="margin-top: 2px;">Iban: AO06.0055.0000.7585.9513.1011.8</p>
-							   <p style="margin-top: 2px;">Conta: 178551310001</p>
+                               <p style="margin-top: 2px;">Titular: Francisco Mango João</p>
+							   <p style="margin-top: 2px;">Iban: AO06.0040.0000.4153.2109.1017.0</p>
+							   <p style="margin-top: 2px;">Conta: 014153210910001</p>
 							   <hr style="border-top: 1px solid #000000;">
 							    <p style="margin-top: 1px;">Após o envio dos valores, mande o comprovante acessoando Historico > Detalhes da orden > e depois envia o comprovante.</p>
                         </div>
+						
                      </div>
                   </div>
                </div>
@@ -43,6 +71,33 @@
    </div>
 </section>
 </span>
+
+<script>
+var banc = localStorage.getItem('bancpay');
+//Verificar se o banco é igual com o atuali
+if (banc == 'bancoatlc') { 
+//Aqui o banco é igual
+$('.bancoatlc').show();
+$('.bancobai').hide();
+$('.bancobfa').hide();
+  }
+  
+//Verificar se o banco é igual com o atuali
+if (banc == 'bancobfa') { 
+//Aqui o banco é igual
+$('.bancobfa').show();
+$('.bancoatlc').hide();
+$('.bancobai').hide();
+  }
+  
+//Verificar se o banco é igual com o atuali
+if (banc == 'bancobai') { 
+//Aqui o banco é igual
+$('.bancobfa').hide();
+$('.bancoatlc').hide();
+$('.bancobai').show();
+  }
+</script>
 
 <!-- Barra de progresso -->
  <style>
