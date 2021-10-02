@@ -574,7 +574,9 @@ jQuery.ajax({
 	localStorage.setItem("aoausd", element.usdaoa );
 	 
 	//Preço em dólar
-	var usdaoa = (element.usdaoa * 118) / 100;
+	//var usdaoa = (element.usdaoa * 118) / 100;i
+	//Aqui estamos a usar o preço fixo
+	var usdaoa = 740;
 	localStorage.setItem("usdaoa", usdaoa);
 		// alert(usdaoa);	 
 		 }); 
