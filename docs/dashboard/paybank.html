@@ -1,4 +1,25 @@
 
+<script>    		
+//Começamos o id da ultima ordem do cliente
+$(document).ready(function(){  
+jQuery.ajax({
+	url: 'https://dogkoin.online/diversos/lastorder.php?email=' + iduser,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) {
+		 var lastorder = result;
+		 localStorage.setItem("idorder", lastorder);
+		  
+      },
+    
+});	
+ });
+</script>
 <span class="mainweb">	
 <section class="main_content dashboard_part">
    <div class="main_content_iner ">
@@ -57,8 +78,13 @@
                                <p style="margin-top: 2px;">Titular: Emanuel Joaquim da Fonseca</p>
 							   <p style="margin-top: 2px;">Iban: AO06 0055 0000 7585 9513 1011 8</p>
 							   <p style="margin-top: 2px;">Conta: 175859513 10 001</p>
-							   <hr style="border-top: 1px solid #000000;">
-							    <p style="margin-top: 1px;">Após o envio dos valores, mande o comprovante acessoando Historico > Detalhes da orden > e depois envia o comprovante.</p>
+							  
+								  <div class="form-group col-md-12 text-center sendproff">
+								  <a onclick="carregar2('sendprof.html')" href="#" class="btn_1 full_width" style="background-color: orange;">ADICIONAR COMPROVANTE</a>
+                                  </div>
+								  
+								   <hr style="border-top: 1px solid #000000;">
+							   
                         </div>
 						
                      </div>
