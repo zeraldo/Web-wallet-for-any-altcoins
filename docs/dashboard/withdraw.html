@@ -1,136 +1,127 @@
 <script> 
-var iduser = localStorage.getItem("user"); 
-$("#email").val(iduser); 
+   var iduser = localStorage.getItem("user"); 
+   $("#email").val(iduser); 
 </script>
-<span class="mainweb">	
-<section class="main_content dashboard_part">
-   <div class="main_content_iner ">
-   <div class="container-fluid plr_30 body_white_bg pt_30">
-      <div class="row justify-content-center">
-         <div class="col-lg-12">
-            <div class="white_box mb_30">
-               <div class="row justify-content-center">
-                  <div class="col-lg-6">
-				   <center>
-				  <img src="img/icon/atm.svg" width="100.334" height="100.334" alt=""> 
-				   </center>
-				   <div class="border_style">
-                                 <span><h4>$ 0.00</h4></span>
-                              </div>
-                     <!-- sign_in  -->
-                     <div class="modal-content cs_modal">
-					  
-
-	                               <!--   <div class="addresserro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:existemailh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Endereço invalido</h1>
-									  <br> 
-									</div>    
-									
-									 <div class="otherro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
-									  <br> 
-									</div>  
-									 
-									 <div class="funderro">  
-									   <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
-								   <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
-                                    <h1 style="font-size: 19px;margin: 10px 10px 1px 10px;color: red;">Fundos insuficiente</h1>
-									  <br> 
-									</div> --> 
-		                 
-                        <div class="modal-body">
-                          
-						  <select id="ttmoeda" style="
-	height: 50px;
-    background-color: #fff;
-    color: #7e7172;
-    width: 100%;
-    display: block;
-    font-weight: 300;
-    margin: 0;
-    font-family: inherit;
-    font-size: 15px;
-    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
-						  <option disabled="disabled" selected>MOEDA A RETIRAR</option>
-						 <!--  <option value="bancobai">Banco BAI</option>
-						  <option value="bancobfa">Banco BFA</option> -->
-                          <option value="bitcoin">BitCoin</option>
-						  <option value="litecoin">LiteCoin</option>
-						  <option value="dogecoin">DogeCoin</option>
-						  <option value="swiftcash">SwiftCash</option>
-						  </select>  
-						  
-                          <input  type="text" id="quantidade" placeholder="Quantidade" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-						
-						 <div class="border_style">
+<span class="mainweb">
+   <section class="main_content dashboard_part">
+      <div class="main_content_iner ">
+      <div class="container-fluid plr_30 body_white_bg pt_30">
+         <div class="row justify-content-center">
+            <div class="col-lg-12">
+               <div class="white_box mb_30">
+                  <div class="row justify-content-center">
+                     <div class="col-lg-6">
+                        <center>
+                           <img src="img/icon/atm.svg" width="100.334" height="100.334" alt=""> 
+                        </center>
+                        <div class="border_style">
+                           <span>
+                              <h4>RETIRAR DINHEIRO</h4>
+                           </span>
+                        </div>
+                        <!-- sign_in  -->
+                        <div class="modal-content cs_modal">
+                           <!--   <div class="addresserro">  
+                              <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+                              <span aria-hidden="true" onclick="javascript:existemailh();">×</span></div>
+                                                      <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Endereço invalido</h1>
+                              <br> 
+                              </div>    
+                              
+                              <div class="otherro">  
+                              <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+                              <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
+                                                      <h1 style="font-size: 19px;margin: 0 0 2px 0;color: red;">Ocorreu um erro</h1>
+                              <br> 
+                              </div>  
+                              
+                              <div class="funderro">  
+                              <div class="close" data-dismiss="alert" aria-label="Close" style="color: #fff;">
+                              <span aria-hidden="true" onclick="javascript:otherroh();">×</span></div>
+                                                      <h1 style="font-size: 19px;margin: 10px 10px 1px 10px;color: red;">Fundos insuficiente</h1>
+                              <br> 
+                              </div> --> 
+                           <div class="modal-body">
+                              <select id="saqcoin" style="
+                                 height: 50px;
+                                 background-color: #fff;
+                                 color: #7e7172;
+                                 width: 100%;
+                                 display: block;
+                                 font-weight: 300;
+                                 margin: 0;
+                                 font-family: inherit;
+                                 font-size: 15px;
+                                 line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect">
+                                 <option disabled="disabled">MOEDA A RETIRAR</option>
+                                 <!--  <option value="bancobai">Banco BAI</option>
+                                    <option value="bancobfa">Banco BFA</option> -->
+                                 <option value="bitcoin" selected>BitCoin</option>
+                                 <!-- 
+                                    <option value="litecoin">LiteCoin</option>
+                                    <option value="dogecoin">DogeCoin</option>
+                                    <option value="swiftcash">SwiftCash</option> -->
+                              </select>
+                              <div class="border_style">
                                  <span>Dados bancarios</span>
                               </div>
-							  
-                          <input  type="text" id="nconta" placeholder="CONTA" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-						
-						 
-                          <input  type="text" id="iban" placeholder="IBAN" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-								
-							    <table>
+                              <input  type="text" id="nconta" onkeyup="checkinput()" placeholder="CONTA" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+                              <input  type="text" id="iban" onkeyup="checkinput()" placeholder="IBAN" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+                              <table>
                                  <tr>
-                                  
-									<td>
-                                      
-						  <select id="banco" style="
-	height: 50px;
-    background-color: #fff;
-    color: #7e7172;
-    width: 100%;
-    display: block;
-    font-weight: 300;
-    margin: 0;
-    font-family: inherit;
-    font-size: 15px;
-    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
-						  <option disabled="disabled" selected>ESCOLHA O BANCO</option>
-						 <!--  <option value="bancobai">Banco BAI</option>
-						  <option value="bancobfa">Banco BFA</option> -->
-                          <option value="BFA">BFA</option>
-						  <option value="BAI">BAI</option>
-						  <option value="BIC">BIC</option>
-						  <option value="BNI">BNI</option>
-						  <option value="BPC">BPC</option>
-						  <option value="ATLANTICO">ATLANTICO</option>
-						  </select>  
-								
+                                    <td>
+                                       <select id="banco" style="
+                                          height: 50px;
+                                          background-color: #fff;
+                                          color: #7e7172;
+                                          width: 100%;
+                                          display: block;
+                                          font-weight: 300;
+                                          margin: 0;
+                                          font-family: inherit;
+                                          font-size: 15px;
+                                          line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>
+                                          <option disabled="disabled">ESCOLHA O BANCO</option>
+                                          <!--  <option value="bancobai">Banco BAI</option>
+                                             <option value="bancobfa">Banco BFA</option> -->
+                                          <option value="BFA">BANCO BFA</option>
+                                          <option value="BAI">BANCO BAI</option>
+                                          <option value="BIC">BANCO BIC</option>
+                                          <option value="BNI">BANCO BNI</option>
+                                          <option value="BPC">BANCO BPC</option>
+                                          <option value="ATLANTICO" selected>BANCO ATLANTICO</option>
+                                       </select>
                                     </td>
-                                    
                                  </tr>
                               </table>
-					          
 							  
-                               
-                          <input type="hidden" id="email">
-							  
-                              <div class="menumobile  form-row social_login_btn">
-							  
-									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>
-									
-									
-                              <div class="abledesk1 menudesktop form-row social_login_btn">
-									 <button href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>
+                              <div class="starsaqu menumobile form-row social_login_btn">
+                                 <button onclick="saqmoney()" href="#" class="menumobile form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745; border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>	
+                              </div>
+                              <div class="startdisable menumobile form-row social_login_btn">
+                                 <button onclick="saqmoney()" href="#" class="menumobile form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>	
+                              </div>
+                              <div class="waitsaq menumobile form-row social_login_btn">
+                                 <button class="menumobile form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">AGUARDE...</button>	
                               </div>
 							  
-									
                               </div>
-							  
-							   
-                              <div class="menudesktop form-row social_login_btn">
-									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745; border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>	
+                              <div class="starsaqu menudesktop form-row social_login_btn">
+                                 <button onclick="saqmoney()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745; border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>	
                               </div>
-							  
+                              <div class="startdisable menudesktop form-row social_login_btn">
+                                 <button onclick="saqmoney()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>	
+                              </div>
+                              <div class="waitsaq menudesktop form-row social_login_btn">
+                                 <button class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">AGUARDE...</button>	
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -138,312 +129,192 @@ $("#email").val(iduser);
             </div>
          </div>
       </div>
-   </div>
-</section>
+   </section>
 </span>
-
 <script>
+   //Condicionar a saida do botao salvar
+   $(document).ready(function(){            
+   $('.existemail').hide();
+   $('.otherro').hide();
+   $('.addresserro').hide();
+   $('.funderro').hide();
+   $('.starsaqu').hide();
+   $('.waitsaq').hide();
+   $('.startdisable').show();
+   });
    localStorage.setItem("urlback", "withdraw.html"); 
 </script>
-	 <script type = "text/javascript">
-        jQuery(document).ready(function() {
-		$('.progressbara').hide();
-        $('.mainweb').show();
-        });
+
+<script>
+   jQuery(document).ready(function() {
+   $('.progressbara').hide();
+   $('.mainweb').show();
+   });
 </script>
 <script>
-
-//Receber valores1
-function compra(){
-
-$("#conteudo").load('sucess.html');
-$('.mainweb').hide();
-$('.progressbara').show();
-
-}
+   function checkinput(){
+     //Validar se todos os campos estãos preenchidos
+     var iban = document.getElementById("iban").value;
+     var nconta = document.getElementById("nconta").value;
+     if(nconta == '' || iban == '') { 
+   //Todos os campos estão vazios
+   $('.starsaqu').hide();
+   $('.waitsaq').hide();
+   $('.startdisable').show();
+   
+     }
+     else {
+   $('.starsaqu').show();
+   $('.waitsaq').hide();
+   $('.startdisable').hide();
+   
+     } 
+   
+   
+   };	
 </script>
-
-	
- <script>
-  //Condicionar a saida do botao salvar
-$(document).ready(function(){            
- $('.existemail').hide();
- $('.otherro').hide();
- $('.addresserro').hide();
- $('.funderro').hide();
- });
-  </script>
-
- <script>	 
-//Começar o processo de compra
-function compra2()
-{
-  $('.mainweb').hide();
-  $('.progressbara').show();
-
-  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
-  var dadosajax = {
- 'nome' : $("#nome").val(), 
- 'iban' : $("#iban").val(),
- 'nconta' : $("#nconta").val(),
- 'swift' : $("#swift").val(),
- 'banco' : $("#banco").val(),
- 'quantidade' : $("#quantidade").val(),
- 'email' : $("#email").val()
- };
- //Desativamos os saque
-    pageurl = 'http://localhost/diversos/diversos/saq.php',
-    //para consultar mais opcoes possiveis numa chamada ajax
-    //http://api.jquery.com/jQuery.ajax/
-    $.ajax({
+<script>
+   function saqmoney(){
+  // alert('Chamou a função.');
+   $('.starsaqu').hide();
+   $('.waitsaq').show();
+   	
+   //Verificar qual moeda ele deve retirar os valores
+    //Pegamos o tipo da moeda
+     var saqcoin = document.getElementById("saqcoin").value;
+     if (saqcoin == 'bitcoin') {  
+  //Aqui é btc
+  // alert('Aqui é bitcoin a moeda escolhida'); 
+   var iban = document.getElementById("iban").value;
+   localStorage.setItem("iban", iban);
+   
+   var nconta = document.getElementById("nconta").value;
+   localStorage.setItem("nconta", nconta);
+ 
+   var saqcoin = document.getElementById("saqcoin").value;
+   localStorage.setItem("saqcoin", saqcoin);
     
-        //url da pagina
-        url: pageurl,
-        //parametros a passar
-        data: dadosajax,
-        //tipo: POST ou GET
-        type: 'POST',
-	//ativar requisação entre domínio
-	crossDomain: true,
-        //cache
-        cache: false,
-	
-        //se ocorrer um erro na chamada ajax, retorna este alerta
-        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
-        error: function(){
-           //Exbir erro critico
-            $('.otherro').show();
-        },
-        //retorna o resultado da pagina para onde enviamos os dados
-        success: function(result)
-        { 
-            //Se foi inserido com sucesso
-            if($.trim(result) == '100')
-            {
-			 //exibir sucesso no envio
-            $("#conteudo").load('sucess.html');
-          
-            }
-            //Se não foi inserido com sucesso
-            else
-            { 
-             if($.trim(result) == '111')
-			 { 
-           // $('.existemail').show();
-            alert('Ocorreu um erro.');	
-			$('.mainweb').show();
-            $('.progressbara').hide();			
-            //aqui houve um erro
-			}
-			 
-			else
-            {
-			// $('.otherro').show();
-			alert('Ocorreu um erro.');
-			$('.mainweb').show();
-            $('.progressbara').hide();
-             }			 
-			 
-            }
-
-        }
-    });
-}		
-
-
-//Começar o processo de compra
-function compra()
-{
-  $('.mainweb').hide();
-  $('.progressbara').show();
-
-  //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
-  var dadosajax = {
- 'nome' : $("#nome").val(), 
- 'iban' : $("#iban").val(),
- 'nconta' : $("#nconta").val(),
- 'swift' : $("#swift").val(),
- 'banco' : $("#banco").val(),
- 'quantidade' : $("#quantidade").val(),
- 'email' : $("#email").val()
- };
-   //Desativamos os saque
-    pageurl = 'http://localhost/diversos/diversos/saq.php',
-    //para consultar mais opcoes possiveis numa chamada ajax
-    //http://api.jquery.com/jQuery.ajax/
-    $.ajax({
-    
-        //url da pagina
-        url: pageurl,
-        //parametros a passar
-        data: dadosajax,
-        //tipo: POST ou GET
-        type: 'POST',
-	//ativar requisação entre domínio
-	crossDomain: true,
-        //cache
-        cache: false,
-	
-        //se ocorrer um erro na chamada ajax, retorna este alerta
-        //possiveis erros: pagina nao existe, erro de codigo na pagina, falha de comunicacao/internet, etc etc etc
-        error: function(){
-           //Exbir erro critico
-            $('.otherro').show();
-        },
-        //retorna o resultado da pagina para onde enviamos os dados
-        success: function(result)
-        { 
-            //Se foi inserido com sucesso
-            if($.trim(result) == '100')
-            {
-			 //exibir sucesso no envio
-            $("#conteudo").load('sucess.html');
-          
-            }
-            //Se não foi inserido com sucesso
-            else
-            { 
-             if($.trim(result) == '111')
-			 { 
-           // $('.existemail').show();
-            alert('Ocorreu um erro.');	
-			$('.mainweb').show();
-            $('.progressbara').hide();			
-            //aqui houve um erro
-			}
-			 
-			else
-            {
-			// $('.otherro').show();
-			alert('Ocorreu um erro.');
-			$('.mainweb').show();
-            $('.progressbara').hide();
-             }			 
-			 
-            }
-
-        }
-    });
-}		
-    </script>
+   var banco = document.getElementById("banco").value;
+   localStorage.setItem("banco", banco);
+   
+   $("#conteudo").load('coin/bitcoin/saq.html');
+    }  
+   }
+</script>
 <!-- Barra de progresso -->
- <style>
- body,
-html,
-.wrapper {
-  width: 100%;
-  height: 100%;
-}
-.wrapper {
-  position: relative;
-  background: #e7f0f7;
-}
-.progressbar {
-  display: block;
-  position: absolute;
-  z-index: 9;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  width: 100%;
-  height: 30px;
-}
-.progressbar::before,
-.progressbar::after {
-  content: '';
-  display: block;
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  background-image: linear-gradient(
-90deg
-, #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
-  background-repeat: repeat-x;
-  -webkit-animation: movebar 5s linear infinite;
-          animation: movebar 5s linear infinite;
-}
-.progressbar::before {
-  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
-}
-.progressbar::after {
-  z-index: 9;
-  top: 6px;
-  filter: blur(16px);
-  opacity: 0.7;
-}
-.stylization {
-  position: absolute;
-  z-index: 999;
-  height: 4px;
-  width: 90%;
-  left: 5%;
-  top: 6px;
-  opacity: 0.3;
-}
-.stylization::before,
-.stylization::after {
-  content: '';
-  display: block;
-  position: absolute;
-  height: 4px;
-  top: 0;
-  border-radius: 2px;
-}
-.stylization::before {
-  background: #fff;
-  left: 0;
-  right: 10px;
-}
-.stylization::after {
-  width: 6px;
-  background: #000;
-  right: 0;
-}
-@-webkit-keyframes movebar {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 400px 0;
-  }
-}
-@keyframes movebar {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: 400px 0;
-  }
-}
+<style>
+   body,
+   html,
+   .wrapper {
+   width: 100%;
+   height: 100%;
+   }
+   .wrapper {
+   position: relative;
+   background: #e7f0f7;
+   }
+   .progressbar {
+   display: block;
+   position: absolute;
+   z-index: 9;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   margin: auto;
+   width: 100%;
+   height: 30px;
+   }
+   .progressbar::before,
+   .progressbar::after {
+   content: '';
+   display: block;
+   position: absolute;
+   z-index: 99;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   border-radius: 15px;
+   background-image: linear-gradient(
+   90deg
+   , #9a284f 0%, #e91e63 20%, #0f6f9a 20%, #176e96 40%, #2e4217 40%, #abbd97 60%, #8a8669 60%, #b5a300 80%, #c55f3e 80%, #6b240d 100%);
+   background-repeat: repeat-x;
+   -webkit-animation: movebar 5s linear infinite;
+   animation: movebar 5s linear infinite;
+   }
+   .progressbar::before {
+   box-shadow: 0 6px 10px 0 rgba(0,0,0,0.1);
+   }
+   .progressbar::after {
+   z-index: 9;
+   top: 6px;
+   filter: blur(16px);
+   opacity: 0.7;
+   }
+   .stylization {
+   position: absolute;
+   z-index: 999;
+   height: 4px;
+   width: 90%;
+   left: 5%;
+   top: 6px;
+   opacity: 0.3;
+   }
+   .stylization::before,
+   .stylization::after {
+   content: '';
+   display: block;
+   position: absolute;
+   height: 4px;
+   top: 0;
+   border-radius: 2px;
+   }
+   .stylization::before {
+   background: #fff;
+   left: 0;
+   right: 10px;
+   }
+   .stylization::after {
+   width: 6px;
+   background: #000;
+   right: 0;
+   }
+   @-webkit-keyframes movebar {
+   from {
+   background-position: 0 0;
+   }
+   to {
+   background-position: 400px 0;
+   }
+   }
+   @keyframes movebar {
+   from {
+   background-position: 0 0;
+   }
+   to {
+   background-position: 400px 0;
+   }
+   }
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
- 
 <span class="progressbara">
-<section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
-   <div class="main_content_iner">
-   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
-      <div class="row justify-content-center">
-         <div class="col-lg-12">
-            <div class="white_box mb_30" style="background: #000;">
-               <div class="row justify-content-center">
-                  <div class="col-lg-6">
-                     <!-- sign_in  -->
-                     <div class="modal-content cs_modal">
-                        
-                        <div class="modal-body">
-					   
-  <div class="progressbar">
-    <div class="stylization"></div>
-  </div>
-  
-</div>
-      
+   <section class="main_content dashboard_part menudesktop" style="padding-top: 10% !important;">
+      <div class="main_content_iner">
+         <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+            <div class="row justify-content-center">
+               <div class="col-lg-12">
+                  <div class="white_box mb_30" style="background: #000;">
+                     <div class="row justify-content-center">
+                        <div class="col-lg-6">
+                           <!-- sign_in  -->
+                           <div class="modal-content cs_modal">
+                              <div class="modal-body">
+                                 <div class="progressbar">
+                                    <div class="stylization"></div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -451,27 +322,24 @@ html,
             </div>
          </div>
       </div>
-   </div>
-</section>
-
-<section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
-   <div class="main_content_iner">
-   <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
-      <div class="row justify-content-center">
-         <div class="col-lg-12">
-            <div class="white_box mb_30" style="background: #000;">
-               <div class="row justify-content-center">
-                  <div class="col-lg-6">
-                     <!-- sign_in  -->
-                     <div class="modal-content cs_modal">
-                        
-                        <div class="modal-body">
-					   
-					   <div class="wrapper">
-  <div class="progressbar">
-    <div class="stylization"></div>
-  </div>
-</div>     
+   </section>
+   <section class="main_content dashboard_part menumobile" style="padding-top: 50% !important;" style="menumobile">
+      <div class="main_content_iner">
+      <div class="container-fluid plr_30 body_white_bg pt_30" style="background: #000;">
+         <div class="row justify-content-center">
+            <div class="col-lg-12">
+               <div class="white_box mb_30" style="background: #000;">
+                  <div class="row justify-content-center">
+                     <div class="col-lg-6">
+                        <!-- sign_in  -->
+                        <div class="modal-content cs_modal">
+                           <div class="modal-body">
+                              <div class="wrapper">
+                                 <div class="progressbar">
+                                    <div class="stylization"></div>
+                                 </div>
+                              </div>
+                           </div>
                         </div>
                      </div>
                   </div>
@@ -479,13 +347,11 @@ html,
             </div>
          </div>
       </div>
-   </div>
-</section>
+   </section>
 </span>
-
-	 <script type = "text/javascript">
-        jQuery(document).ready(function() {
-		$('.progressbara').hide();
-        $('.mainweb').show();
-        });
-		</script>
+<script type = "text/javascript">
+   jQuery(document).ready(function() {
+   $('.progressbara').hide();
+   $('.mainweb').show();
+   });
+</script>
