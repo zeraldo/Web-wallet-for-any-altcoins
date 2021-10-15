@@ -44,46 +44,91 @@ $("#email").val(iduser);
 		                 
                         <div class="modal-body">
                           
+						  <select id="ttmoeda" style="
+	height: 50px;
+    background-color: #fff;
+    color: #7e7172;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
+						  <option disabled="disabled" selected>MOEDA A RETIRAR</option>
+						 <!--  <option value="bancobai">Banco BAI</option>
+						  <option value="bancobfa">Banco BFA</option> -->
+                          <option value="bitcoin">BitCoin</option>
+						  <option value="litecoin">LiteCoin</option>
+						  <option value="dogecoin">DogeCoin</option>
+						  <option value="swiftcash">SwiftCash</option>
+						  </select>  
+						  
                           <input  type="text" id="quantidade" placeholder="Quantidade" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 						
 						 <div class="border_style">
                                  <span>Dados bancarios</span>
                               </div>
 							  
-                          <input  type="text" id="nome" placeholder="Proprietario" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+                          <input  type="text" id="nconta" placeholder="CONTA" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 						
 						 
-                          <input  type="text" id="iban" placeholder="Iban da conta" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
+                          <input  type="text" id="iban" placeholder="IBAN" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
 								
 							    <table>
                                  <tr>
-                                    <td>
-                                       <input type="text" id="nconta" style="border-radius: 3px !important;
-                                          margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;" placeholder="Conta numero">
+                                  
+									<td>
+                                      
+						  <select id="banco" style="
+	height: 50px;
+    background-color: #fff;
+    color: #7e7172;
+    width: 100%;
+    display: block;
+    font-weight: 300;
+    margin: 0;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
+						  <option disabled="disabled" selected>ESCOLHA O BANCO</option>
+						 <!--  <option value="bancobai">Banco BAI</option>
+						  <option value="bancobfa">Banco BFA</option> -->
+                          <option value="BFA">BFA</option>
+						  <option value="BAI">BAI</option>
+						  <option value="BIC">BIC</option>
+						  <option value="BNI">BNI</option>
+						  <option value="BPC">BPC</option>
+						  <option value="ATLANTICO">ATLANTICO</option>
+						  </select>  
+								
                                     </td>
-                                    <td> <input type="text" id="swift" placeholder="Codigo swift" style="border-radius: 3px !important;
-                                       margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
                                     
                                  </tr>
                               </table>
 					          
 							  
-                          <input type="text" id="banco" placeholder="Banco" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;">
-								
                                
                           <input type="hidden" id="email">
 							  
                               <div class="menumobile  form-row social_login_btn">
+							  
 									<a onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
                                     -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>
+									
+									
+                              <div class="abledesk1 menudesktop form-row social_login_btn">
+									 <button href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
+                                    -webkit-transition: 0.5s;transition: 0.5s;">CONTINUAR</button>
+                              </div>
+							  
 									
                               </div>
 							  
 							   
                               <div class="menudesktop form-row social_login_btn">
 									 <a onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745; border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>
-									
+                                    -webkit-transition: 0.5s;transition: 0.5s;">FAZER RETIRADA</a>	
                               </div>
 							  
                         </div>
@@ -147,7 +192,7 @@ function compra2()
  'email' : $("#email").val()
  };
  //Desativamos os saque
-    pageurl = 'https://ddogkoin.online/diversos/ssaq.php',
+    pageurl = 'http://localhost/diversos/diversos/saq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -223,7 +268,7 @@ function compra()
  'email' : $("#email").val()
  };
    //Desativamos os saque
-    pageurl = 'https://ddogkoin.online/diversos/ssaq.php',
+    pageurl = 'http://localhost/diversos/diversos/saq.php',
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
