@@ -365,10 +365,12 @@ function compra2()
  'moeda' : $("#moedat").val(),
  'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
+ 'cambio' : localStorage.getItem("usdaoa"),
  'dolar' : $("#dolar").val()
  };
  
-    pageurl = 'https://dogkoin.online/diversos/compra.php';
+   // pageurl = 'https://dogkoin.online/diversos/compra.php';
+    pageurl = 'http://localhost/diversos/diversos/compra.php';
     //para consultar mais opcoes possiveis numa chamada ajax
     //http://api.jquery.com/jQuery.ajax/
     $.ajax({
@@ -469,6 +471,7 @@ function compra()
  'moeda' : $("#moedat").val(),
  'endereco' : localStorage.getItem('endereco'),
  'kwanza' : $("#kwanza").val(),
+ 'cambio' : localStorage.getItem("usdaoa"),
  'dolar' : $("#dolar").val()
  };
     pageurl = 'https://dogkoin.online/diversos/compra.php';
