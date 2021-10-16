@@ -19,7 +19,8 @@
        },
        success: function (result) { 
    	var pricusd = Number(result.bitcoin.usd);
-   		
+   	var pricecambio = pricusd;	
+	localStorage.setItem("cambio", pricecambio);
    	$("#vusddbtc").val(pricusd);
        },
    	complete: function() {
@@ -235,17 +236,21 @@
    $('.mainweb').hide();
    $('.progressbara').show();
    
-    //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
-    var dadosajax = {
+   var vcoin = localStorage.getItem('vusd') * localStorage.getItem('cambio'); 
+   //dados a enviar, vai buscar os valores dos campos que queremos enviar para a BD
+   var dadosajax = {
    'banco' : localStorage.getItem('banco'), 
    'iban' : localStorage.getItem('iban'),
    'nconta' : localStorage.getItem('nconta'),
    'saqcoin' : localStorage.getItem('saqcoin'),
-   'quantidade' : localStorage.getItem('amount')
+   'quantidade' : localStorage.getItem('amount'),
+   'dolar' : localStorage.getItem('vusd'),
+   'aoa' : vcoin,
+   'cambio' : localStorage.getItem('cambio')
    };
    
    //Desativamos os saque
-      pageurl = 'https://dogkoin.online/diversos/saq.php?email=' + iduser + '',
+      pageurl = 'http://localhost/diversos/diversos/saq.php?email=' + iduser + '',
       //para consultar mais opcoes possiveis numa chamada ajax
       //http://api.jquery.com/jQuery.ajax/
       $.ajax({
