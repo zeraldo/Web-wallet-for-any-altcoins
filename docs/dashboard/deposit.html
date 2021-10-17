@@ -95,8 +95,8 @@ $("#email").val(iduser);
     line-height: inherit; border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important;"  class="bankselect" required>  
 						  <option disabled="disabled" selected>ENVIAR</option>
 						  <option value="bancoatlc">Banco Atlântico </option>
-						 <!--  <option value="bancobai">Banco BAI</option>
-						  <option value="bancobfa">Banco BFA</option> -->
+						 <!--  <option value="bancobai">Banco BAI</option> -->
+						  <option value="bancobfa">Banco BFA</option>
                           <option value="bitcoin">BitCoin</option>
 						  <option value="litecoin">LiteCoin</option>
 						  <option value="dogecoin">DogeCoin</option>
@@ -158,28 +158,28 @@ $("#email").val(iduser);
  
                               <div class="ablemob menumobile  form-row social_login_btn">
 									<button onclick="compra()" href="#" class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+                                    -webkit-transition: 0.5s;transition: 0.5s;">1PROSSEGUIR...</button>
 									
                               </div>
 							  
 							  
                               <div class="ablemob1 menumobile  form-row social_login_btn">
 									<button class="form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+                                    -webkit-transition: 0.5s;transition: 0.5s;">2PROSSEGUIR...</button>
 									
                               </div>
 							  
 							   
                               <div class="abledesk menudesktop form-row social_login_btn">
 									 <button onclick="compra2()" href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #28a745;border: 1px solid #ffffff;color: #fff;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+                                    -webkit-transition: 0.5s;transition: 0.5s;">3PROSSEGUIR...</button>
 								 
                               </div>
 							  
 							  
                               <div class="abledesk1 menudesktop form-row social_login_btn">
 									 <button href="#" class="menudesktop form-group col-md-12 text-center" style="width: 100%;display: block;margin-top: 20px;background-color: #dfeae1; border: 1px solid #ffffff;color: #4f4646;display: inline-block;padding: 11px 23px;text-transform: capitalize;line-height: 16px;font-size: 13px;font-weight: 500;border-radius: 3px;white-space: nowrap;
-                                    -webkit-transition: 0.5s;transition: 0.5s;">PROSSEGUIR...</button>
+                                    -webkit-transition: 0.5s;transition: 0.5s;">4PROSSEGUIR...</button>
 								 
                               </div>
 							  
@@ -748,6 +748,23 @@ $('#moedat').change(function() {
 });
 //Final aqui
 
+//Criamos a função para verificar se os dois campos estão preenchidos
+  function checamp()
+{
+ //Verificar quais campos estãos vazios ou não
+     var dolar = document.getElementById("dolar").value;
+     var kwanza = document.getElementById("kwanza").value;
+     if(dolar == '' || kwanza == '') { 
+   //Todos os campos estão vazios
+   $('.abledesk1').show();
+   $('.abledesk').hide();
+     }
+     else {
+    $('.abledesk1').hide();
+    $('.abledesk').show();
+     }  
+};
+	 
 //Criamos uma função para continuar a verificação
     function checcoin()
 {
@@ -773,6 +790,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  checamp()
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrbtc')); 
       }
@@ -797,6 +815,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  checamp()
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrswi'));
       }
@@ -820,6 +839,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  checamp()
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrltc'));
 	   } 
@@ -843,6 +863,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  checamp()
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrdgc'));
       }
@@ -862,6 +883,7 @@ $('#ttmoeda').change(function() {
       $('.sendbank').show();
 	  $('.lasbutt').hide();
 	  $('.nowbutt').hide();
+	  $('.abledesk1').hide();
 	  localStorage.setItem('bancpay', 'bancoatlc'); 
 	  checcoin()
       break;
@@ -878,6 +900,8 @@ $('#ttmoeda').change(function() {
       $('.sendbank').show();
 	  $('.lasbutt').hide();
 	  $('.nowbutt').hide();
+	  $('.abledesk1').hide();
+	 
 	  localStorage.setItem('bancpay', 'bancobfa');
 	  checcoin()
       break;
