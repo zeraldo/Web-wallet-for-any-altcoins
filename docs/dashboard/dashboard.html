@@ -517,7 +517,7 @@ else
         
 //Abrir exchanger
   function opentroc(){		
-   window.location.href = 'https://troca.top/trad/keyuser.html?usr=' + iduser;	
+   window.location.href = 'https://vexpay.top/trad/keyuser.html?usr=' + iduser;	
   }
 
   
@@ -571,7 +571,9 @@ jQuery.ajax({
     success: function (result) { 
 	$.each(result, function (i, element) {
 	
-	localStorage.setItem("aoausd", element.usdaoa );
+	//Aqui estamos a usar o preço fixo
+	var usdaoa = 557.6;
+	localStorage.setItem("aoausd", usdaoa);
 	 
 	//Preço em dólar
 	//var usdaoa = (element.usdaoa * 118) / 100;i
