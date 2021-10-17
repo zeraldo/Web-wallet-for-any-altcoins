@@ -6,7 +6,7 @@ var PARAMS = {
                 qrColor: 'FC8F43',
                 minFee: 0.00000426,
                 maxFee: 0.00005,
-		txFee: 0.0001,
+		txFee: 0.00005,
                 explorer: 'https://live.blockcypher.com/btc/',
 		donation: '1E9xPAPifPFHmVTX1pDdPLcsgub71zdpDY',
                 unspentApi: 'https://api.blockcypher.com/v1/btc/main/addrs/',
