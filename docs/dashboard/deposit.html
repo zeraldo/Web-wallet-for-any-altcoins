@@ -37,23 +37,24 @@ $("#email").val(iduser);
    	   
   var elemento = document.getElementById('dolar');
   var valor = elemento.value;
-  
   valor = valor + '';
   valor = parseInt(valor.replace(/[\D]+/g,''));
   valor = valor + '';
-  valor = valor.replace(/([0-9]{2})$/g, ",$1");
- 
+  valor = valor.replace(/([0-9]{2})$/g, ".$1");
   elemento.value = valor;
       
         var vcoin = document.getElementById("dolar").value;
 		var vcoin = vcoin.replace(",", ".");
 		
 		var usdaoa = localStorage.getItem("usdaoa");
-        
 		var vcoin = vcoin * usdaoa;
+   		var vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		 
-   		vcoin = (vcoin.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }));
-		 
+		//Começamos a ver quantos dolares nos dá a moeda
+        var djscoin = Math.ceil(valor)/localStorage.getItem('lastnotw');
+		var djscoin = (djscoin.toLocaleString(undefined, { minimumFractionDigits: 8, maximumFractionDigits: 8 }));
+		$("#djscoin").val(djscoin);
+		
    		$("#kwanza").val('AOA ' + vcoin + '');
       
            }		   
@@ -149,9 +150,21 @@ $("#email").val(iduser);
                                     </td>
                                     <td> <input type="text" id="dolar" onkeyup="usdtoaoa(this.value)" placeholder="DÓLAR" style="border-radius: 3px !important;
                                        margin-bottom: 5px !important; padding: 10px 17px !important; border: 1px solid #f7931a!important;"></td>
-                                    
+									   
                                  </tr>
+								 
+								  <tr class="coinreq">
+									    <td>
+                                        <div>  <center> <h3 style="margin-top: 6.7%;" id="qantrece">TOTAL</h3>   </center> </div>
+                                    </td>
+                                    <td>
+							   <input autocomplete="off" type="text" id="djscoin" placeholder="0.00000000" value="0.0.00000000" style="border-radius: 3px !important; margin-bottom: 5px !important; padding: 10px 10px !important; border: 1px solid #f7931a!important; background-color: #f3f0f0;" readonly>
+							   </td>
+                                  </tr>  
+
+								  
                               </table>
+							  
 							</span>	 
 							
                                <input type="hidden" id="email">
@@ -185,8 +198,8 @@ $("#email").val(iduser);
 							  
                         </div>
                      </div>
-					 </div>
-					 
+					 </div> 
+ 				 
 					<!-- Final transferencia bancaria -->
 					
                               <div class="lasbutt form-row social_login_btn">
@@ -265,6 +278,7 @@ $(document).ready(function(){
  $('.addresserro').hide();
  $('.funderro').hide();
  $('.notwcoin').hide();
+ $('.coinreq').hide();
  });
   </script>
 
@@ -542,7 +556,25 @@ function addwal()
  $("#conteudo").load(localStorage.getItem('lastnotw'));
  }
 </script>
+ <script>
+//Criamos a função para verificar se os dois campos estão preenchidos
+  function checamp()
+{
+ //Verificar quais campos estãos vazios ou não
+     var dolar = document.getElementById("dolar").value;
+     var kwanza = document.getElementById("kwanza").value;
+     if(dolar == '' || kwanza == '') { 
+   //Todos os campos estão vazios
+   $('.abledesk1').show();
+   $('.abledesk').hide();
+     }
+     else {
+    $('.abledesk1').hide();
+    $('.abledesk').show();
+     }  
+};
 
+ </script>
  <script>
 //Ocultar saidas
 $(document).ready(function(){            
@@ -572,6 +604,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').hide();
 	  $('.abledesk1').hide();
 	  $('.ablemob1').hide();
+	   $('.abledesk').hide();
       $('#coindsj').html(moedat);
 	  //Criamos endereço onde deve ser aberto caso o cliente continua
 	  localStorage.setItem('lastnotw', 'coin/bitcoin/notwallet.html');
@@ -582,6 +615,24 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  $('.coinreq').show();
+	  $('#qantrece').html('Recebes BitCoin');
+	  checamp()
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.bitcoin.usd); 
+		localStorage.setItem('lastnotw', pricusd);
+    },
+ 
+});	
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrbtc')); 
       }
@@ -596,6 +647,8 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').hide();
 	  $('.abledesk1').hide();
 	  $('.ablemob1').hide();
+	  $('.abledesk').hide();
+	  $('.coinreq').hide();
       $('#coindsj').html(moedat);
 	  //Criamos endereço onde deve ser aberto caso o cliente continua
 	  localStorage.setItem('lastnotw', 'coin/swiftcash/notwallet.html');
@@ -606,6 +659,9 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  $('.coinreq').hide();
+	  checamp()
+	  $('#qantrece').html('Recebes Swift');
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrswi'));
       }
@@ -620,6 +676,7 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').hide();
 	  $('.abledesk1').hide();
 	  $('.ablemob1').hide();
+	  $('.abledesk').hide();
       $('#coindsj').html(moedat);
 	  //Criamos endereço onde deve ser aberto caso o cliente continua
 	  localStorage.setItem('lastnotw', 'coin/litecoin/notwallet.html');
@@ -629,7 +686,28 @@ $('#moedat').change(function() {
 	  $('.notwcoin').hide();
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
-	  $('.ablemob1').show();
+	  $('.ablemob1').show();  
+	  $('.coinreq').show();
+	  checamp()
+	  $('#qantrece').html('Recebes LiteCoin');
+	  //Pegamos a cotação do litecoin
+	  //Exibir o preço do litecoin
+
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.litecoin.usd); 
+		localStorage.setItem('lastnotw', pricusd);
+    },
+ 
+});	
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrltc'));
 	   } 
@@ -642,8 +720,10 @@ $('#moedat').change(function() {
 	  $('.notwcoin').show();
 	  $('.notwcoin2').show();
 	  $('.notwcoin1').hide();
+	  $('.abledesk').hide();
 	  $('.abledesk1').hide();
 	  $('.ablemob1').hide();
+	  $('.coinreq').hide();
       $('#coindsj').html(moedat);
 	  //Criamos endereço onde deve ser aberto caso o cliente continua
 	  localStorage.setItem('lastnotw', 'coin/dogecoin/notwallet.html');
@@ -654,6 +734,9 @@ $('#moedat').change(function() {
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
+	  $('.coinreq').hide();
+	  $('#qantrece').html('Recebes DogeCoin');
+	  checamp()
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrdgc'));
       }
@@ -665,7 +748,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 	
 	  
 	case 'Advcash': 
@@ -674,7 +759,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 	
 	  
 	case 'Payeer': 
@@ -683,7 +770,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 	
 	  
 	case 'PayPal': 
@@ -692,7 +781,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 	
 	  
     case 'PerfectMoney': 
@@ -701,7 +792,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 	
 	    
 	case 'BitTorrent': 
@@ -710,7 +803,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 
 	        
 	case 'Tron': 
@@ -719,7 +814,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 
 	 
     case 'Bitcoincash': 
@@ -728,7 +825,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 
 	  
 	case 'Bnb': 
@@ -737,7 +836,9 @@ $('#moedat').change(function() {
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
 	  $('.notwcoin2').hide();
+	  $('.coinreq').hide();
 	  $("#endereco").val('');
+	  checamp()
 	  break; 
 	  
 	 <!-- 
@@ -747,23 +848,6 @@ $('#moedat').change(function() {
   }
 });
 //Final aqui
-
-//Criamos a função para verificar se os dois campos estão preenchidos
-  function checamp()
-{
- //Verificar quais campos estãos vazios ou não
-     var dolar = document.getElementById("dolar").value;
-     var kwanza = document.getElementById("kwanza").value;
-     if(dolar == '' || kwanza == '') { 
-   //Todos os campos estão vazios
-   $('.abledesk1').show();
-   $('.abledesk').hide();
-     }
-     else {
-    $('.abledesk1').hide();
-    $('.abledesk').show();
-     }  
-};
 	 
 //Criamos uma função para continuar a verificação
     function checcoin()
