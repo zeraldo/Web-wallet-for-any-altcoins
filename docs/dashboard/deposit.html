@@ -739,13 +739,33 @@ jQuery.ajax({
       } else
 	  {
 	  //Aqui possui a carteira
-	  $('.notwcoin').hide();
+	  
+	   $('.notwcoin').hide();
 	  $('.notwcoin1').show();
 	  $('.abledesk1').show();
 	  $('.ablemob1').show();
-	  $('.coinreq').hide();
-	  $('#qantrece').html('Recebe DogeCoin');
+	  $('.coinreq').show();
+	  $("#endereco").val('');
+	  $("#dolar").val('');
+	  $("#djscoin").val('');
+	  $("#kwanza").val('');
+	  $('#qantrece').html('Recebe DOGE');
 	  checamp()
+jQuery.ajax({
+	url: 'https://api.coingecko.com/api/v3/simple/price?ids=dogecoin&vs_currencies=usd',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) { 
+		var pricusd = Number(result.dogecoin.usd); 
+		localStorage.setItem('lastnotw', pricusd);
+    },
+ 
+});	
 	  //Adicionar o endereço de recebimento
 	  $("#endereco").val(localStorage.getItem('adrdgc'));
       }
