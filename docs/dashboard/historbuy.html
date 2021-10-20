@@ -31,17 +31,37 @@
    	 
    		 		 var idorder1  = element.idorder;
    				 var virgula  = "'";
-   				
-				 $('#tbl').append(
-'<tr>' + '<td style="border-spacing: 1.0px; padding: 0.7rem;">' + element.datt + '</td>' + '<td>' + element.aoa + '</td>' + '<td>' + element.dolar + '</td>' + '<td>' + element.type + '</td>' + '<td>' + status + '</td>' + '<td><a onclick="openmore('+ virgula +''+ idorder1 +''+ virgula +''+')">Detalhes</a><td>' + '</tr>'
-                        );
+   //Pegamos o meio onde o cliente vai receber a moeda
+   jQuery.ajax({ 
+   	   url: 'https://dogkoin.online/diversos/historbuy1.php?email=' + iduser + '&id_order=' + idorder1,
+       headers: {
+           'Content-Type': 'application/x-www-form-urlencoded'
+       },
+       type: "GET", /* or type:"GET" or type:"PUT" */
+       dataType: "json",
+       data: {
+       },
+       success: function (rresult) { 
+   	   
+     $.each(rresult, function (i, elementt) {
+   
+     var nomoeda = elementt.nomoeda;
+    
+    //Final onde Pegamos o nome do processado onde se deseja receber os fundos
+   	 $('#tbl').append(
+   '<tr>' + '<td style="border-spacing: 1.0px; padding: 0.7rem;">' + elementt.nomoeda + '</td>' + '<td style="border-spacing: 1.0px; padding: 0.7rem;">' + element.datt + '</td>' + '<td>' + element.aoa + '</td>' + '<td>' + element.dolar + '</td>' + '<td>' + element.type + '</td>' + '<td>' + status + '</td>' + '<td><a onclick="openmore('+ virgula +''+ idorder1 +''+ virgula +''+')">Detalhes</a><td>' + '</tr>');
    						
+    });	
+    
+       }, 
+   });
+  
                        }); 
        },
    	 
    });	
-    
-</script>
+   
+</script>  
 <span class="mainweb">
    <section class="mainweb main_content dashboard_part">
       <div class="main_content_iner ">
@@ -73,28 +93,26 @@
                                  <table class="table table-hover table-dark tablero" id="tbl">
                                     <thead style="font-size: 12px;">
                                        <tr>
-									      
+                                          <th class="text-left">MEIO</th>
                                           <th class="text-left">DATA</th>
-									      <th class="text-left">AOA</th>
+                                          <th class="text-left">AOA</th>
                                           <th class="text-left">DÓLAR</th>
-										  <th class="text-left">TIPO</th>
+                                          <th class="text-left">TIPO</th>
                                           <th class="text-left">ESTADO</th>
-										  <th class="text-left">AÇÃO</th>
-										  
+                                          <th class="text-left">AÇÃO</th>
                                        </tr>
                                     </thead>
                                     <tbody class="table-hover" style="font-size: 12px;">
                                     </tbody>
                                     <thead>
                                        <tr>
-                                          
+                                          <th class="text-left">MEIO</th>
                                           <th class="text-left">DATA</th>
-									      <th class="text-left">AOA</th>
+                                          <th class="text-left">AOA</th>
                                           <th class="text-left">DÓLAR</th>
-										  <th class="text-left">TIPO</th>
+                                          <th class="text-left">TIPO</th>
                                           <th class="text-left">ESTADO</th>
-										  <th class="text-left">AÇÃO</th>
-										  
+                                          <th class="text-left">AÇÃO</th>
                                        </tr>
                                     </thead>
                                  </table>
